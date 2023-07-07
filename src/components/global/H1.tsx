@@ -9,7 +9,7 @@ function H1({
 }) {
   return (
     <h1
-      className={`font-bayon text-[50px] text-primary md:text-[60px] uppercase ${className}`}
+      className={`font-bayon text-[50px] leading-none text-primary md:text-[60px] uppercase ${className}`}
     >
       {children}
     </h1>

@@ -17,7 +17,7 @@ export default async function Home() {
   console.log(posts);
 
   return (
-    <main className="flex min-h-screen flex-col p-24">
+    <main className="flex min-h-screen flex-col pt-24">
       <H1>Ceci est un titre h1</H1>
       <H2>Ceci est un titre h2</H2>
       <H3>Ceci est un titre h3</H3>

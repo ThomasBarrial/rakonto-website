@@ -2,6 +2,8 @@ import React from 'react';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Josefin_Sans, Bayon } from 'next/font/google';
+import NavBar from '@/components/navigation/NavBar';
+import ReduxProvider from '@/store/ReduxProvider';
 
 const josefin = Josefin_Sans({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
@@ -26,9 +28,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${josefin.variable} ${bayon.variable} bg-background`}>
-        {children}
+    <html className="bg-background flex items-center justify-center" lang="en">
+      <body
+        className={`${josefin.variable} ${bayon.variable} max-w-content w-full`}
+      >
+        <ReduxProvider>
+          <NavBar />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );
