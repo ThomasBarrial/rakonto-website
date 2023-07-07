@@ -1,3 +1,5 @@
+import React from 'react';
+
 function Texte({
   children,
   className,
@@ -15,3 +17,7 @@ function Texte({
 }
 
 export default Texte;
+
+Texte.defaultProps = {
+  className: '',
+};

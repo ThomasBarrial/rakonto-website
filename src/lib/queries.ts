@@ -1,4 +1,4 @@
-import { groq } from "next-sanity";
+import { groq } from 'next-sanity';
 
 export const getAllPosts = groq`
 *[_type == "post"] {
@@ -7,3 +7,5 @@ export const getAllPosts = groq`
     categories[]->
 } | order(publishedAt desc)
 `;
+
+export default getAllPosts;

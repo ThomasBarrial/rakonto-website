@@ -1,4 +1,6 @@
-function TexteSmall({
+import React from 'react';
+
+function TextSmall({
   children,
   className,
 }: {
@@ -14,4 +16,8 @@ function TexteSmall({
   );
 }
 
-export default TexteSmall;
+export default TextSmall;
+
+TextSmall.defaultProps = {
+  className: '',
+};

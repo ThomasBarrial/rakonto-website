@@ -1,3 +1,5 @@
+import React from 'react';
+
 function H2({
   children,
   className,
@@ -15,3 +17,7 @@ function H2({
 }
 
 export default H2;
+
+H2.defaultProps = {
+  className: '',
+};
