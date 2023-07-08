@@ -15,6 +15,7 @@ interface RootState {
 
 interface ReturnSelectedLanguagesFromStore {
   selectedLanguage: string;
+  // eslint-disable-next-line no-unused-vars
   setSelectedLanguage: (language: string) => void;
 }
 

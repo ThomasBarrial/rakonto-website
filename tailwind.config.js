@@ -20,7 +20,7 @@ module.exports = {
         quaternary: '#DD6D48',
       },
       maxWidth: {
-        content: '1300px',
+        content: '1700px',
       },
       animation: {
         backgroundOverlay: 'backgroundOpacityAnimation 1s linear',

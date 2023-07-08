@@ -2,7 +2,7 @@ import React from 'react';
 
 function H1({
   children,
-  className,
+  className = '',
 }: {
   children: React.ReactNode;
   className?: string;
@@ -17,7 +17,3 @@ function H1({
 }
 
 export default H1;
-
-H1.defaultProps = {
-  className: '',
-};
