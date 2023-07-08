@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import React, { Dispatch, SetStateAction } from 'react';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
-import H1 from '../global/H1';
 import { INavLinks, ISocialMedia } from '../../../types';
-import CloseButton from '../global/CloseButton';
-import LangButton from '../global/LangButton';
+import CloseButton from '../global/buttons/CloseButton';
+
 import SocialMedia from '../global/SocialMedia';
+import LangButton from '../global/buttons/LangButton';
 
 interface IProps {
   isOverlayOpen: boolean;
@@ -33,14 +33,16 @@ function NavOverlay({
           <div className="w-full flex justify-end">
             <CloseButton onClick={() => setIsOverlayOpen(false)} />
           </div>
-          <div className="flex flex-col space-y-2 mt-5">
+          <div className="flex flex-col space-y-2 mt-2">
             {navLinks.map((item) => (
               <Link
                 onClick={() => setIsOverlayOpen(false)}
                 key={item.nameFr}
                 href={item.link}
               >
-                <H1>{selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}</H1>
+                <h1 className="font-bayon text-[60px] lg:text-[70px] leading-none text-primary">
+                  {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
+                </h1>
               </Link>
             ))}
           </div>

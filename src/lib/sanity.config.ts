@@ -12,6 +12,8 @@ import schema from '../../sanity/schema';
 
 export default defineConfig({
   basePath: '/studio',
+  name: 'RAKONTO_Content_Studio',
+  title: 'RAKONTO_Content_Studio',
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schema' folder

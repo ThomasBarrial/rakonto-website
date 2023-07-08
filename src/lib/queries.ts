@@ -25,3 +25,9 @@ export const getAllSocialMedia = groq`
     ...,
 } 
 `;
+
+export const getHomePageContent = groq`
+*[_type == "homePageData"] {
+    ...,
+} 
+`;

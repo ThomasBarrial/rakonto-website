@@ -1,25 +1,36 @@
-import H1 from '@/components/global/H1';
-import H2 from '@/components/global/H2';
-import H3 from '@/components/global/H3';
-import Texte from '@/components/global/Text';
-import TextSmall from '@/components/global/TextSmall';
+import PageContainer from '@/components/global/PageContainer';
+import Header from '@/components/homepage/Header';
+import Presentation from '@/components/homepage/Presentation';
+import Section3 from '@/components/homepage/LastArticles';
+import type { Metadata } from 'next';
+import OurProjects from '@/components/homepage/OurProjects';
+import { cache } from 'react';
+import { getHomePageContent } from '@/lib/queries';
+import client from '../../sanity/lib/client';
+
+const clientFetch = cache(client.fetch.bind(client));
+export const revalidate = 60;
+
+export async function generateMetadata(): Promise<Metadata> {
+  // fetch data
+  const homePageContent = await clientFetch(getHomePageContent);
+
+  return {
+    title: homePageContent[0].title,
+    description: homePageContent[0].description,
+    keywords: homePageContent[0].keywords,
+  };
+}
 
 export default async function Home() {
+  const homePageContent = await clientFetch(getHomePageContent);
+
   return (
-    <main className="flex min-h-screen flex-col pt-24 px-10">
-      <H1>Ceci est un titre h1</H1>
-      <H2>Ceci est un titre h2</H2>
-      <H3>Ceci est un titre h3</H3>
-      <Texte className="font-josefin text-[16px] md:text-[20px]">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis faucibus
-        magna a vestibulum convallis. Aliquam ac interdum quam. Pellentesque
-        sollicitudin erat eu lorem scelerisque lacinia.{' '}
-      </Texte>
-      <TextSmall>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis faucibus
-        magna a vestibulum convallis. Aliquam ac interdum quam. Pellentesque
-        sollicitudin erat eu lorem scelerisque lacinia.{' '}
-      </TextSmall>
-    </main>
+    <PageContainer>
+      <Header />
+      <Presentation data={homePageContent[0].pageBuilder[0]} />
+      <OurProjects data={homePageContent[0].pageBuilder[1]} />
+      <Section3 />
+    </PageContainer>
   );
 }
