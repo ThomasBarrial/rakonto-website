@@ -17,7 +17,3 @@ function H2({
 }
 
 export default H2;
-
-H2.defaultProps = {
-  className: '',
-};

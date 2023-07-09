@@ -17,7 +17,3 @@ function H3({
 }
 
 export default H3;
-
-H3.defaultProps = {
-  className: '',
-};

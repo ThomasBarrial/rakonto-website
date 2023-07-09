@@ -1,8 +1,8 @@
 import { type SchemaTypeDefinition } from 'sanity';
 
 import blockContent from './schemas/blockContent';
-import category from './schemas/category';
-import post from './schemas/post';
+import subjects from './schemas/subjects';
+import articles from './schemas/articles';
 import author from './schemas/author';
 import navLinks from './schemas/navigationLinks';
 import desktopNavlinks from './schemas/desktopNavifgationLink';
@@ -12,12 +12,13 @@ import socialMedia from './schemas/socialMedia';
 import homePageContent from './schemas/homePage/homePageContent';
 import presentation from './schemas/homePage/presentation';
 import ourProjects from './schemas/homePage/ourProjects';
+import ourLastestLastArticles from './schemas/homePage/ourLastestLastArticles';
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
-    post,
+    articles,
     author,
-    category,
+    subjects,
     blockContent,
     navLinks,
     desktopNavlinks,
@@ -25,6 +26,7 @@ const schema: { types: SchemaTypeDefinition[] } = {
     homePageContent,
     presentation,
     ourProjects,
+    ourLastestLastArticles,
   ],
 };
 

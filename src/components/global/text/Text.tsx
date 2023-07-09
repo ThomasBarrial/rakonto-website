@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Texte({
+function Text({
   children,
   className,
 }: {
@@ -9,15 +9,11 @@ function Texte({
 }) {
   return (
     <p
-      className={`font-josefin text-[14px] text-textColor lg:text-[16px] text-justify ${className}`}
+      className={`font-josefin text-[14px] text-textColor lg:text-[16px]  ${className}`}
     >
       {children}
     </p>
   );
 }
 
-export default Texte;
-
-Texte.defaultProps = {
-  className: '',
-};
+export default Text;

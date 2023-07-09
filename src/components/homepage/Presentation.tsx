@@ -16,7 +16,7 @@ function Presentation({ data }: IProps) {
 
   return (
     <section>
-      <div className="w-full h-96 lg:h-screen bg-red-200 relative max-h-[65rem]">
+      <div className="w-full h-96  lg:h-screen z-0 relative max-h-[65rem]">
         <Image
           className="object-cover"
           src={urlForImage(data.image.asset).url()}

@@ -25,7 +25,7 @@ function NavOverlay({
   return (
     <>
       <div
-        className={`fixed z-20 top-0 bg-background p-4 md:p-10 h-full flex flex-col justify-between  right-0 w-full md:w-6/12 transform ${
+        className={`fixed  top-0 z-50 bg-background p-4 md:p-10 h-full flex flex-col justify-between  right-0 w-full md:w-6/12 transform ${
           isOverlayOpen ? 'translate-x-0' : 'translate-x-full'
         } ease-in-out duration-700`}
       >
@@ -40,7 +40,7 @@ function NavOverlay({
                 key={item.nameFr}
                 href={item.link}
               >
-                <h1 className="font-bayon text-[60px] lg:text-[70px] leading-none text-primary">
+                <h1 className="font-bayon text-[50px] lg:text-[70px] leading-none text-primary">
                   {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
                 </h1>
               </Link>
@@ -59,7 +59,7 @@ function NavOverlay({
         <button
           type="button"
           onClick={() => setIsOverlayOpen(false)}
-          className="h-screen w-screen fixed left-0 top-0 z-10 opacity-[20%] bg-black  animate-backgroundOverlay"
+          className="h-screen w-screen fixed z-10 left-0 top-0 opacity-[20%] bg-black  animate-backgroundOverlay"
         />
       )}
     </>

@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
-import ComeUpText from '../text/ComeUpText';
-
 
 interface IProps {
   link: string;
@@ -16,24 +14,17 @@ function LinkButton({ link, text, className }: IProps) {
       className={`uppercase group font-josefin pb-2  text-primary  flex border-b border-primary  items-center space-x-2 ${className}`}
       href={link}
     >
-      <ComeUpText
-        className="text-primary bold text-[14px] lg:text-[18px]"
-        text={text}
-      />
+      <p>{text}</p>
 
       <Image
         className="mb-1"
         src="/linkArrow.svg"
         alt=""
-        height={15}
-        width={15}
+        height={12}
+        width={12}
       />
     </Link>
   );
 }
 
 export default LinkButton;
-
-LinkButton.defaultProps = {
-  className: '',
-};

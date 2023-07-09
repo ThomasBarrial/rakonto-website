@@ -31,3 +31,10 @@ export const getHomePageContent = groq`
     ...,
 } 
 `;
+
+export const getAllArticles = groq`
+*[_type == "articles"] {
+    ...,
+    author->,
+    subjects[]->
+} | order(publishedAt desc)`;

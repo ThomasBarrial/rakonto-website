@@ -84,3 +84,64 @@ export interface IHomeOurProjectSection {
     nameEn: string;
   };
 }
+
+export interface IHomeOurLastestArticlesSection {
+  _type: string;
+  key: string;
+  titleFr: string;
+  titleEn: string;
+  callToAction: {
+    link: string;
+    nameFr: string;
+    nameEn: string;
+  };
+}
+
+export interface Span {
+  _key: string;
+  _type: 'span';
+  marks: string[];
+  text: string;
+}
+
+export interface Slug {
+  _type: 'slug';
+  current: string;
+}
+
+export interface Block {
+  _key: string;
+  _type: 'block';
+  children: Span[];
+  markDefs: any[];
+  style: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'bloclquote';
+}
+
+export interface Subject extends SanityDocument {
+  description: string;
+  titleFr: string;
+  titleEn: string;
+}
+
+export interface Author extends SanityDocument {
+  bio: Block[];
+  image: Image;
+  name: string;
+  slug: Slug;
+}
+
+export interface Article extends SanityDocument {
+  author: Author;
+  bodyEn: Block[];
+  bodyFr: Block[];
+  subjects: Subject[];
+  mainImage: SanityImage;
+  slug: Slug;
+  title: string;
+  titleEn: string;
+  url: string;
+  gallery: SanityImage[];
+  descriptionEN: string;
+  descriptionFR: string;
+  publishedAt: string;
+}

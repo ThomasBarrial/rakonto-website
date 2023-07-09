@@ -20,7 +20,7 @@ export default defineType({
     defineField({
       name: 'pageBuilder',
       type: 'array',
-      title: 'Page builder',
+      title: 'Sections',
       of: [
         defineArrayMember({
           name: 'presentation',
@@ -31,6 +31,11 @@ export default defineType({
           name: 'ourProjects',
           title: 'Our Projects',
           type: 'ourProjects',
+        }),
+        defineArrayMember({
+          name: 'ourLastestArticles',
+          title: 'Our Latest Articles',
+          type: 'ourLastestArticles',
         }),
       ],
     }),

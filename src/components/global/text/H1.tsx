@@ -2,7 +2,7 @@ import React from 'react';
 
 function H1({
   children,
-  className = '',
+  className,
 }: {
   children: React.ReactNode;
   className?: string;

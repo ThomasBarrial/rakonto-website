@@ -1,11 +1,11 @@
 import PageContainer from '@/components/global/PageContainer';
 import Header from '@/components/homepage/Header';
 import Presentation from '@/components/homepage/Presentation';
-import Section3 from '@/components/homepage/LastArticles';
+import LastestArticles from '@/components/homepage/LastestArticles';
 import type { Metadata } from 'next';
 import OurProjects from '@/components/homepage/OurProjects';
 import { cache } from 'react';
-import { getHomePageContent } from '@/lib/queries';
+import { getAllArticles, getHomePageContent } from '@/lib/queries';
 import client from '../../sanity/lib/client';
 
 const clientFetch = cache(client.fetch.bind(client));
@@ -24,13 +24,18 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   const homePageContent = await clientFetch(getHomePageContent);
+  const articles = await clientFetch(getAllArticles);
 
   return (
     <PageContainer>
       <Header />
       <Presentation data={homePageContent[0].pageBuilder[0]} />
       <OurProjects data={homePageContent[0].pageBuilder[1]} />
-      <Section3 />
+      <LastestArticles
+        data={homePageContent[0].pageBuilder[2]}
+        articles={articles}
+      />
+      <OurProjects data={homePageContent[0].pageBuilder[1]} />
     </PageContainer>
   );
 }
