@@ -15,7 +15,7 @@ import myTheme from '../../sanity/theme';
 export default defineConfig({
   basePath: '/studio',
   name: 'RAKONTO_Content_Studio',
-  title: 'RAKONTO Content Studio',
+  title: 'Rakonto | Content Studio',
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schema' folder
@@ -26,6 +26,7 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
+
   studio: {
     components: {
       navbar: StudioNavabar,

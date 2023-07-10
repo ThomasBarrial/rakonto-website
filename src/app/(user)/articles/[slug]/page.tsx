@@ -3,8 +3,8 @@ import { getAllArticlesSlug, getOneArticle } from '@/lib/queries';
 import { Slug } from 'sanity';
 import H1 from '@/components/global/text/H1';
 import PageContainer from '@/components/global/PageContainer';
-import client from '../../../../sanity/lib/client';
-import { Article } from '../../../../types';
+import client from '../../../../../sanity/lib/client';
+import { Article } from '../../../../../types';
 
 type Props = {
   params: {

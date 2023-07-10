@@ -7,15 +7,21 @@ import author from './schemas/author';
 import navLinks from './schemas/navigationLinks';
 import desktopNavlinks from './schemas/desktopNavifgationLink';
 import socialMedia from './schemas/socialMedia';
+import supportUscallToAction from './schemas/supportUscallToAction';
+import pages from './schemas/pages';
+import contactInfo from './schemas/contactInfo';
 
 // Home page content
-import homePageContent from './schemas/homePage/homePageContent';
 import presentation from './schemas/homePage/presentation';
 import ourProjects from './schemas/homePage/ourProjects';
 import ourLastestLastArticles from './schemas/homePage/ourLastestLastArticles';
+import ourOffers from './schemas/homePage/ourOffers';
+import imagesGallery from './schemas/homePage/gallery';
+import supportUs from './schemas/homePage/supportUs';
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    supportUscallToAction,
     articles,
     author,
     subjects,
@@ -23,10 +29,14 @@ const schema: { types: SchemaTypeDefinition[] } = {
     navLinks,
     desktopNavlinks,
     socialMedia,
-    homePageContent,
+    pages,
     presentation,
     ourProjects,
     ourLastestLastArticles,
+    ourOffers,
+    imagesGallery,
+    supportUs,
+    contactInfo,
   ],
 };
 

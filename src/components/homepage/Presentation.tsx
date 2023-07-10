@@ -15,7 +15,7 @@ function Presentation({ data }: IProps) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
 
   return (
-    <section>
+    <section className="my-10 ">
       <div className="w-full h-96  lg:h-screen z-0 relative max-h-[65rem]">
         <Image
           className="object-cover"

@@ -17,18 +17,27 @@ function LastestArticles({ data, articles }: IProps) {
   const latestAticles = useMemo(() => articles.slice(0, 4), [articles]);
 
   return (
-    <section className="xl:h-screen ">
+    <section className="xl:h-screen my-10 ">
       <div className="flex items-end justify-between">
         <H1>{selectedLanguage === 'Fr' ? data.titleFr : data.titleEn}</H1>
       </div>
-      <div className="flex flex-col items-center justify-center xl:items-start xl:flex-row lg:space-x-6 -mt-10">
+      <div className="flex flex-col items-start justify-center xl:items-start xl:flex-row lg:space-x-6 -mt-10">
         {latestAticles.map((item) => (
-          <ArticleCard item={item} key={item._id} />
+          <div key={item._id} className="my-10 w-full">
+            <ArticleCard item={item} />
+            <LinkButton
+              link={`/articles/${item.slug.current}`}
+              className="w-[130px] mt-5 text-sm"
+              text={
+                selectedLanguage === 'Fr' ? "lire l'article" : 'read article'
+              }
+            />
+          </div>
         ))}
       </div>
-      <div className="flex w-full justify-end mt-14 lg:mt-0">
+      <div className="flex w-full justify-end mt-5 lg:mt-0">
         <LinkButton
-          className="w-8/12 lg:w-2/12"
+          className="w-9/12 lg:w-2/12"
           text={
             selectedLanguage === 'Fr'
               ? data.callToAction.nameFr

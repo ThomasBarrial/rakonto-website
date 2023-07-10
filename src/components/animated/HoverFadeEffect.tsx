@@ -30,9 +30,9 @@ function HoverFadeEffect({
     <div
       onMouseEnter={() => setIsMouseEnter({ id: itemId, value: true })}
       onMouseLeave={() => setIsMouseEnter({ id: null, value: false })}
-      className={`${className}  full flex items-center justify-center relative`}
+      className={`${className} overflow-hidden cursor-pointer full flex items-center justify-center relative`}
     >
-      <div className="h-full w-full absolute overflow-hidden top-0 z-10 items-center justify-center flex">
+      <div className="h-full w-full absolute  top-0 z-10 items-center justify-center flex">
         <motion.div
           animate={
             isMouseEnter && itemId === isMouseEnter.id
@@ -64,7 +64,7 @@ function HoverFadeEffect({
                 }
           }
           transition={{ duration: 1 }}
-          className="h-[50%] w-[50%]  absolute z-10  p-10"
+          className="h-[50%] w-[50%]  absolute z-10  p-5"
         >
           <motion.div
             animate={
@@ -112,7 +112,9 @@ function HoverFadeEffect({
         </motion.div>
       </div>
       <Image
-        className="object-cover"
+        className={`object-cover ${
+          isMouseEnter && itemId === isMouseEnter.id ? 'scale-125' : 'scale-100'
+        } transform duration-700 ease-out`}
         fill
         priority
         src={backgroundImage}

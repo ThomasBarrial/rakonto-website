@@ -15,17 +15,17 @@ function OurProjects({ data }: IProps) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
 
   return (
-    <section className=" h-screen flex flex-col lg:flex-row items-end lg:items-center justify-center">
-      <div className="lg:h-[28rem] w-full lg:w-5/12">
+    <section className=" h-screen my-10  flex flex-col  items-end justify-center">
+      <div className="w-full">
         <H1>{selectedLanguage === 'Fr' ? data.titleFr : data.titleEn}</H1>
       </div>
-      <div className=" lg:h-[28rem] mt-5 lg:mt-0 w-10/12 lg:w-6/12 flex flex-col justify-end">
+      <div className=" mt-5 lg:mt-32 w-10/12 lg:w-6/12">
         <Text className="uppercase">
           {selectedLanguage === 'Fr' ? data.textFr : data.textEn}
         </Text>
 
         <LinkButton
-          className="w-10/12 lg:w-[36%] mt-10"
+          className="w-10/12  lg:w-[240px] mt-10"
           text={
             selectedLanguage === 'Fr'
               ? data.callToAction.nameFr

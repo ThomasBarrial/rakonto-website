@@ -1,11 +1,12 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'homePageData',
+  name: 'pages',
   type: 'document',
-  title: 'HomePage content',
+  title: 'Pages',
   fields: [
     defineField({ name: 'title', title: 'Page name', type: 'string' }),
+
     defineField({
       name: 'description',
       title: 'Page description',
@@ -36,6 +37,21 @@ export default defineType({
           name: 'ourLastestArticles',
           title: 'Our Latest Articles',
           type: 'ourLastestArticles',
+        }),
+        defineArrayMember({
+          name: 'ourOffers',
+          title: 'Our Offers',
+          type: 'ourOffers',
+        }),
+        defineArrayMember({
+          name: 'imagesGallery',
+          title: 'Images Gallery',
+          type: 'imagesGallery',
+        }),
+        defineArrayMember({
+          name: 'supportUs',
+          title: 'Support US',
+          type: 'supportUs',
         }),
       ],
     }),

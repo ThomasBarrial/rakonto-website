@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'navigationLinks',
-  title: 'Naviagtion links',
+  title: 'Navigation links',
   type: 'document',
   fields: [
     defineField({

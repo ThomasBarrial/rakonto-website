@@ -6,97 +6,6 @@ export interface SanityDocument {
   _type: string;
 }
 
-export interface SanityPage extends SanityDocument {
-  keywords: string[];
-  title: string;
-  description: string;
-}
-
-export interface SanityImage {
-  _type: Image;
-  alt?: string;
-  asset: {
-    _type: 'reference';
-    _ref: string;
-  };
-}
-
-export interface INavLinks extends SanityDocument {
-  nameEn: string;
-  nameFr: string;
-  link: string;
-  orderPlace: string;
-}
-
-export interface ISocialMedia extends SanityDocument {
-  name: string;
-  link: string;
-  icon: SanityImage;
-}
-
-export interface IHomePage extends SanityPage {
-  pageBuilder: [
-    {
-      _type: string;
-      key: string;
-      titleFr: string;
-      titleEn: string;
-      textEn: string;
-      textFr: string;
-      image: SanityImage;
-    },
-    {
-      _type: string;
-      key: string;
-      titleFr: string;
-      titleEn: string;
-      textEn: string;
-      textFr: string;
-      callToAction: {
-        link: string;
-        nameFr: string;
-        nameEn: string;
-      };
-    },
-  ];
-}
-
-export interface IHomePresentationSection {
-  _type: string;
-  key: string;
-  titleFr: string;
-  titleEn: string;
-  textEn: string;
-  textFr: string;
-  image: SanityImage;
-}
-
-export interface IHomeOurProjectSection {
-  _type: string;
-  key: string;
-  titleFr: string;
-  titleEn: string;
-  textEn: string;
-  textFr: string;
-  callToAction: {
-    link: string;
-    nameFr: string;
-    nameEn: string;
-  };
-}
-
-export interface IHomeOurLastestArticlesSection {
-  _type: string;
-  key: string;
-  titleFr: string;
-  titleEn: string;
-  callToAction: {
-    link: string;
-    nameFr: string;
-    nameEn: string;
-  };
-}
-
 export interface Span {
   _key: string;
   _type: 'span';
@@ -130,6 +39,137 @@ export interface Author extends SanityDocument {
   slug: Slug;
 }
 
+export interface SanityPage extends SanityDocument {
+  keywords: string[];
+  title: string;
+  description: string;
+}
+
+export interface SanityImage {
+  _type: Image;
+  alt?: string;
+  asset: {
+    _type: 'reference';
+    _ref: string;
+  };
+}
+
+export interface INavLinks extends SanityDocument {
+  nameEn: string;
+  nameFr: string;
+  link: string;
+  orderPlace: string;
+}
+
+export interface ISocialMedia extends SanityDocument {
+  name: string;
+  link: string;
+  icon: SanityImage;
+}
+
+export interface IHomePage extends SanityPage {
+  pageBuilder: [
+    {
+      _type: string;
+      _key: string;
+      titleFr: string;
+      titleEn: string;
+      textEn: string;
+      textFr: string;
+      image: SanityImage;
+    },
+    {
+      _type: string;
+      _key: string;
+      titleFr: string;
+      titleEn: string;
+      textEn: string;
+      textFr: string;
+      callToAction: {
+        link: string;
+        nameFr: string;
+        nameEn: string;
+      };
+    },
+  ];
+}
+
+export interface IHomePresentationSection {
+  _type: string;
+  _key: string;
+  titleFr: string;
+  titleEn: string;
+  textEn: string;
+  textFr: string;
+  image: SanityImage;
+}
+
+export interface IHomeOurProjectSection {
+  _type: string;
+  _key: string;
+  titleFr: string;
+  titleEn: string;
+  textEn: string;
+  textFr: string;
+  callToAction: {
+    link: string;
+    nameFr: string;
+    nameEn: string;
+  };
+}
+
+export interface IHomeOurOffersSection {
+  _type: string;
+  _key: string;
+  titleFr: string;
+  titleEn: string;
+  textEn: string;
+  textFr: string;
+  callToAction: {
+    link: string;
+    nameFr: string;
+    nameEn: string;
+  };
+}
+
+export interface IHomeGalleryImage {
+  _type: string;
+  _key: string;
+  gallery: SanityImage[];
+}
+
+export interface IHomeSupportUs {
+  _type: string;
+  _key: string;
+  titleFr: string;
+  titleEn: string;
+  TextEn: Block[];
+  textFr: Block[];
+  callToAction: {
+    _type: string;
+    _key: string;
+    nameFr: string;
+    nameEn: string;
+    TextEn: Block[];
+    textFr: Block[];
+    link: string;
+    buttonNameFr: string;
+    buttonNameEn: string;
+  }[];
+}
+
+export interface IHomeOurLastestArticlesSection {
+  _type: string;
+  _key: string;
+  titleFr: string;
+  titleEn: string;
+  callToAction: {
+    link: string;
+    nameFr: string;
+    nameEn: string;
+  };
+}
+
 export interface Article extends SanityDocument {
   author: Author;
   bodyEn: Block[];
@@ -144,4 +184,9 @@ export interface Article extends SanityDocument {
   descriptionEN: string;
   descriptionFR: string;
   publishedAt: string;
+}
+
+export interface IContactInfos extends SanityDocument {
+  email: string;
+  phoneNumber: number;
 }

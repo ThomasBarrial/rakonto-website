@@ -27,7 +27,7 @@ export const getAllSocialMedia = groq`
 `;
 
 export const getHomePageContent = groq`
-*[_type == "homePageData"] {
+*[_type == "pages"] {
     ...,
 } 
 `;
@@ -50,3 +50,9 @@ export const getOneArticle = groq`
   author->,
  subjects[]->
 }`;
+
+export const getContactInfos = groq`
+*[_type == "contactInfos"] {
+    ...,
+} 
+`;

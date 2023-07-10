@@ -6,7 +6,9 @@ import type { Metadata } from 'next';
 import OurProjects from '@/components/homepage/OurProjects';
 import { cache } from 'react';
 import { getAllArticles, getHomePageContent } from '@/lib/queries';
-import client from '../../sanity/lib/client';
+import ImagesGallery from '@/components/homepage/ImagesGallery';
+import SupportUs from '@/components/homepage/SupportUs';
+import client from '../../../sanity/lib/client';
 
 const clientFetch = cache(client.fetch.bind(client));
 export const revalidate = 60;
@@ -35,7 +37,9 @@ export default async function Home() {
         data={homePageContent[0].pageBuilder[2]}
         articles={articles}
       />
-      <OurProjects data={homePageContent[0].pageBuilder[1]} />
+      <OurProjects data={homePageContent[0].pageBuilder[3]} />
+      <ImagesGallery data={homePageContent[0].pageBuilder[4]} />
+      <SupportUs data={homePageContent[0].pageBuilder[5]} />
     </PageContainer>
   );
 }

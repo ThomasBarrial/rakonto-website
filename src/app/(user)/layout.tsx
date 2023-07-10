@@ -8,8 +8,10 @@ import {
   getAllDesktopNavigationLinks,
   getAllNavigationLinks,
   getAllSocialMedia,
+  getContactInfos,
 } from '@/lib/queries';
-import client from '../../sanity/lib/client';
+import Footer from '@/components/global/Footer';
+import client from '../../../sanity/lib/client';
 
 const josefin = Josefin_Sans({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
@@ -40,6 +42,7 @@ export default async function RootLayout({
   const navLinks = await clientFetch(getAllNavigationLinks);
   const desktopNavLinks = await clientFetch(getAllDesktopNavigationLinks);
   const socialMedia = await clientFetch(getAllSocialMedia);
+  const contactInfos = await clientFetch(getContactInfos);
 
   return (
     <html className="bg-background flex items-center justify-center" lang="en">
@@ -53,6 +56,7 @@ export default async function RootLayout({
             socialMedia={socialMedia}
           />
           {children}
+          <Footer contactInfos={contactInfos[0]} socialMedia={socialMedia} />
         </ReduxProvider>
       </body>
     </html>
