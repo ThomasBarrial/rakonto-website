@@ -11,7 +11,7 @@ interface IProps {
 function LinkButton({ link, text, className }: IProps) {
   return (
     <Link
-      className={`uppercase group font-josefin pb-2  text-primary  flex border-b border-primary  items-center space-x-2 ${className}`}
+      className={`uppercase group font-josefin pb-[2px]  text-primary  flex border-b border-primary  items-center space-x-2 ${className}`}
       href={link}
     >
       <p>{text}</p>

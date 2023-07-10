@@ -38,3 +38,15 @@ export const getAllArticles = groq`
     author->,
     subjects[]->
 } | order(publishedAt desc)`;
+
+export const getAllArticlesSlug = groq`
+*[_type == "articles"] {
+slug
+}`;
+
+export const getOneArticle = groq`
+*[_type == "articles" && slug.current == $slug][0] {
+  ...,
+  author->,
+ subjects[]->
+}`;
