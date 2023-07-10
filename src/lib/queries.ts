@@ -25,3 +25,34 @@ export const getAllSocialMedia = groq`
     ...,
 } 
 `;
+
+export const getHomePageContent = groq`
+*[_type == "pages"] {
+    ...,
+} 
+`;
+
+export const getAllArticles = groq`
+*[_type == "articles"] {
+    ...,
+    author->,
+    subjects[]->
+} | order(publishedAt desc)`;
+
+export const getAllArticlesSlug = groq`
+*[_type == "articles"] {
+slug
+}`;
+
+export const getOneArticle = groq`
+*[_type == "articles" && slug.current == $slug][0] {
+  ...,
+  author->,
+ subjects[]->
+}`;
+
+export const getContactInfos = groq`
+*[_type == "contactInfos"] {
+    ...,
+} 
+`;

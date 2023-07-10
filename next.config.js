@@ -2,4 +2,5 @@
 
 module.exports = {
   images: { dangerouslyAllowSVG: true, domains: ['cdn.sanity.io'] },
+  experimental: { urlImports: ['https://themer.sanity.build/'] },
 };
