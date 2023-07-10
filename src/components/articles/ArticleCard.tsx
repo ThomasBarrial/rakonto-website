@@ -43,7 +43,10 @@ function ArticleCard({ item }: { item: Article }) {
         -&nbsp;
         <DateFormat date={item.publishedAt} />
       </div>
-      <Text className="mt-2 uppercase">{item.title}</Text>
+      <Text className="mt-2 uppercase">
+        {' '}
+        {selectedLanguage === 'Fr' ? item.title : item.titleEn}{' '}
+      </Text>
       <LinkButton
         link={`/articles/${item.slug.current}`}
         className="w-[130px] mt-5 text-sm"
