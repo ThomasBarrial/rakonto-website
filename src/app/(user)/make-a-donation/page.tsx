@@ -11,6 +11,7 @@ function page() {
         style={{ overflow: 'hidden' }}
         scrolling="no"
         allowFullScreen
+        loading="eager"
       />
     </div>
   );
