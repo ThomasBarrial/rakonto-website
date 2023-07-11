@@ -9,6 +9,7 @@ import Text from '../global/text/Text';
 
 function ArticleCard({ item }: { item: Article }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
+
   return (
     <Link href={`/articles/${item.slug.current}`} className="w-full xl:w-10/12">
       <HoverFadeEffect

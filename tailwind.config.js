@@ -24,6 +24,7 @@ module.exports = {
       },
       animation: {
         backgroundOverlay: 'backgroundOpacityAnimation 1s linear',
+        fadeIn: 'fadeIn 0.5s linear',
       },
       keyframes: {
         backgroundOpacityAnimation: {
@@ -32,6 +33,14 @@ module.exports = {
           },
           '100%': {
             opacity: '20%',
+          },
+        },
+        fadeIn: {
+          '0%': {
+            opacity: '0%',
+          },
+          '100%': {
+            opacity: '100%',
           },
         },
       },

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface IProps {
@@ -22,18 +22,26 @@ function HoverFadeEffect({
   const [isMouseEnter, setIsMouseEnter] = useState<{
     id: string | null;
     value: boolean;
+    shouldAnimate: boolean;
   }>({
     id: null,
     value: false,
+    shouldAnimate: false,
   });
+
   return (
     <div
-      onMouseEnter={() => setIsMouseEnter({ id: itemId, value: true })}
-      onMouseLeave={() => setIsMouseEnter({ id: null, value: false })}
+      onMouseEnter={() =>
+        setIsMouseEnter({ id: itemId, value: true, shouldAnimate: true })
+      }
+      onMouseLeave={() =>
+        setIsMouseEnter({ id: null, value: false, shouldAnimate: false })
+      }
       className={`${className} overflow-hidden cursor-pointer full flex items-center justify-center relative`}
     >
       <div className="h-full w-full absolute  top-0 z-10 items-center justify-center hidden lg:flex">
         <motion.div
+          initial={isMouseEnter.shouldAnimate}
           animate={
             isMouseEnter && itemId === isMouseEnter.id
               ? {
@@ -48,6 +56,7 @@ function HoverFadeEffect({
         />
 
         <motion.div
+          initial={isMouseEnter.shouldAnimate}
           animate={
             isMouseEnter && itemId === isMouseEnter.id
               ? {
@@ -67,6 +76,7 @@ function HoverFadeEffect({
           className="h-[50%] w-[50%]  absolute z-10  p-5"
         >
           <motion.div
+            initial={isMouseEnter.shouldAnimate}
             animate={
               isMouseEnter && itemId === isMouseEnter.id
                 ? {

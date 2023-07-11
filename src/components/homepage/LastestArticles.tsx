@@ -21,9 +21,9 @@ function LastestArticles({ data, articles }: IProps) {
       <div className="flex items-end justify-between">
         <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
       </div>
-      <div className="flex flex-col items-start justify-center xl:items-start xl:flex-row lg:space-x-6 -mt-0">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  items-start gap-5 -mt-0">
         {latestAticles.map((item) => (
-          <div key={item._id} className="my-5 w-full">
+          <li key={item._id} className="my-5 w-full">
             <ArticleCard item={item} />
             <LinkButton
               link={`/articles/${item.slug.current}`}
@@ -32,9 +32,9 @@ function LastestArticles({ data, articles }: IProps) {
                 selectedLanguage === 'Fr' ? "lire l'article" : 'read article'
               }
             />
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       <div className="flex w-full justify-end mt-5 lg:mt-5">
         <LinkButton
           className="w-9/12 lg:w-2/12"
