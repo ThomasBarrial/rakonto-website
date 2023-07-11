@@ -22,7 +22,10 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
   });
 
   return (
-    <section className="my-10   font-josefin flex flex-col relative">
+    <section
+      id="supportUs"
+      className="my-10 pb-32   font-josefin flex flex-col relative"
+    >
       <div className=" w-full  flex flex-col xl:mr-5 xl:w-5/12">
         <H1 className="w-full">
           {selectedLanguage === 'Fr' ? data.titleFr : data.titleEn}
