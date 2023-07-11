@@ -40,7 +40,7 @@ function ArticleCard({ item }: { item: Article }) {
         </div>
       </HoverFadeEffect>
 
-      <Text className="mt-2 uppercase">
+      <Text className="mt-3 uppercase">
         {' '}
         {selectedLanguage === 'Fr' ? item.title : item.titleEn}{' '}
       </Text>

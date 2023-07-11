@@ -35,15 +35,29 @@ function NavOverlay({
           </div>
           <div className="flex flex-col space-y-2 mt-2">
             {navLinks.map((item) => (
-              <Link
-                onClick={() => setIsOverlayOpen(false)}
+              <div
+                className="font-bayon text-[50px] lg:text-[70px] leading-none text-primary"
                 key={item.nameFr}
-                href={item.link}
               >
-                <h1 className="font-bayon text-[50px] lg:text-[70px] leading-none text-primary">
-                  {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
-                </h1>
-              </Link>
+                {item.nameEn === 'Join us' ? (
+                  <Link
+                    onClick={() => setIsOverlayOpen(false)}
+                    href={item.link}
+                  >
+                    {' '}
+                    {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
+                  </Link>
+                ) : (
+                  <Link
+                    onClick={() => setIsOverlayOpen(false)}
+                    href={item.link}
+                  >
+                    <h1>
+                      {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
+                    </h1>
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
         </div>
