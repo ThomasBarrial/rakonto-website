@@ -27,9 +27,11 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
       className="my-10 pb-32   font-josefin flex flex-col relative"
     >
       <div className=" w-full  flex flex-col xl:mr-5 xl:w-5/12">
-        <H1 className="w-full">
-          {selectedLanguage === 'Fr' ? data.titleFr : data.titleEn}
-        </H1>
+        <H1
+          contentEn={data.titleEn}
+          contentFr={data.titleFr}
+          className="w-full"
+        />
         <div className=" uppercase mt-5 ">
           <PortableText
             value={selectedLanguage === 'Fr' ? data.textFr : data.TextEn}

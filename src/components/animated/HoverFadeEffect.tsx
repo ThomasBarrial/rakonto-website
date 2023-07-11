@@ -32,7 +32,7 @@ function HoverFadeEffect({
       onMouseLeave={() => setIsMouseEnter({ id: null, value: false })}
       className={`${className} overflow-hidden cursor-pointer full flex items-center justify-center relative`}
     >
-      <div className="h-full w-full absolute  top-0 z-10 items-center justify-center flex">
+      <div className="h-full w-full absolute  top-0 z-10 items-center justify-center hidden lg:flex">
         <motion.div
           animate={
             isMouseEnter && itemId === isMouseEnter.id

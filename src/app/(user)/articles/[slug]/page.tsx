@@ -28,7 +28,11 @@ async function OneArticle({ params: { slug } }: Props) {
 
   return (
     <PageContainer>
-      <H1 className="mt-24">{article.title}</H1>
+      <H1
+        contentEn={article.titleEn}
+        contentFr={article.title}
+        className="mt-24"
+      />
     </PageContainer>
   );
 }

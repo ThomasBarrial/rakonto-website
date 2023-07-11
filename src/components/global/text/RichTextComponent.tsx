@@ -34,7 +34,11 @@ const RichTextComponents = {
     ),
   },
   block: {
-    h1: ({ children }: any) => <H1>{children}</H1>,
+    h1: ({ children }: any) => (
+      <h1 className="font-bayon text-[50px] leading-none text-primary md:text-[90px] xl:text-[120px] uppercase">
+        {children}
+      </h1>
+    ),
     h2: ({ children }: any) => <H2>{children}</H2>,
     h3: ({ children }: any) => <H3>{children}</H3>,
     h4: ({ children }: any) => (

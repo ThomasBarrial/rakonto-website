@@ -190,3 +190,8 @@ export interface IContactInfos extends SanityDocument {
   email: string;
   phoneNumber: number;
 }
+
+export interface ISubject extends SanityDocument {
+  titleFr: string;
+  titleEn: string;
+}

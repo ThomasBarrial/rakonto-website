@@ -17,7 +17,7 @@ function OurProjects({ data }: IProps) {
   return (
     <section className=" h-screen my-10  flex flex-col  items-end justify-center">
       <div className="w-full">
-        <H1>{selectedLanguage === 'Fr' ? data.titleFr : data.titleEn}</H1>
+        <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
       </div>
       <div className=" mt-5 lg:mt-32 w-10/12 lg:w-6/12">
         <Text className="uppercase">

@@ -19,7 +19,7 @@ function LastestArticles({ data, articles }: IProps) {
   return (
     <section className="xl:h-screen my-10 ">
       <div className="flex items-end justify-between">
-        <H1>{selectedLanguage === 'Fr' ? data.titleFr : data.titleEn}</H1>
+        <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
       </div>
       <div className="flex flex-col items-start justify-center xl:items-start xl:flex-row lg:space-x-6 -mt-0">
         {latestAticles.map((item) => (

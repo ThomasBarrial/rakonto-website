@@ -56,3 +56,9 @@ export const getContactInfos = groq`
     ...,
 } 
 `;
+
+export const getSubjects = groq`
+*[_type == "subjects"] {
+    ...,
+} 
+`;
