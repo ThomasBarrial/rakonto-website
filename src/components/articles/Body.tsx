@@ -10,7 +10,7 @@ function Body({ article }: { article: Article }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
 
   return (
-    <div className="mt-5">
+    <div className="mt-5 font-josefin">
       <PortableText
         value={selectedLanguage === 'Fr' ? article.bodyFr : article.bodyEn}
         components={RichTextComponents}

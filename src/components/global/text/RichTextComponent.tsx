@@ -51,7 +51,7 @@ const RichTextComponents = {
       </h4>
     ),
     normal: ({ children }: any) => (
-      <p className="whitespace-pre-line my-5">{children}</p>
+      <p className="whitespace-pre-line my-2">{children}</p>
     ),
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-2 border-primary pl-2 my-5">
