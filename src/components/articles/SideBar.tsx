@@ -1,6 +1,12 @@
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import Image from 'next/image';
-import React, { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
+import React, {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
 import { ISubject } from '../../../types';
 
 interface IProps {
@@ -28,16 +34,22 @@ function SideBar({
     setSearchTerm(event.target.value);
   };
 
+  useEffect(() => {
+    if (window.innerWidth > 1024) {
+      setIsFilterOpen(true);
+    }
+  }, []);
+
   return (
     <div
-      className={`fixed overflow-hidden z-20 bottom-7 w-[90%] border-2 border-primary lg:w-[40%] right-5 bg-background text-primary shadow-2xl  text-lg p-3  ${
+      className={`fixed overflow-hidden lg:sticky lg:top-20 z-20 bottom-7 w-[90%] lg:w-[22%] border-2 lg:border-none lg:p-0 border-primary  right-5 bg-background text-primary shadow-2xl lg:shadow-none  text-lg p-3 lg:mr-10  ${
         isFilterOpen ? 'h-[365px]' : 'h-[55px]'
       } transform duration-500 ease-out`}
     >
       <button
         type="button"
         onClick={() => setIsFilterOpen((prev) => !prev)}
-        className="flex justify-between items-start mb-5 w-full"
+        className="flex justify-between items-start text-left mb-5 w-full"
       >
         <p className="uppercase text-primary">
           {selectedLanguage === 'Fr'
@@ -46,8 +58,8 @@ function SideBar({
         </p>
         <Image
           className={`${
-            isFilterOpen ? 'rotate-0' : 'rotate-180'
-          } transform duration-500 ease-out`}
+            isFilterOpen ? 'rotate-180' : 'rotate-0'
+          } transform duration-500 ease-out flex lg:hidden`}
           src="/downArrow.svg"
           alt="down"
           height={15}

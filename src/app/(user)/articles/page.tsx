@@ -22,16 +22,10 @@ export async function generateMetadata(): Promise<Metadata> {
 async function Articles() {
   const subjects = await clientFetch(getSubjects);
   const articles = await clientFetch(getAllArticles);
-  const pageData = await clientFetch(getHomePageContent);
 
   return (
     <PageContainer>
-      <ArticlesSection
-        subjects={subjects}
-        articles={articles}
-        pageTitleFr="homePageContent[0].titleFr"
-        pageTitleEn="homePageContent[0].titleEn"
-      />
+      <ArticlesSection subjects={subjects} articles={articles} />
     </PageContainer>
   );
 }

@@ -9,10 +9,10 @@ module.exports = {
     extend: {
       fontFamily: {
         josefin: ['var(--font-josefin)'],
-        bayon: ['var(--font-bayon)'],
+        francoisOne: ['var(--font-francois_one)'],
       },
       colors: {
-        background: '#FEFFF0',
+        background: '#FFFFF8',
         textColor: '#454545',
         primary: '#13795F',
         secondary: '#91C98C',

@@ -5,9 +5,9 @@ import urlForImage from '../../../../sanity/lib/image';
 const RichTextComponents = {
   types: {
     image: ({ value }: any) => (
-      <div className="relative items-center h-96">
+      <div className="relative items-center w-full h-[500px]">
         <Image
-          className="object-contain"
+          className="object-cover object-left"
           src={urlForImage(value)
             .fit('crop')
             .crop('focalpoint')
@@ -15,19 +15,18 @@ const RichTextComponents = {
             .url()}
           alt="Blog Post Image"
           fill
-          sizes="(max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            33vw"
         />
       </div>
     ),
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="ml-10 py-5 list-disc space-y-5">{children}</ul>
+      <ul className="ml-10 py-5 list-disc  flex flex-col space-y-2">
+        {children}
+      </ul>
     ),
     number: ({ children }: any) => (
-      <ol className="mt-lg list-decimal">{children}</ol>
+      <ol className="ml-10 list-decimal flex flex-col space-y-5">{children}</ol>
     ),
   },
   block: {
@@ -52,12 +51,13 @@ const RichTextComponents = {
       </h4>
     ),
     normal: ({ children }: any) => (
-      <p className="whitespace-pre-line my-2 ">{children}</p>
+      <p className="whitespace-pre-line my-5">{children}</p>
     ),
-  },
-
-  blockquote: ({ children }: any) => {
-    <blockquote className="">{children}</blockquote>;
+    blockquote: ({ children }: any) => (
+      <blockquote className="border-l-2 border-primary pl-2 my-5">
+        {children}
+      </blockquote>
+    ),
   },
 
   marks: {

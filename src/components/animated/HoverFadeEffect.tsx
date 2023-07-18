@@ -1,8 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface IProps {
   itemId: string;
@@ -10,6 +11,7 @@ interface IProps {
   backgroundImage: string;
   altImage: string;
   className?: string;
+  link: string;
 }
 
 function HoverFadeEffect({
@@ -17,6 +19,7 @@ function HoverFadeEffect({
   children,
   backgroundImage,
   altImage,
+  link,
   className,
 }: IProps) {
   const [isMouseEnter, setIsMouseEnter] = useState<{
@@ -30,7 +33,8 @@ function HoverFadeEffect({
   });
 
   return (
-    <div
+    <Link
+      href={link}
       onMouseEnter={() =>
         setIsMouseEnter({ id: itemId, value: true, shouldAnimate: true })
       }
@@ -73,7 +77,7 @@ function HoverFadeEffect({
                 }
           }
           transition={{ duration: 1 }}
-          className="h-[50%] w-[50%]  absolute z-10  p-5"
+          className="h-[50%] w-[50%] flex  items-center text-center justify-center absolute z-10  p-10"
         >
           <motion.div
             initial={isMouseEnter.shouldAnimate}
@@ -92,28 +96,28 @@ function HoverFadeEffect({
           </motion.div>
 
           <Image
-            src="/patternTL.svg"
+            src="/patternTL3.svg"
             alt=""
             height={60}
             width={60}
             className="absolute top-0 left-0"
           />
           <Image
-            src="/patternTR.svg"
+            src="/patternTR3.svg"
             alt=""
             height={60}
             width={60}
             className="absolute top-0 right-0"
           />
           <Image
-            src="/patternBL.svg"
+            src="/patternBL3.svg"
             alt=""
             height={60}
             width={60}
             className="absolute bottom-0 left-0"
           />
           <Image
-            src="/patternBR.svg"
+            src="/patternBR3.svg"
             alt=""
             height={60}
             width={60}
@@ -130,7 +134,7 @@ function HoverFadeEffect({
         src={backgroundImage}
         alt={altImage}
       />
-    </div>
+    </Link>
   );
 }
 
