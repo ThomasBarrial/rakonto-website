@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { cache } from 'react';
+import { Metadata } from 'next';
+import { getAllArticles, getHomePageContent, getSubjects } from '@/lib/queries';
+import ArticlesSection from '@/components/articles/ArticlesSection';
+import PageContainer from '@/components/global/PageContainer';
+import client from '../../../../sanity/lib/client';
 
-function page() {
+const clientFetch = cache(client.fetch.bind(client));
+export const revalidate = 60;
+
+export async function generateMetadata(): Promise<Metadata> {
+  // fetch data
+  const pageData = await clientFetch(getHomePageContent);
+
+  return {
+    title: pageData[0].title,
+    description: pageData[0].description,
+    keywords: pageData[0].keywords,
+  };
+}
+
+async function Articles() {
+  const subjects = await clientFetch(getSubjects);
+  const articles = await clientFetch(getAllArticles);
+
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      ARTICLES
-    </main>
+    <PageContainer>
+      <ArticlesSection subjects={subjects} articles={articles} />
+    </PageContainer>
   );
 }
 
-export default page;
+export default Articles;

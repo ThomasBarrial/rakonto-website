@@ -1,7 +1,7 @@
 import React, { cache } from 'react';
 import './globals.css';
 import type { Metadata } from 'next';
-import { Josefin_Sans, Bayon } from 'next/font/google';
+import { Josefin_Sans, Francois_One } from 'next/font/google';
 import NavBar from '@/components/navigation/NavBar';
 import ReduxProvider from '@/store/ReduxProvider';
 import {
@@ -19,10 +19,10 @@ const josefin = Josefin_Sans({
   variable: '--font-josefin',
 });
 
-const bayon = Bayon({
+const francoisOne = Francois_One({
   weight: '400',
   subsets: ['latin'],
-  variable: '--font-bayon',
+  variable: '--font-francois_one',
 });
 
 export const metadata: Metadata = {
@@ -47,7 +47,7 @@ export default async function RootLayout({
   return (
     <html className="bg-background flex items-center justify-center" lang="en">
       <body
-        className={`${josefin.variable} ${bayon.variable}  w-full max-w-content  `}
+        className={`${josefin.variable} ${francoisOne.variable}  w-full max-w-content  text-textColor`}
       >
         <ReduxProvider>
           <NavBar

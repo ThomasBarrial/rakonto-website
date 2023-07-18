@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import NavOverlay from './NavOverlay';
 import { INavLinks, ISocialMedia } from '../../../types';
+import LangButton from '../global/buttons/LangButton';
 
 interface IProps {
   navLinks: INavLinks[];
@@ -49,6 +50,7 @@ function NavBar({ navLinks, desktopNavLinks, socialMedia }: IProps) {
             )}
           </div>
         ))}
+        <LangButton />
       </div>
 
       {/* MOBILE BUTTON*/}

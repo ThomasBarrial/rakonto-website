@@ -33,10 +33,10 @@ function NavOverlay({
           <div className="w-full flex justify-end">
             <CloseButton onClick={() => setIsOverlayOpen(false)} />
           </div>
-          <div className="flex flex-col space-y-2 mt-2">
+          <div className="flex flex-col space-y-2">
             {navLinks.map((item) => (
               <div
-                className="font-bayon text-[50px] lg:text-[70px] leading-none text-primary"
+                className="font-francoisOne uppercase text-[50px] lg:text-[65px] leading-none text-primary"
                 key={item.nameFr}
               >
                 {item.nameEn === 'Join us' ? (

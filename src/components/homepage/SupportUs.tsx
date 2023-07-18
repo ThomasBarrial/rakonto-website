@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { IHomeSupportUs } from '../../../types';
 import H1 from '../global/text/H1';
 import RichTextComponents from '../global/text/RichTextComponent';
-import H2 from '../global/text/H2';
+import H3 from '../global/text/H3';
 
 function SupportUs({ data }: { data: IHomeSupportUs }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
@@ -27,10 +27,12 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
       className="my-10 pb-32   font-josefin flex flex-col relative"
     >
       <div className=" w-full  flex flex-col xl:mr-5 xl:w-5/12">
-        <H1 className="w-full">
-          {selectedLanguage === 'Fr' ? data.titleFr : data.titleEn}
-        </H1>
-        <div className=" uppercase mt-5 ">
+        <H1
+          contentEn={data.titleEn}
+          contentFr={data.titleFr}
+          className="w-full"
+        />
+        <div className="text-[20px] mt-5 ">
           <PortableText
             value={selectedLanguage === 'Fr' ? data.textFr : data.TextEn}
             components={RichTextComponents}
@@ -43,7 +45,7 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
             animate={
               callToActionOpen.isOpen && callToActionOpen.itemId === item._key
                 ? { height: `100%` }
-                : { height: `70px` }
+                : { height: `60px` }
             }
             transition={{ duration: 0.5 }}
             className="border border-primary overflow-hidden my-5 flex flex-col items-start"
@@ -63,9 +65,12 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
               }}
               className=" flex justify-between items-start text-left w-full pt-3 px-3"
             >
-              <H2 className="leading-none w-10/12">
-                {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
-              </H2>
+              <H3
+                className="leading-none w-10/12"
+                contentEn={item.nameEn}
+                contentFr={item.nameFr}
+              />
+
               <Image
                 src="/downArrow.svg"
                 className={`${

@@ -9,10 +9,10 @@ module.exports = {
     extend: {
       fontFamily: {
         josefin: ['var(--font-josefin)'],
-        bayon: ['var(--font-bayon)'],
+        francoisOne: ['var(--font-francois_one)'],
       },
       colors: {
-        background: '#FEFFF0',
+        background: '#FFFFF8',
         textColor: '#454545',
         primary: '#13795F',
         secondary: '#91C98C',
@@ -24,6 +24,7 @@ module.exports = {
       },
       animation: {
         backgroundOverlay: 'backgroundOpacityAnimation 1s linear',
+        fadeIn: 'fadeIn 0.5s linear',
       },
       keyframes: {
         backgroundOpacityAnimation: {
@@ -32,6 +33,14 @@ module.exports = {
           },
           '100%': {
             opacity: '20%',
+          },
+        },
+        fadeIn: {
+          '0%': {
+            opacity: '0%',
+          },
+          '100%': {
+            opacity: '100%',
           },
         },
       },

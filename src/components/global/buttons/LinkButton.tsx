@@ -1,20 +1,23 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
+import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 
 interface IProps {
   link: string;
-  text: string;
+  textEn: string;
+  textFr: string;
   className?: string;
 }
 
-function LinkButton({ link, text, className }: IProps) {
+function LinkButton({ link, textEn, textFr, className }: IProps) {
+  const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
     <Link
       className={`uppercase group font-josefin pb-[2px]  text-primary  flex border-b border-primary  items-center space-x-2 ${className}`}
       href={link}
     >
-      <p>{text}</p>
+      <p>{selectedLanguage === 'Fr' ? textFr : textEn}</p>
 
       <Image
         className="mb-1"

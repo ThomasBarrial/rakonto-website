@@ -6,7 +6,7 @@ interface SelectedLanguageState {
 }
 
 const initialState: SelectedLanguageState = {
-  selectedLanguage: 'Fr',
+  selectedLanguage: 'En',
 };
 
 interface RootState {

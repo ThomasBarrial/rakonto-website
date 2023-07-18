@@ -1,16 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import urlForImage from '../../../../sanity/lib/image';
-import H1 from './H1';
-import H2 from './H2';
-import H3 from './H3';
 
 const RichTextComponents = {
   types: {
     image: ({ value }: any) => (
-      <div className="relative flex  h-96 m-10 mx-auto">
+      <div className="relative items-center w-full h-[500px]">
         <Image
-          className="object-contain object-left"
+          className="object-cover object-left"
           src={urlForImage(value)
             .fit('crop')
             .crop('focalpoint')
@@ -18,34 +15,49 @@ const RichTextComponents = {
             .url()}
           alt="Blog Post Image"
           fill
-          sizes="(max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            33vw"
         />
       </div>
     ),
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="ml-10 py-5 list-disc space-y-5">{children}</ul>
+      <ul className="ml-10 py-5 list-disc  flex flex-col space-y-2">
+        {children}
+      </ul>
     ),
     number: ({ children }: any) => (
-      <ol className="mt-lg list-decimal">{children}</ol>
+      <ol className="ml-10 list-decimal flex flex-col space-y-5">{children}</ol>
     ),
   },
   block: {
-    h1: ({ children }: any) => <H1>{children}</H1>,
-    h2: ({ children }: any) => <H2>{children}</H2>,
-    h3: ({ children }: any) => <H3>{children}</H3>,
+    h1: ({ children }: any) => (
+      <h1 className="font-bayon text-[50px] leading-none text-primary md:text-[90px] xl:text-[120px] uppercase">
+        {children}
+      </h1>
+    ),
+    h2: ({ children }: any) => (
+      <h2 className="font-josefin uppercase text-[18px] leading-none  md:text-[20px] my-5">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="font-josefin uppercase text-[16px] leading-none  md:text-[18px] my-5">
+        {children}
+      </h3>
+    ),
     h4: ({ children }: any) => (
       <h4 className="text-2xl  pb-5 pt-10 font-benchnine lg:text-4xl font-extrabold">
         {children}
       </h4>
     ),
-  },
-
-  blockquote: ({ children }: any) => {
-    <blockquote className="">{children}</blockquote>;
+    normal: ({ children }: any) => (
+      <p className="whitespace-pre-line my-2">{children}</p>
+    ),
+    blockquote: ({ children }: any) => (
+      <blockquote className="border-l-2 border-primary pl-2 my-5">
+        {children}
+      </blockquote>
+    ),
   },
 
   marks: {

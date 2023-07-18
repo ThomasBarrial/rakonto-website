@@ -1,18 +1,25 @@
+'use client';
+
+import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import React from 'react';
 
 function H3({
-  children,
+  contentFr,
+  contentEn,
   className,
 }: {
-  children: React.ReactNode;
+  contentFr: string;
+  contentEn: string;
+
   className?: string;
 }) {
+  const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
-    <h3
-      className={`font-josefin uppercase text-textColor text-[20px] md:text-[25px]" ${className}`}
+    <h2
+      className={`font-josefin uppercase  text-[20px] md:text-[25px]" ${className}`}
     >
-      {children}
-    </h3>
+      {selectedLanguage === 'Fr' ? contentFr : contentEn}
+    </h2>
   );
 }
 

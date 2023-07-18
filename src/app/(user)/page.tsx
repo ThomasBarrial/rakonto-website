@@ -18,9 +18,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const homePageContent = await clientFetch(getHomePageContent);
 
   return {
-    title: homePageContent[0].title,
-    description: homePageContent[0].description,
-    keywords: homePageContent[0].keywords,
+    title: homePageContent[1].title,
+    description: homePageContent[1].description,
+    keywords: homePageContent[1].keywords,
   };
 }
 
@@ -31,15 +31,15 @@ export default async function Home() {
   return (
     <PageContainer>
       <Header />
-      <Presentation data={homePageContent[0].pageBuilder[0]} />
-      <OurProjects data={homePageContent[0].pageBuilder[1]} />
+      <Presentation data={homePageContent[1].pageBuilder[0]} />
+      <OurProjects data={homePageContent[1].pageBuilder[1]} />
       <LastestArticles
-        data={homePageContent[0].pageBuilder[2]}
+        data={homePageContent[1].pageBuilder[2]}
         articles={articles}
       />
-      <OurProjects data={homePageContent[0].pageBuilder[3]} />
-      <ImagesGallery data={homePageContent[0].pageBuilder[4]} />
-      <SupportUs data={homePageContent[0].pageBuilder[5]} />
+      <OurProjects data={homePageContent[1].pageBuilder[3]} />
+      <ImagesGallery data={homePageContent[1].pageBuilder[4]} />
+      <SupportUs data={homePageContent[1].pageBuilder[5]} />
     </PageContainer>
   );
 }

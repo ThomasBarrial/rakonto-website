@@ -10,6 +10,7 @@ import socialMedia from './schemas/socialMedia';
 import supportUscallToAction from './schemas/supportUscallToAction';
 import pages from './schemas/pages';
 import contactInfo from './schemas/contactInfo';
+import partners from './schemas/partners';
 
 // Home page content
 import presentation from './schemas/homePage/presentation';
@@ -37,6 +38,7 @@ const schema: { types: SchemaTypeDefinition[] } = {
     imagesGallery,
     supportUs,
     contactInfo,
+    partners,
   ],
 };
 

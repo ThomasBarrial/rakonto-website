@@ -1,36 +1,31 @@
 'use client';
 
-import Image from 'next/image';
 import React from 'react';
-import Text from '@/components/global/text/Text';
-import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import { IHomePresentationSection } from '../../../types';
 import urlForImage from '../../../sanity/lib/image';
+
+import FullWidthImage from '../global/images/FullWidthImage';
+import BasicText from '../global/text/BasicText';
 
 interface IProps {
   data: IHomePresentationSection;
 }
 
 function Presentation({ data }: IProps) {
-  const { selectedLanguage } = useSelectedLanguagesFromStore();
-
   return (
     <section className="my-10 ">
-      <div className="w-full h-96  lg:h-screen z-0 relative max-h-[65rem]">
-        <Image
-          className="object-cover"
-          src={urlForImage(data.image.asset).url()}
-          fill
-          priority
-          alt={data.image.alt ? data.image.alt : 'Unknow Image'}
-        />
-      </div>
+      <FullWidthImage
+        path={urlForImage(data.image.asset).url()}
+        alt={data.image.alt ? data.image.alt : 'Unknow Image'}
+      />
       <div className="w-full  mt-10 flex justify-end">
         <span className="h-[1px] w-8/12 bg-primary" />
       </div>
-      <Text className="my-10 w-10/12 lg:w-8/12  uppercase">
-        {selectedLanguage === 'Fr' ? data.textFr : data.textEn}
-      </Text>
+      <BasicText
+        className="my-10 w-10/12 lg:w-8/12"
+        contentEn={data.textEn}
+        contentFr={data.textFr}
+      />
     </section>
   );
 }

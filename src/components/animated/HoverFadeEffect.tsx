@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface IProps {
   itemId: string;
@@ -10,6 +11,7 @@ interface IProps {
   backgroundImage: string;
   altImage: string;
   className?: string;
+  link: string;
 }
 
 function HoverFadeEffect({
@@ -17,23 +19,33 @@ function HoverFadeEffect({
   children,
   backgroundImage,
   altImage,
+  link,
   className,
 }: IProps) {
   const [isMouseEnter, setIsMouseEnter] = useState<{
     id: string | null;
     value: boolean;
+    shouldAnimate: boolean;
   }>({
     id: null,
     value: false,
+    shouldAnimate: false,
   });
+
   return (
-    <div
-      onMouseEnter={() => setIsMouseEnter({ id: itemId, value: true })}
-      onMouseLeave={() => setIsMouseEnter({ id: null, value: false })}
+    <Link
+      href={link}
+      onMouseEnter={() =>
+        setIsMouseEnter({ id: itemId, value: true, shouldAnimate: true })
+      }
+      onMouseLeave={() =>
+        setIsMouseEnter({ id: null, value: false, shouldAnimate: false })
+      }
       className={`${className} overflow-hidden cursor-pointer full flex items-center justify-center relative`}
     >
-      <div className="h-full w-full absolute  top-0 z-10 items-center justify-center flex">
+      <div className="h-full w-full absolute  top-0 z-10 items-center justify-center hidden lg:flex">
         <motion.div
+          initial={isMouseEnter.shouldAnimate}
           animate={
             isMouseEnter && itemId === isMouseEnter.id
               ? {
@@ -48,6 +60,7 @@ function HoverFadeEffect({
         />
 
         <motion.div
+          initial={isMouseEnter.shouldAnimate}
           animate={
             isMouseEnter && itemId === isMouseEnter.id
               ? {
@@ -64,9 +77,10 @@ function HoverFadeEffect({
                 }
           }
           transition={{ duration: 1 }}
-          className="h-[50%] w-[50%]  absolute z-10  p-5"
+          className="h-[50%] w-[50%] flex  items-center text-center justify-center absolute z-10  p-10"
         >
           <motion.div
+            initial={isMouseEnter.shouldAnimate}
             animate={
               isMouseEnter && itemId === isMouseEnter.id
                 ? {
@@ -82,28 +96,28 @@ function HoverFadeEffect({
           </motion.div>
 
           <Image
-            src="/patternTL.svg"
+            src="/patternTL3.svg"
             alt=""
             height={60}
             width={60}
             className="absolute top-0 left-0"
           />
           <Image
-            src="/patternTR.svg"
+            src="/patternTR3.svg"
             alt=""
             height={60}
             width={60}
             className="absolute top-0 right-0"
           />
           <Image
-            src="/patternBL.svg"
+            src="/patternBL3.svg"
             alt=""
             height={60}
             width={60}
             className="absolute bottom-0 left-0"
           />
           <Image
-            src="/patternBR.svg"
+            src="/patternBR3.svg"
             alt=""
             height={60}
             width={60}
@@ -120,7 +134,7 @@ function HoverFadeEffect({
         src={backgroundImage}
         alt={altImage}
       />
-    </div>
+    </Link>
   );
 }
 

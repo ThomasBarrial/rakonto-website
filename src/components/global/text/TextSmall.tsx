@@ -1,23 +1,25 @@
+'use client';
+
+import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import React from 'react';
 
 function TextSmall({
-  children,
+  contentFr,
+  contentEn,
   className,
 }: {
-  children: React.ReactNode;
+  contentFr: string;
+  contentEn: string;
   className?: string;
 }) {
+  const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
     <p
-      className={`font-josefin text-[14px] text-textColor text-justify md:text-[18px] ${className}`}
+      className={`font-josefin text-[14px] text-textColor text-justify md:text-[16px] ${className}`}
     >
-      {children}
+      {selectedLanguage === 'Fr' ? contentFr : contentEn}
     </p>
   );
 }
 
 export default TextSmall;
-
-TextSmall.defaultProps = {
-  className: '',
-};
