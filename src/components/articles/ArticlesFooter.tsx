@@ -28,7 +28,7 @@ function ArticlesFooter({ article, allArticles }: IProps) {
   }, [allArticles, article._id]);
 
   return (
-    <div className="w-full mb-10 px-5 font-josefin mt-10 lg:mt-20 mx-auto  uppercase font-benchnine flex flex-col lg:flex-row lg:justify-between lg:items-center">
+    <div className="w-full mb-10 px-5 font-josefin mt-10 lg:mt-20 mx-auto  uppercase font-benchnine flex flex-col lg:flex-row lg:flex-wrap lg:justify-between lg:items-center">
       <div className="flex space-x-2 mb-3 text-[14px] lg:text-[20px] lg:mb-0 opacity-50">
         {article.subjects.map((c) => (
           <p key={c._id}>{c.titleFr} |</p>
