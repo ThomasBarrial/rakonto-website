@@ -32,8 +32,6 @@ export async function generateStaticParams() {
 async function OneArticle({ params: { slug } }: Props) {
   const article: Article = await client.fetch(getOneArticle, { slug });
 
-  console.log(article.partners);
-
   return (
     <PageContainer>
       <H2
@@ -53,7 +51,7 @@ async function OneArticle({ params: { slug } }: Props) {
       />
       <Body article={article} />
       <GalleryImage data={article.gallery} />
-      <Partners data={article.partners} />
+      {article.partners && <Partners data={article.partners} />}
     </PageContainer>
   );
 }
