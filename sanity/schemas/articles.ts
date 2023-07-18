@@ -25,8 +25,8 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'descriptionFR',
-      title: 'Description FR',
+      name: 'descriptionEN',
+      title: 'Description EN',
       type: 'text',
       validation: (Rule) =>
         Rule.required()
@@ -34,8 +34,8 @@ export default defineType({
           .error('A text of max. 600 characters is required'),
     }),
     defineField({
-      name: 'descriptionEN',
-      title: 'Description EN',
+      name: 'descriptionFR',
+      title: 'Description FR',
       type: 'text',
       validation: (Rule) =>
         Rule.required()
@@ -74,6 +74,12 @@ export default defineType({
       title: 'Subjects',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'subjects' } }],
+    }),
+    defineField({
+      name: 'partners',
+      title: 'Partners',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'partners' } }],
     }),
     defineField({
       name: 'gallery',

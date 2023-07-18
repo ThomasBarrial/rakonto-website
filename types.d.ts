@@ -26,10 +26,25 @@ export interface Block {
   style: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'bloclquote';
 }
 
+export interface SanityImage {
+  _type: Image;
+  alt?: string;
+  asset: {
+    _type: 'reference';
+    _ref: string;
+  };
+}
+
 export interface Subject extends SanityDocument {
   description: string;
   titleFr: string;
   titleEn: string;
+}
+
+export interface IPartners extends SanityDocument {
+  name: string;
+  link: string;
+  logo: SanityImage;
 }
 
 export interface Author extends SanityDocument {
@@ -43,15 +58,6 @@ export interface SanityPage extends SanityDocument {
   keywords: string[];
   title: string;
   description: string;
-}
-
-export interface SanityImage {
-  _type: Image;
-  alt?: string;
-  asset: {
-    _type: 'reference';
-    _ref: string;
-  };
 }
 
 export interface INavLinks extends SanityDocument {
@@ -175,6 +181,7 @@ export interface Article extends SanityDocument {
   bodyEn: Block[];
   bodyFr: Block[];
   subjects: Subject[];
+  partners: IPartners[];
   mainImage: SanityImage;
   slug: Slug;
   title: string;

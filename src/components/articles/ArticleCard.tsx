@@ -5,7 +5,7 @@ import { Article } from '../../../types';
 import HoverFadeEffect from '../animated/HoverFadeEffect';
 import urlForImage from '../../../sanity/lib/image';
 import DateFormat from '../global/DateFormat';
-import Text from '../global/text/Text';
+import TextUppercase from '../global/text/TextUppercase';
 
 function ArticleCard({ item }: { item: Article }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
@@ -41,10 +41,11 @@ function ArticleCard({ item }: { item: Article }) {
         </div>
       </HoverFadeEffect>
 
-      <Text className="mt-3 uppercase">
-        {' '}
-        {selectedLanguage === 'Fr' ? item.title : item.titleEn}{' '}
-      </Text>
+      <TextUppercase
+        className="mt-3"
+        contentEn={item.titleEn}
+        contentFr={item.title}
+      />
     </Link>
   );
 }

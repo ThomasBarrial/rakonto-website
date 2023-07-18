@@ -1,16 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import urlForImage from '../../../../sanity/lib/image';
-import H1 from './H1';
-import H2 from './H2';
-import H3 from './H3';
 
 const RichTextComponents = {
   types: {
     image: ({ value }: any) => (
-      <div className="relative flex  h-96 m-10 mx-auto">
+      <div className="relative items-center h-96">
         <Image
-          className="object-contain object-left"
+          className="object-contain"
           src={urlForImage(value)
             .fit('crop')
             .crop('focalpoint')
@@ -39,12 +36,23 @@ const RichTextComponents = {
         {children}
       </h1>
     ),
-    h2: ({ children }: any) => <H2>{children}</H2>,
-    h3: ({ children }: any) => <H3>{children}</H3>,
+    h2: ({ children }: any) => (
+      <h2 className="font-josefin uppercase text-[18px] leading-none  md:text-[20px] my-5">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="font-josefin uppercase text-[16px] leading-none  md:text-[18px] my-5">
+        {children}
+      </h3>
+    ),
     h4: ({ children }: any) => (
       <h4 className="text-2xl  pb-5 pt-10 font-benchnine lg:text-4xl font-extrabold">
         {children}
       </h4>
+    ),
+    normal: ({ children }: any) => (
+      <p className="whitespace-pre-line my-2 ">{children}</p>
     ),
   },
 

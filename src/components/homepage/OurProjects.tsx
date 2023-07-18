@@ -3,9 +3,9 @@
 import React from 'react';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import H1 from '../global/text/H1';
-import Text from '../global/text/Text';
 import { IHomeOurProjectSection } from '../../../types';
 import LinkButton from '../global/buttons/LinkButton';
+import TextUppercase from '../global/text/TextUppercase';
 
 interface IProps {
   data: IHomeOurProjectSection;
@@ -20,9 +20,7 @@ function OurProjects({ data }: IProps) {
         <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
       </div>
       <div className=" mt-5 lg:mt-32 w-10/12 lg:w-6/12">
-        <Text className="uppercase">
-          {selectedLanguage === 'Fr' ? data.textFr : data.textEn}
-        </Text>
+        <TextUppercase contentEn={data.textEn} contentFr={data.textFr} />
 
         <LinkButton
           className="w-10/12  lg:w-[240px] mt-10"

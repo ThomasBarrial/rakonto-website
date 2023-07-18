@@ -67,7 +67,7 @@ function SideBar({
             setSelectedSubject(selectedLanguage === 'Fr' ? 'Tous' : 'All')
           }
           type="button"
-          className={`uppercase ${
+          className={`uppercase hover:font-bold transform duration-500 ease-out ${
             selectedSubject === 'Tous' || selectedSubject === 'All'
               ? 'font-bold'
               : 'font-regular'
@@ -82,7 +82,7 @@ function SideBar({
                 selectedLanguage === 'Fr' ? item.titleFr : item.titleEn
               )
             }
-            className={`uppercase ${
+            className={`uppercase  hover:font-bold transform duration-500 ease-out ${
               selectedSubject === item.titleFr ||
               selectedSubject === item.titleEn
                 ? 'font-bold'

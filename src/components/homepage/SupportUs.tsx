@@ -65,9 +65,12 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
               }}
               className=" flex justify-between items-start text-left w-full pt-3 px-3"
             >
-              <H2 className="leading-none w-10/12">
-                {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
-              </H2>
+              <H2
+                className="leading-none w-10/12"
+                contentEn={item.nameEn}
+                contentFr={item.nameFr}
+              />
+
               <Image
                 src="/downArrow.svg"
                 className={`${
