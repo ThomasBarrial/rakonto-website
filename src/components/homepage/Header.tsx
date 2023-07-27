@@ -24,11 +24,7 @@ function Header() {
           take part in training weeks focusing on environmental issues."
           contentFr="   Rakonto is an association and a major player in European ecological
           awareness projects. We invite young people from all over Europe to
-          take part in training weeks focusing on environmental issues. At the
-          same time, we produce committed documentaries and films to raise
-          awareness among a wide audience. Our commitment also extends to other
-          initiatives aimed at promoting a sustainable and responsible way of
-          life."
+          take part in training weeks focusing on environmental issues."
         />
         <Image
           className="mt-20 hidden md:flex"
@@ -39,7 +35,11 @@ function Header() {
         />
       </div>
 
-      <Background image="/bg2.png" start={300} end={2000} />
+      <Background
+        image="/backgroundHome/bgheader.webp"
+        start={300}
+        end={2000}
+      />
     </section>
   );
 }

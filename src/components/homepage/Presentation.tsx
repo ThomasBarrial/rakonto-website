@@ -29,8 +29,10 @@ function Presentation({ data }: IProps) {
               <button
                 type="button"
                 key={item._key}
-                className={`cursor-pointer text-left ${
-                  selected === item.nameEn ? 'opacity-100' : 'opacity-60'
+                className={`cursor-pointer text-left  ${
+                  selected === item.nameEn
+                    ? 'opacity-100'
+                    : 'opacity-60 hover:opacity-100'
                 } transform duration-500 ease-out`}
                 onClick={() => setSelected(item.nameEn)}
               >

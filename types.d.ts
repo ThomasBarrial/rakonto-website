@@ -181,6 +181,21 @@ export interface IHomeOurLastestArticlesSection {
   };
 }
 
+export interface IHomeOurGoalsSection {
+  _type: string;
+  _key: string;
+  titleFr: string;
+  titleEn: string;
+  goals: {
+    _key: string;
+    descriptionFr: string;
+    descriptionEn: string;
+    number: number;
+    keywordsFr: string;
+    keywordsEn: string;
+  }[];
+}
+
 export interface Article extends SanityDocument {
   author: Author;
   bodyEn: Block[];

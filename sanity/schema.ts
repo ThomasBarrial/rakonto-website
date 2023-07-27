@@ -18,10 +18,12 @@ import ourProjects from './schemas/homePage/ourProjects';
 import ourLastestLastArticles from './schemas/homePage/ourLastestLastArticles';
 import ourOffers from './schemas/homePage/ourOffers';
 import imagesGallery from './schemas/homePage/gallery';
+import ourGoals from './schemas/homePage/ourGoals';
 import supportUs from './schemas/homePage/supportUs';
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    ourGoals,
     supportUscallToAction,
     articles,
     author,

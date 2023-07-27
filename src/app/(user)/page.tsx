@@ -9,6 +9,7 @@ import { getAllArticles, getHomePageContent } from '@/lib/queries';
 import ImagesGallery from '@/components/homepage/ImagesGallery';
 import SupportUs from '@/components/homepage/SupportUs';
 
+import OurGoals from '@/components/homepage/OurGoals';
 import client from '../../../sanity/lib/client';
 
 const clientFetch = cache(client.fetch.bind(client));
@@ -33,14 +34,15 @@ export default async function Home() {
     <PageContainer>
       <Header />
       <Presentation data={homePageContent[1].pageBuilder[0]} />
-      <OurProjects data={homePageContent[1].pageBuilder[1]} />
+      <OurGoals data={homePageContent[1].pageBuilder[1]} />
+      <OurProjects data={homePageContent[1].pageBuilder[2]} />
       <LastestArticles
-        data={homePageContent[1].pageBuilder[2]}
+        data={homePageContent[1].pageBuilder[3]}
         articles={articles}
       />
-      <OurProjects data={homePageContent[1].pageBuilder[3]} />
-      <ImagesGallery data={homePageContent[1].pageBuilder[4]} />
-      <SupportUs data={homePageContent[1].pageBuilder[5]} />
+      <OurProjects data={homePageContent[1].pageBuilder[4]} />
+      <ImagesGallery data={homePageContent[1].pageBuilder[5]} />
+      <SupportUs data={homePageContent[1].pageBuilder[6]} />
     </PageContainer>
   );
 }
