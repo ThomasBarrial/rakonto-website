@@ -53,8 +53,8 @@ function OurProjects({ data }: IProps) {
       </div>
       <Background
         image="/backgroundHome/bgprojects.webp"
-        start={1900}
-        end={3600}
+        start={1700}
+        end={3300}
       />
     </section>
   );
