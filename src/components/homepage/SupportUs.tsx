@@ -106,7 +106,7 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
         image="/backgroundHome/bgsupportus.webp"
         start={4000}
         opacity={1}
-        end={6700}
+        end={6200}
       />
     </section>
   );
