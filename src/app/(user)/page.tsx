@@ -8,6 +8,7 @@ import { cache } from 'react';
 import { getAllArticles, getHomePageContent } from '@/lib/queries';
 import ImagesGallery from '@/components/homepage/ImagesGallery';
 import SupportUs from '@/components/homepage/SupportUs';
+
 import client from '../../../sanity/lib/client';
 
 const clientFetch = cache(client.fetch.bind(client));

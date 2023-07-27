@@ -103,11 +103,16 @@ export interface IHomePage extends SanityPage {
 export interface IHomePresentationSection {
   _type: string;
   _key: string;
-  titleFr: string;
-  titleEn: string;
   textEn: string;
   textFr: string;
-  image: SanityImage;
+  contentType: {
+    _key: string;
+    nameEn: string;
+    nameFr: string;
+    descriptionEn: string;
+    descriptionFr: string;
+    image: SanityImage;
+  }[];
 }
 
 export interface IHomeOurProjectSection {
