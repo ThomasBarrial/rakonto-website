@@ -10,6 +10,7 @@ import { IHomeSupportUs } from '../../../types';
 import H1 from '../global/text/H1';
 import RichTextComponents from '../global/text/RichTextComponent';
 import H3 from '../global/text/H3';
+import Background from '../animated/Background';
 
 function SupportUs({ data }: { data: IHomeSupportUs }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
@@ -24,7 +25,7 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
   return (
     <section
       id="supportUs"
-      className="my-10 pb-32   font-josefin flex flex-col relative"
+      className="my-10 pb-32   font-josefin flex flex-col"
     >
       <div className=" w-full  flex flex-col xl:mr-5 xl:w-5/12">
         <H1
@@ -101,6 +102,12 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
           </motion.div>
         ))}
       </div>
+      <Background
+        image="/backgroundHome/bgsupportus.webp"
+        start={4000}
+        opacity={1}
+        end={6700}
+      />
     </section>
   );
 }

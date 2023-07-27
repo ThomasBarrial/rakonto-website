@@ -14,7 +14,7 @@ interface IProps {
 }
 
 function Presentation({ data }: IProps) {
-  const [selected, setSelected] = useState(data.contentType[0].nameEn);
+  const [selected, setSelected] = useState(data.contentType[2].nameEn);
 
   const { scrollYProgress } = useScroll();
 

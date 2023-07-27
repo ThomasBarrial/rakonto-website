@@ -4,7 +4,6 @@ import React, { useMemo } from 'react';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import { IHomeOurGoalsSection } from '../../../types';
 import H1 from '../global/text/H1';
-import Background from '../animated/Background';
 
 function OurGoals({ data }: { data: IHomeOurGoalsSection }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
@@ -66,11 +65,6 @@ function OurGoals({ data }: { data: IHomeOurGoalsSection }) {
           </li>
         ))}
       </ul>
-      <Background
-        image="/backgroundHome/bgourgoals.webp"
-        start={1500}
-        end={3000}
-      />
     </section>
   );
 }

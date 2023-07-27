@@ -25,6 +25,33 @@ export default defineType({
           .error('A text of max. 600 characters is required'),
     }),
     defineField({
+      name: 'projectCategories',
+      title: 'Project Catégories',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'nameFr',
+              title: 'Name FR',
+              type: 'string',
+            }),
+            defineField({
+              name: 'nameEn',
+              title: 'Name En',
+              type: 'string',
+            }),
+            defineField({
+              name: 'link',
+              title: 'Link',
+              type: 'string',
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: 'textFr',
       title: 'Rakonto description FR',
       type: 'text',

@@ -9,9 +9,10 @@ interface IProps {
   image: string;
   start: number;
   end: number;
+  opacity?: number;
 }
 
-function Background({ image, start, end }: IProps) {
+function Background({ image, start, end, opacity = 0.3 }: IProps) {
   const { scrollYProgress } = useScroll();
 
   const y = useParallax(scrollYProgress, start, end);
@@ -24,7 +25,8 @@ function Background({ image, start, end }: IProps) {
       <div className="bg-gradient-to-b from-background to-transparent h-3/6 -translate-y-1 z-10 relative top-0" />
       <div className="bg-gradient-to-t from-background to-transparent h-3/6 translate-y-1 z-10 relative bottom-0" />
       <Image
-        className="object-cover object-center opacity-20"
+        className="object-cover object-center"
+        style={{ opacity }}
         src={image}
         fill
         alt=""

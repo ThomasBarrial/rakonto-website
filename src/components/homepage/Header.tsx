@@ -37,6 +37,7 @@ function Header() {
 
       <Background
         image="/backgroundHome/bgheader.webp"
+        opacity={0.2}
         start={300}
         end={2000}
       />

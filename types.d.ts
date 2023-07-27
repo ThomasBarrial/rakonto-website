@@ -122,6 +122,12 @@ export interface IHomeOurProjectSection {
   titleEn: string;
   textEn: string;
   textFr: string;
+  projectCategories: {
+    _key: string;
+    nameFr: string;
+    nameEn: string;
+    link: string;
+  }[];
   callToAction: {
     link: string;
     nameFr: string;
@@ -134,8 +140,6 @@ export interface IHomeOurOffersSection {
   _key: string;
   titleFr: string;
   titleEn: string;
-  textEn: string;
-  textFr: string;
   callToAction: {
     link: string;
     nameFr: string;
