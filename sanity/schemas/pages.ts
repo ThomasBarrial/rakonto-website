@@ -53,6 +53,11 @@ export default defineType({
           title: 'Support US',
           type: 'supportUs',
         }),
+        defineArrayMember({
+          name: 'ourGoals',
+          title: 'Our Goals',
+          type: 'ourGoals',
+        }),
       ],
     }),
   ],

@@ -6,16 +6,6 @@ export default defineType({
   title: 'Presentation',
   fields: [
     defineField({
-      name: 'titleEn',
-      title: 'Section Title EN',
-      type: 'string',
-    }),
-    defineField({
-      name: 'titleFr',
-      title: 'Section Title FR',
-      type: 'string',
-    }),
-    defineField({
       name: 'textEn',
       title: 'Rakonto description EN',
       type: 'text',
@@ -34,15 +24,50 @@ export default defineType({
           .error('A text of max. 600 characters is required'),
     }),
     defineField({
-      name: 'image',
-      type: 'image',
-      options: { hotspot: true },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        }),
+      name: 'contentType',
+      title: 'ContentType',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'nameFr',
+              title: 'NameFr',
+              type: 'string',
+            }),
+            defineField({
+              name: 'nameEn',
+              title: 'NameEn',
+              type: 'string',
+            }),
+            defineField({
+              name: 'descriptionFr',
+              title: 'DescriptionFr',
+              type: 'text',
+            }),
+            defineField({
+              name: 'descriptionEn',
+              title: 'DescriptionEn',
+              type: 'text',
+            }),
+            defineField({
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative text',
+                }),
+              ],
+            }),
+          ],
+        },
       ],
     }),
   ],

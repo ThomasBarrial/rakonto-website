@@ -103,11 +103,16 @@ export interface IHomePage extends SanityPage {
 export interface IHomePresentationSection {
   _type: string;
   _key: string;
-  titleFr: string;
-  titleEn: string;
   textEn: string;
   textFr: string;
-  image: SanityImage;
+  contentType: {
+    _key: string;
+    nameEn: string;
+    nameFr: string;
+    descriptionEn: string;
+    descriptionFr: string;
+    image: SanityImage;
+  }[];
 }
 
 export interface IHomeOurProjectSection {
@@ -117,6 +122,12 @@ export interface IHomeOurProjectSection {
   titleEn: string;
   textEn: string;
   textFr: string;
+  projectCategories: {
+    _key: string;
+    nameFr: string;
+    nameEn: string;
+    link: string;
+  }[];
   callToAction: {
     link: string;
     nameFr: string;
@@ -129,8 +140,6 @@ export interface IHomeOurOffersSection {
   _key: string;
   titleFr: string;
   titleEn: string;
-  textEn: string;
-  textFr: string;
   callToAction: {
     link: string;
     nameFr: string;
@@ -174,6 +183,21 @@ export interface IHomeOurLastestArticlesSection {
     nameFr: string;
     nameEn: string;
   };
+}
+
+export interface IHomeOurGoalsSection {
+  _type: string;
+  _key: string;
+  titleFr: string;
+  titleEn: string;
+  goals: {
+    _key: string;
+    descriptionFr: string;
+    descriptionEn: string;
+    number: number;
+    keywordsFr: string;
+    keywordsEn: string;
+  }[];
 }
 
 export interface Article extends SanityDocument {

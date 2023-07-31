@@ -15,24 +15,7 @@ export default defineType({
       title: 'Section Title FR',
       type: 'string',
     }),
-    defineField({
-      name: 'textEn',
-      title: 'Rakonto description EN',
-      type: 'text',
-      validation: (Rule) =>
-        Rule.required()
-          .max(600)
-          .error('A text of max. 600 characters is required'),
-    }),
-    defineField({
-      name: 'textFr',
-      title: 'Rakonto description FR',
-      type: 'text',
-      validation: (Rule) =>
-        Rule.required()
-          .max(600)
-          .error('A text of max. 600 characters is required'),
-    }),
+
     defineField({
       name: 'callToAction',
       title: 'Call to action',

@@ -15,7 +15,7 @@ function TextSmall({
   const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
     <p
-      className={`font-josefin text-[14px] text-textColor text-justify md:text-[16px] ${className}`}
+      className={`font-josefin text-[16px] leading-[18px] md:leading-[24px]   md:text-[20px] ${className}`}
     >
       {selectedLanguage === 'Fr' ? contentFr : contentEn}
     </p>
