@@ -58,6 +58,8 @@ export interface SanityPage extends SanityDocument {
   keywords: string[];
   title: string;
   description: string;
+  link: string;
+  pageBuilder: any;
 }
 
 export interface INavLinks extends SanityDocument {
@@ -202,6 +204,7 @@ export interface IHomeOurGoalsSection {
 
 export interface Article extends SanityDocument {
   author: Author;
+  keywords: string[];
   bodyEn: Block[];
   bodyFr: Block[];
   subjects: Subject[];

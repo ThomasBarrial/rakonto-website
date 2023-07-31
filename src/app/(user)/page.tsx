@@ -5,12 +5,13 @@ import LastestArticles from '@/components/homepage/LastestArticles';
 import type { Metadata } from 'next';
 import OurProjects from '@/components/homepage/OurProjects';
 import { cache } from 'react';
-import { getAllArticles, getHomePageContent } from '@/lib/queries';
+import { getAllArticles, getPages } from '@/lib/queries';
 import ImagesGallery from '@/components/homepage/ImagesGallery';
 import SupportUs from '@/components/homepage/SupportUs';
 
 import OurGoals from '@/components/homepage/OurGoals';
 import OurOffers from '@/components/homepage/OurOffers';
+import getPageContent from '@/utils/getPageContent';
 import client from '../../../sanity/lib/client';
 
 const clientFetch = cache(client.fetch.bind(client));
@@ -18,33 +19,36 @@ export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   // fetch data
-  const homePageContent = await clientFetch(getHomePageContent);
+  const pages = await clientFetch(getPages);
+
+  const homePageContent = getPageContent(pages, '/');
 
   return {
-    title: homePageContent[1].title,
-    description: homePageContent[1].description,
-    keywords: homePageContent[1].keywords,
+    title: homePageContent.title,
+    description: homePageContent.description,
+    keywords: homePageContent.keywords,
   };
 }
 
 export default async function Home() {
-  const homePageContent = await clientFetch(getHomePageContent);
+  const pages = await clientFetch(getPages);
+
+  const homePageContent = getPageContent(pages, '/');
   const articles = await clientFetch(getAllArticles);
 
   return (
     <PageContainer>
       <Header />
-      <Presentation data={homePageContent[1].pageBuilder[0]} />
-      <OurGoals data={homePageContent[1].pageBuilder[1]} />
-      <OurProjects data={homePageContent[1].pageBuilder[2]} />
+      <Presentation data={homePageContent.pageBuilder[0]} />
+      <OurGoals data={homePageContent.pageBuilder[1]} />
+      <OurProjects data={homePageContent.pageBuilder[2]} />
       <LastestArticles
-        data={homePageContent[1].pageBuilder[3]}
+        data={homePageContent.pageBuilder[3]}
         articles={articles}
       />
-      {/* <OurProjects data={homePageContent[1].pageBuilder[4]} /> */}
-      <OurOffers data={homePageContent[1].pageBuilder[4]} />
-      <ImagesGallery data={homePageContent[1].pageBuilder[5]} />
-      <SupportUs data={homePageContent[1].pageBuilder[6]} />
+      <OurOffers data={homePageContent.pageBuilder[4]} />
+      <ImagesGallery data={homePageContent.pageBuilder[5]} />
+      <SupportUs data={homePageContent.pageBuilder[6]} />
     </PageContainer>
   );
 }

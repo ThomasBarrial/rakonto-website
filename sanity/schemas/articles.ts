@@ -25,6 +25,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'KeyWords',
+      title: 'Keywords',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
       name: 'descriptionEN',
       title: 'Description EN',
       type: 'text',

@@ -26,7 +26,7 @@ export const getAllSocialMedia = groq`
 } 
 `;
 
-export const getHomePageContent = groq`
+export const getPages = groq`
 *[_type == "pages"] {
     ...,
 } 
