@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useScroll, motion } from 'framer-motion';
 import useParallax from '@/utils/useParralax';
@@ -10,12 +10,51 @@ interface IProps {
   start: number;
   end: number;
   opacity?: number;
+  end1080?: number;
+  end880?: number;
 }
 
-function Background({ image, start, end, opacity = 0.3 }: IProps) {
+function Background({
+  image,
+  start,
+  end,
+  end1080,
+  end880,
+  opacity = 0.3,
+}: IProps) {
   const { scrollYProgress } = useScroll();
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 1920,
+    height: typeof window !== 'undefined' ? window.innerHeight : 1080,
+  });
 
-  const y = useParallax(scrollYProgress, start, end);
+  function calculateEnd() {
+    if (end1080 && end880) {
+      const slope = (end1080 - end880) / (1080 - 880);
+      const yIntercept = end1080 - slope * 1080;
+
+      return slope * windowSize.height + yIntercept;
+    }
+    return end;
+  }
+
+  const y = useParallax(scrollYProgress, start, calculateEnd());
+
+  useEffect(() => {
+    // Function to update windowSize state on window resize
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <motion.div

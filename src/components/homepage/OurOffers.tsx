@@ -24,6 +24,8 @@ function OurOffers({ data }: { data: IHomeOurOffersSection }) {
         image="/backgroundHome/bgoffers.webp"
         start={3100}
         end={5100}
+        end1080={5900}
+        end880={4900}
       />
     </section>
   );

@@ -29,7 +29,7 @@ function OurProjects({ data }: IProps) {
             >
               <Link href={item.link}>
                 <BasicText
-                  className="hover:font-bold"
+                  className="hover:font-bold hover:underline transform duration-200"
                   contentEn={item.nameEn}
                   contentFr={item.nameFr}
                 />
@@ -55,6 +55,8 @@ function OurProjects({ data }: IProps) {
         image="/backgroundHome/bgprojects.webp"
         start={1700}
         end={3500}
+        end1080={4500}
+        end880={3500}
       />
     </section>
   );
