@@ -15,7 +15,7 @@ function TextUppercase({
   const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
     <p
-      className={`font-josefin text-[16px] leading-[20px] md:leading-[24px] text-textColor lg:text-[20px] uppercase ${className}`}
+      className={`font-josefin text-[16px] leading-[20px] md:leading-[24px] lg:text-[20px] uppercase ${className}`}
     >
       {selectedLanguage === 'Fr' ? contentFr : contentEn}
     </p>
