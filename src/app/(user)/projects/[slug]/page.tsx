@@ -70,7 +70,7 @@ async function page({ params: { slug } }: Props) {
       />
       <div className="mt-10 flex">
         <div className="w-full lg:w-9/12">
-          <ProjectContent project={project} />
+          {project.content && <ProjectContent project={project} />}
           <Partners partners={project.partners} />
         </div>
         <ProjectSideBar project={project} />

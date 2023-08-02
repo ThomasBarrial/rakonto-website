@@ -14,7 +14,7 @@ function ProjectContent({ project }: IProps) {
   return (
     <ul className="flex flex-col space-y-10">
       {project.content.map((item) => (
-        <li key={item._id} className="border-b border-primary">
+        <li key={item.title} className="border-b border-primary">
           <ProjectSection
             item={item}
             setSelected={setSelected}

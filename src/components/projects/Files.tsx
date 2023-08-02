@@ -10,7 +10,7 @@ function Files({ files }: IProps) {
   return (
     <ul className="flex flex-col space-y-1">
       {files.map((item) => (
-        <li key={item._id}>
+        <li key={item.title}>
           <a href={`${item.manuscriptURL}?dl=${item.titleEn}.pdf`}>
             <TextSmall
               className="underline"
