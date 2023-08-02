@@ -10,6 +10,7 @@ import VideoModal from '../videos/VideoModal';
 import ExternalesLinks from './ExternalesLinks';
 import Files from './Files';
 import { Block, IExternalsLinks, IFile, SanityImage } from '../../../types';
+import Image from 'next/image';
 
 interface IProps {
   item: {
@@ -29,24 +30,24 @@ interface IProps {
 
 function ProjectSection({ item, selected, setSelected }: IProps) {
   const dropdownRef = useRef<HTMLDivElement>(null);
-  // const [dropdownHeight, setDropdownHeight] = useState(0);
+  const [dropdownHeight, setDropdownHeight] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState({ isOpen: false, url: '' });
 
-  // const handleClick = () => {
-  //   if (selected === item.title) {
-  //     setSelected(null);
-  //   } else {
-  //     setSelected(item.title);
-  //   }
+  const handleClick = () => {
+    if (selected === item.title) {
+      setSelected(null);
+    } else {
+      setSelected(item.title);
+    }
 
-  //   if (dropdownRef.current) {
-  //     // Récupérer la hauteur réelle du contenu
-  //     const contentHeight = dropdownRef.current?.scrollHeight;
-  //     setDropdownHeight(contentHeight);
+    if (dropdownRef.current) {
+      // Récupérer la hauteur réelle du contenu
+      const contentHeight = dropdownRef.current?.scrollHeight;
+      setDropdownHeight(contentHeight);
 
-  //     console.log(contentHeight);
-  //   }
-  // };
+      console.log(contentHeight);
+    }
+  };
 
   return (
     <div>
@@ -61,11 +62,11 @@ function ProjectSection({ item, selected, setSelected }: IProps) {
       />
       <div
         ref={dropdownRef}
-        // className={`${
-        //   selected === item.title
-        //     ? `h-[80vh]  overflow-y-scroll`
-        //     : 'h-[0vh] overflow-hidden'
-        // }  transform duration-500 ease-out`}
+        className={`${
+          selected === item.title
+            ? `h-[80vh]  overflow-y-scroll`
+            : 'h-[0vh] overflow-hidden'
+        }  transform duration-500 ease-out`}
       >
         {' '}
         {/* TEXTE */}
@@ -109,7 +110,7 @@ function ProjectSection({ item, selected, setSelected }: IProps) {
           </div>
         )}
       </div>
-      {/* <button
+      <button
         onClick={handleClick}
         className="w-full flex justify-end my-2"
         type="button"
@@ -124,7 +125,7 @@ function ProjectSection({ item, selected, setSelected }: IProps) {
           height={15}
           width={13}
         />
-      </button> */}
+      </button>
     </div>
   );
 }
