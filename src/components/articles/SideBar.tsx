@@ -1,13 +1,7 @@
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
-import Image from 'next/image';
-import React, {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { ISubject } from '../../../types';
+import SideBarLayout from '../global/SideBarLayout';
 
 interface IProps {
   selectedSubject: string;
@@ -15,64 +9,25 @@ interface IProps {
   subjects: ISubject[];
   searchTerm: string;
   setSearchTerm: Dispatch<SetStateAction<string>>;
-  handleAnimate: () => void;
+  setIsAnimate: Dispatch<SetStateAction<boolean>>;
 }
 
 function SideBar({
+  setIsAnimate,
   selectedSubject,
   setSelectedSubject,
   subjects,
   searchTerm,
   setSearchTerm,
-  handleAnimate,
 }: IProps) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-
-  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    handleAnimate();
-    setSearchTerm(event.target.value);
-  };
-
-  useEffect(() => {
-    if (window.innerWidth > 1024) {
-      setIsFilterOpen(true);
-    }
-  }, []);
 
   return (
-    <div
-      className={`fixed overflow-hidden lg:sticky lg:top-20 z-20 bottom-7 w-[90%] lg:w-[22%] border-2 lg:border-none lg:p-0 border-primary  right-5 bg-background text-primary shadow-2xl lg:shadow-none  text-lg p-3 lg:mr-10  ${
-        isFilterOpen ? 'h-[365px]' : 'h-[55px]'
-      } transform duration-500 ease-out`}
+    <SideBarLayout
+      setIsAnimate={setIsAnimate}
+      setSearchTerm={setSearchTerm}
+      searchTerm={searchTerm}
     >
-      <button
-        type="button"
-        onClick={() => setIsFilterOpen((prev) => !prev)}
-        className="flex justify-between items-start text-left mb-5 w-full"
-      >
-        <p className="uppercase text-primary">
-          {selectedLanguage === 'Fr'
-            ? 'Filtrer / Rechercher'
-            : 'Filter / Search'}
-        </p>
-        <Image
-          className={`${
-            isFilterOpen ? 'rotate-180' : 'rotate-0'
-          } transform duration-500 ease-out flex lg:hidden`}
-          src="/downArrow.svg"
-          alt="down"
-          height={15}
-          width={13}
-        />
-      </button>
-      <input
-        className="focus:outline-none bg-background border-b border-primary text-primary w-full"
-        type="text"
-        placeholder={selectedLanguage === 'Fr' ? 'Rechercher' : 'Search'}
-        value={searchTerm}
-        onChange={handleSearch}
-      />
       <div className="flex flex-col space-y-3 items-start mt-5">
         <button
           onClick={() =>
@@ -107,7 +62,7 @@ function SideBar({
           </button>
         ))}
       </div>
-    </div>
+    </SideBarLayout>
   );
 }
 

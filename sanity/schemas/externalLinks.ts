@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'subjects',
-  title: 'Subjects',
+  name: 'externalLinks',
+  title: 'External Links',
   type: 'document',
   fields: [
     defineField({
@@ -15,6 +15,12 @@ export default defineType({
       name: 'titleEn',
       title: 'Title EN',
       type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'link',
+      title: 'Link',
+      type: 'url',
       validation: (Rule) => Rule.required(),
     }),
   ],

@@ -64,3 +64,52 @@ export const getSubjects = groq`
     ...,
 } 
 `;
+
+export const getProjects = groq`
+*[_type == "projects"] {
+    ...,
+  projectYear->,
+  partners[]->,
+  subjects[]->,
+  categories[]->,
+  externalsLinks[]->
+} 
+`;
+
+export const getProjectsYear = groq`
+*[_type == "projectsYear"] {
+    ...,
+} `;
+
+export const getProjectsCategories = groq`
+*[_type == "projectsCategories"] {
+    ...,
+} `;
+
+export const getProjectsSlug = groq`
+*[_type == "projects"] {
+slug
+}
+`;
+
+export const getOneProject = groq`
+*[_type == "projects" && slug.current == $slug][0] {
+  ...,
+  projectYear->,
+  partners[]->,
+  subjects[]->,
+  categories[]->,
+  externalsLinks[]->,
+  content[]{
+    ...,
+    externalsLinks[]->,
+    files[]{
+    ...,
+    "manuscriptURL": asset->url
+  }
+  },
+  files[]{
+    ...,
+    "manuscriptURL": asset->url
+  }
+}`;

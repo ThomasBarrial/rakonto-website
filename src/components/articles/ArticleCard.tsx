@@ -48,7 +48,7 @@ function ArticleCard({ item }: { item: Article }) {
       />
       <div className="w-8/12 h-[1px] bg-primary my-2" />
       <TextSmall
-        className="line-clamp-2 text-opacity-80"
+        className="line-clamp-2 opacity-70"
         contentEn={item.descriptionEN}
         contentFr={item.descriptionFR}
       />
