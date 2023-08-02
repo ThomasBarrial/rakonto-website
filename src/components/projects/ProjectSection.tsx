@@ -1,6 +1,7 @@
 'use client';
 
 import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import Image from 'next/image';
 import H3 from '../global/text/H3';
 import Body from '../articles/Body';
 import GalleryImage from '../global/images/GalleryImage';
@@ -10,7 +11,6 @@ import VideoModal from '../videos/VideoModal';
 import ExternalesLinks from './ExternalesLinks';
 import Files from './Files';
 import { Block, IExternalsLinks, IFile, SanityImage } from '../../../types';
-import Image from 'next/image';
 
 interface IProps {
   item: {
