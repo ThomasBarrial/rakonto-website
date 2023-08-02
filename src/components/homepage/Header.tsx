@@ -94,7 +94,7 @@ function Header() {
 
       <Background
         image="/backgroundHome/pyrenees.webp"
-        opacity={0.2}
+        opacity={0.3}
         start={300}
         end={2000}
       />

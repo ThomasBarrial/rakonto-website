@@ -1,9 +1,8 @@
 import { type SchemaTypeDefinition } from 'sanity';
 
+// Global
 import blockContent from './schemas/blockContent';
 import subjects from './schemas/subjects';
-import articles from './schemas/articles';
-import author from './schemas/author';
 import navLinks from './schemas/navigationLinks';
 import desktopNavlinks from './schemas/desktopNavifgationLink';
 import socialMedia from './schemas/socialMedia';
@@ -11,6 +10,7 @@ import supportUscallToAction from './schemas/supportUscallToAction';
 import pages from './schemas/pages';
 import contactInfo from './schemas/contactInfo';
 import partners from './schemas/partners';
+import externalLinks from './schemas/externalLinks';
 
 // Home page content
 import presentation from './schemas/homePage/presentation';
@@ -21,8 +21,20 @@ import imagesGallery from './schemas/homePage/gallery';
 import ourGoals from './schemas/homePage/ourGoals';
 import supportUs from './schemas/homePage/supportUs';
 
+// Projects
+import projects from './schemas/projects/projects';
+import projectsCategories from './schemas/projects/projectsCategories';
+import projectYears from './schemas/projects/projectYears';
+import projectContent from './schemas/projects/projectContent';
+
+// Articles
+import articles from './schemas/articles';
+import author from './schemas/author';
+
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    projectContent,
+    projectYears,
     ourGoals,
     supportUscallToAction,
     articles,
@@ -41,6 +53,9 @@ const schema: { types: SchemaTypeDefinition[] } = {
     supportUs,
     contactInfo,
     partners,
+    externalLinks,
+    projects,
+    projectsCategories,
   ],
 };
 

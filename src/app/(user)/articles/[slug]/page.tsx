@@ -75,10 +75,11 @@ async function OneArticle({ params: { slug } }: Props) {
         className="mt-5"
         path={urlForImage(article.mainImage.asset).url()}
         alt={article.mainImage.alt ? article.mainImage.alt : 'unknow Image'}
+        end={600}
       />
       <div className="flex mt-10">
         <div className="w-full lg:w-8/12">
-          <Body article={article} />
+          <Body blockEn={article.bodyEn} blockFr={article.bodyFr} />
           <GalleryImage data={article.gallery} />
           {article.partners && <Partners data={article.partners} />}
         </div>
