@@ -20,7 +20,7 @@ function Background({ image, start, end, opacity = 0.3 }: IProps) {
   return (
     <motion.div
       style={{ y }}
-      className="h-screen w-screen  left-0 absolute -z-10  top-[0]"
+      className="h-screen w-screen hidden  left-0 md:flex flex-col absolute -z-10  top-[0]"
     >
       <div className="bg-gradient-to-b from-background to-transparent h-3/6 -translate-y-1 z-10 relative top-0" />
       <div className="bg-gradient-to-t from-background to-transparent h-3/6 translate-y-1 z-10 relative bottom-0" />

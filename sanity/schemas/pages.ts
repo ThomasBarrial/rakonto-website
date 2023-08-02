@@ -19,6 +19,11 @@ export default defineType({
       of: [{ type: 'string' }],
     }),
     defineField({
+      name: 'link',
+      title: 'Link',
+      type: 'string',
+    }),
+    defineField({
       name: 'pageBuilder',
       type: 'array',
       title: 'Sections',
