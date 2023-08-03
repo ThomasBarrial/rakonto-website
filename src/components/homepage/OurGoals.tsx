@@ -38,7 +38,7 @@ function OurGoals({ data }: { data: IHomeOurGoalsSection }) {
   }, [data.goals]);
 
   return (
-    <section className="my-10 flex flex-col lg:flex-row-reverse">
+    <section className="my-10 flex flex-col lg:flex-row-reverse border border-red-400">
       <H1
         className="text-right w-full lg:w-6/12 xl:w-4/12"
         contentEn={data.titleEn}
@@ -55,7 +55,7 @@ function OurGoals({ data }: { data: IHomeOurGoalsSection }) {
               0{item.number}
             </span>
             <div className="flex items-start ">
-              <span className="text-primary uppercase mr-2 float-left">
+              <span className="font-josefin text-[16px] ml-1 leading-[18px] md:leading-[24px] text-primary uppercase mr-2 float-left">
                 {selectedLanguage === 'Fr' ? item.keywordsFr : item.keywordsEn}
                 <span className="font-josefin text-[16px] lowercase ml-1 leading-[18px] md:leading-[24px] text-textColor   md:text-[20px]">
                   {item.sentenceFr}

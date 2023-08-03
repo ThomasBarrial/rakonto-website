@@ -15,7 +15,7 @@ function LastestArticles({ data, articles }: IProps) {
   const latestAticles = useMemo(() => articles.slice(0, 4), [articles]);
 
   return (
-    <section className="xl:h-screen my-10 ">
+    <section className="xl:h-screen my-10  border border-red-400">
       <div className="flex items-end justify-between">
         <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
       </div>

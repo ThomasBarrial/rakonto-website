@@ -21,7 +21,7 @@ function Presentation({ data }: IProps) {
   const y = useParallax(scrollYProgress, -200, 400);
 
   return (
-    <section className="my-10 flex flex-col lg:flex-row-reverse lg:py-20 lg:h-screen">
+    <section className="my-10 flex flex-col lg:flex-row-reverse lg:py-20 lg:h-screen border border-red-400">
       <div className=" w-ful flex flex-col items-end w-full lg:w-6/12 lg:px-10 lg:h-full lg:justify-between">
         <div className="w-full">
           <div className="flex flex-col">

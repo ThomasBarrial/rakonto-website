@@ -27,7 +27,7 @@ function ImagesGallery({ data }: IProps) {
   }, [data.gallery]);
 
   return (
-    <section className="h-screen my-10  overflow-hidden flex lg:flex-col lg:space-y-2 lg:space-x-0 justify-between lg:justify-center items-center">
+    <section className="h-screen my-10  overflow-hidden flex lg:flex-col lg:space-y-2 lg:space-x-0 justify-between lg:justify-center items-center border border-red-400">
       <div className="hidden lg:flex lg:w-[120%] bg-red- space-y-2 lg:space-x-2 lg:space-y-0 flex-col lg:flex-row items-center justify-center">
         {gallery1.map((item) => (
           <motion.div
