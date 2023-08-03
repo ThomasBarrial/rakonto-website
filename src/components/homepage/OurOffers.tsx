@@ -8,7 +8,7 @@ import Background from '../animated/Background';
 
 function OurOffers({ data }: { data: IHomeOurOffersSection }) {
   return (
-    <section className=" h-screen flex flex-col items-center justify-center pb-52 border border-red-400">
+    <section className=" h-screen flex flex-col items-center justify-center pb-52">
       <H1
         contentEn={data.titleEn}
         contentFr={data.titleFr}

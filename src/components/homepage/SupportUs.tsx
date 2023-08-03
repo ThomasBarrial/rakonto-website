@@ -26,7 +26,7 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
     <div>
       <section
         id="supportUs"
-        className="my-10 pb-32 relative  font-josefin flex flex-col border border-red-400"
+        className="my-10 pb-32 relative  font-josefin flex flex-col"
       >
         <div className=" w-full  flex flex-col xl:mr-5 xl:w-5/12">
           <H1

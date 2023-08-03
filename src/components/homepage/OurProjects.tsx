@@ -15,7 +15,7 @@ interface IProps {
 
 function OurProjects({ data }: IProps) {
   return (
-    <section className=" h-screen my-10  flex flex-col  items-start justify-center  border border-red-400">
+    <section className=" h-screen my-10  flex flex-col  items-start justify-center ">
       <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
 
       <div className=" mt-10 lg:mt-0 w-full ">

@@ -38,7 +38,7 @@ function OurGoals({ data }: { data: IHomeOurGoalsSection }) {
   }, [data.goals]);
 
   return (
-    <section className="my-10 flex flex-col lg:flex-row-reverse border border-red-400">
+    <section className="my-10 flex flex-col lg:flex-row-reverse">
       <H1
         className="text-right w-full lg:w-6/12 xl:w-4/12"
         contentEn={data.titleEn}
