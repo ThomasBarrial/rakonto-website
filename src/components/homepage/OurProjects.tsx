@@ -22,10 +22,10 @@ function OurProjects({ data }: IProps) {
         <ul className="flex flex-col w-full items-end text-primary space-y-5 lg:space-y-10">
           {data.projectCategories.map((item, index) => (
             <li
-              style={{
-                paddingRight:
-                  window.innerWidth >= 1024 ? `${index * 80}px` : '0',
-              }}
+              // style={{
+              //   paddingRight:
+              //     window.innerWidth >= 1024 ? `${index * 80}px` : '0',
+              // }}
               key={item._key}
             >
               <Link href={item.link}>
