@@ -1,5 +1,6 @@
 import { Slug } from 'sanity';
 import { getOneProject, getProjects, getProjectsSlug } from '@/lib/queries';
+import SectionContainer from '@/components/global/SectionContainer';
 import { Metadata } from 'next';
 import PageContainer from '@/components/global/PageContainer';
 import H2 from '@/components/global/text/H2';
@@ -55,27 +56,32 @@ async function page({ params: { slug } }: Props) {
 
   return (
     <PageContainer>
-      <H2
-        contentEn={project.titleEn}
-        contentFr={project.title}
-        className="mt-24"
-      />
-      <BasicText contentEn={project.descriptionEN} contentFr={project.title} />
-      <FullWidthImage
-        videoUrl={project.url}
-        className="mt-5"
-        path={urlForImage(project.mainImage.asset).url()}
-        alt={project.mainImage.alt ? project.mainImage.alt : 'unknow Image'}
-        end={300}
-      />
-      <div className="mt-10 flex">
-        <div className="w-full lg:w-9/12">
-          {project.content && <ProjectContent project={project} />}
-          <Partners partners={project.partners} />
+      <SectionContainer>
+        <H2
+          contentEn={project.titleEn}
+          contentFr={project.title}
+          className="mt-24"
+        />
+        <BasicText
+          contentEn={project.descriptionEN}
+          contentFr={project.title}
+        />
+        <FullWidthImage
+          videoUrl={project.url}
+          className="mt-5"
+          path={urlForImage(project.mainImage.asset).url()}
+          alt={project.mainImage.alt ? project.mainImage.alt : 'unknow Image'}
+          end={300}
+        />
+        <div className="mt-10 flex">
+          <div className="w-full lg:w-9/12">
+            {project.content && <ProjectContent project={project} />}
+            <Partners partners={project.partners} />
+          </div>
+          <ProjectSideBar project={project} />
         </div>
-        <ProjectSideBar project={project} />
-      </div>
-      <ProjectFooter project={project} allProjects={allProjects} />
+        <ProjectFooter project={project} allProjects={allProjects} />
+      </SectionContainer>
     </PageContainer>
   );
 }

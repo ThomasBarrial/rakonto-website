@@ -15,6 +15,7 @@ import ArticleSideBar from '@/components/articles/ArticleSideBar';
 import Partners from '@/components/global/Partners';
 import ArticlesFooter from '@/components/articles/ArticlesFooter';
 import { Metadata } from 'next';
+import SectionContainer from '@/components/global/SectionContainer';
 import client from '../../../../../sanity/lib/client';
 import { Article } from '../../../../../types';
 import urlForImage from '../../../../../sanity/lib/image';
@@ -61,31 +62,33 @@ async function OneArticle({ params: { slug } }: Props) {
 
   return (
     <PageContainer>
-      <H2
-        contentEn={article.titleEn}
-        contentFr={article.title}
-        className="mt-24"
-      />
-      <BasicText
-        className="mt-5"
-        contentEn={article.descriptionEN}
-        contentFr={article.descriptionFR}
-      />
-      <FullWidthImage
-        className="mt-5"
-        path={urlForImage(article.mainImage.asset).url()}
-        alt={article.mainImage.alt ? article.mainImage.alt : 'unknow Image'}
-        end={600}
-      />
-      <div className="flex mt-10">
-        <div className="w-full lg:w-8/12">
-          <Body blockEn={article.bodyEn} blockFr={article.bodyFr} />
-          <GalleryImage data={article.gallery} />
-          {article.partners && <Partners data={article.partners} />}
+      <SectionContainer>
+        <H2
+          contentEn={article.titleEn}
+          contentFr={article.title}
+          className="mt-24"
+        />
+        <BasicText
+          className="mt-5"
+          contentEn={article.descriptionEN}
+          contentFr={article.descriptionFR}
+        />
+        <FullWidthImage
+          className="mt-5"
+          path={urlForImage(article.mainImage.asset).url()}
+          alt={article.mainImage.alt ? article.mainImage.alt : 'unknow Image'}
+          end={600}
+        />
+        <div className="flex mt-10">
+          <div className="w-full lg:w-8/12">
+            <Body blockEn={article.bodyEn} blockFr={article.bodyFr} />
+            <GalleryImage data={article.gallery} />
+            {article.partners && <Partners data={article.partners} />}
+          </div>
+          <ArticleSideBar article={article} allArticles={articles} />
         </div>
-        <ArticleSideBar article={article} allArticles={articles} />
-      </div>
-      <ArticlesFooter article={article} allArticles={articles} />
+        <ArticlesFooter article={article} allArticles={articles} />
+      </SectionContainer>
     </PageContainer>
   );
 }
