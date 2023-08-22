@@ -1,62 +1,90 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useInView } from 'framer-motion';
 import H1 from '../global/text/H1';
 import { IHomeOurProjectSection } from '../../../types';
 import LinkButton from '../global/buttons/LinkButton';
 import BasicText from '../global/text/BasicText';
-import Background from '../animated/Background';
+import H2 from '../global/text/H2';
+import SlideUp from '../animated/SlideUp';
+import SectionContainer from '../global/SectionContainer';
 
 interface IProps {
   data: IHomeOurProjectSection;
 }
 
 function OurProjects({ data }: IProps) {
-  return (
-    <section className=" h-screen my-10  flex flex-col  items-start justify-center">
-      <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
+  const [size, setSize] = useState(0);
 
-      <div className=" mt-10 lg:mt-0 w-full ">
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    setSize(window.innerWidth);
+  }, []);
+  return (
+    <SectionContainer
+      bgImage="/backgroundHome/bgprojects.webp"
+      className=" h-screen my-10  flex flex-col  items-start justify-center"
+    >
+      <div ref={ref} className=" mt-10 lg:mt-0 w-full ">
+        {inView && (
+          <SlideUp duration={1.2}>
+            <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
+          </SlideUp>
+        )}
         <ul className="flex flex-col w-full items-end text-primary space-y-5 lg:space-y-10">
-          {data.projectCategories.map((item) => (
-            <li
-              // style={{
-              //   paddingRight:
-              //     window.innerWidth >= 1024 ? `${index * 50}px` : '0',
-              // }}
-              key={item._key}
-            >
-              <Link href={item.link}>
-                <BasicText
-                  className="hover:font-bold"
+          {data.projectCategories.map((item, index) => (
+            <li key={item._key}>
+              {inView && (
+                <SlideUp
+                  duration={index * 0.25 + 0.5}
+                  className="hidden lg:flex"
+                  style={{
+                    paddingRight: size >= 1024 ? `${index * 80}px` : '0',
+                  }}
+                >
+                  <Link href={item.link}>
+                    <H2
+                      className="hover:font-bold transform duration-200"
+                      contentEn={item.nameEn}
+                      contentFr={item.nameFr}
+                    />
+                  </Link>
+                </SlideUp>
+              )}
+              <Link className="flex flex-col lg:hidden" href={item.link}>
+                <H2
+                  className="hover:font-bold transform duration-200"
                   contentEn={item.nameEn}
                   contentFr={item.nameFr}
                 />
               </Link>
             </li>
           ))}
-        </ul>
-        <div className=" mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between lg:mt-52">
-          <LinkButton
-            className="w-8/12  lg:w-[240px] mt-10"
-            textEn={data.callToAction.nameEn}
-            textFr={data.callToAction.nameFr}
-            link={data.callToAction.link}
-          />
-          <BasicText
-            className=" lg:w-6/12"
-            contentEn={data.textEn}
-            contentFr={data.textFr}
-          />
-        </div>
+        </ul>{' '}
+        {inView && (
+          <SlideUp
+            duration={1.2}
+            className=" mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between lg:mt-52"
+          >
+            <LinkButton
+              className="w-8/12  lg:w-[240px] mt-10"
+              textEn={data.callToAction.nameEn}
+              textFr={data.callToAction.nameFr}
+              link={data.callToAction.link}
+            />
+            <BasicText
+              className="mt-10 lg:mt-0 lg:w-6/12"
+              contentEn={data.textEn}
+              contentFr={data.textFr}
+            />
+          </SlideUp>
+        )}
       </div>
-      <Background
-        image="/backgroundHome/bgprojects.webp"
-        start={1700}
-        end={3500}
-      />
-    </section>
+    </SectionContainer>
   );
 }
 

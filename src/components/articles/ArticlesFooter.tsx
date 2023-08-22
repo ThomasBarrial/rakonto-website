@@ -2,7 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import { Article } from '../../../types';
+import BasicText from '../global/text/BasicText';
 
 interface IProps {
   article: Article;
@@ -11,6 +13,7 @@ interface IProps {
 
 function ArticlesFooter({ article, allArticles }: IProps) {
   const [nextArticle, setNextArticle] = useState<Article>();
+  const { selectedLanguage } = useSelectedLanguagesFromStore();
 
   useEffect(() => {
     let NextArticleIndex = -1;
@@ -29,17 +32,28 @@ function ArticlesFooter({ article, allArticles }: IProps) {
 
   return (
     <div className="w-full mb-10 px-5 font-josefin mt-10 lg:mt-20 mx-auto  uppercase font-benchnine flex flex-col lg:flex-row lg:flex-wrap lg:justify-between lg:items-center">
-      <div className="flex space-x-2 mb-3 text-[14px] lg:text-[20px] lg:mb-0 opacity-50">
+      <ul className="flex space-x-2 mb-3 text-[14px] lg:text-[20px] lg:mb-0 opacity-50">
         {article.subjects.map((c) => (
-          <p key={c._id}>{c.titleFr} |</p>
+          <li key={c._id} className="flex">
+            <BasicText
+              contentEn={c.titleEn}
+              contentFr={c.titleFr}
+              className="mr-2"
+            />{' '}
+            |
+          </li>
         ))}
-      </div>
+      </ul>
       {nextArticle && (
         <Link href={`/articles/${nextArticle.slug.current}`}>
           <p className=" text-primary text-[18px] mt-10 lg:mt-0 lg:text-[20px]">
-            ARTICLE SUIVANT :{' '}
+            {selectedLanguage === 'Fr'
+              ? 'ARTICLE SUIVANT : '
+              : 'NEXT ARTICLE : '}
             <span className="uppercase underline font-benchnine ">
-              {nextArticle.title}
+              {selectedLanguage === 'Fr'
+                ? nextArticle.title
+                : nextArticle.titleEn}
             </span>
           </p>
         </Link>

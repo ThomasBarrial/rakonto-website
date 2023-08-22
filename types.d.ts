@@ -54,6 +54,11 @@ export interface Author extends SanityDocument {
   slug: Slug;
 }
 
+export interface IYear extends SanityDocument {
+  year: number;
+  _type: string;
+}
+
 export interface SanityPage extends SanityDocument {
   keywords: string[];
   title: string;
@@ -220,12 +225,66 @@ export interface Article extends SanityDocument {
   publishedAt: string;
 }
 
+export interface IExternalsLinks extends SanityDocument {
+  titleFr: string;
+  titleEn: string;
+  link: string;
+}
+
 export interface IContactInfos extends SanityDocument {
   email: string;
   phoneNumber: number;
 }
 
+export interface IFile extends SanityDocument {
+  author: Author;
+  title: string;
+  titleEn: string;
+  asset: {
+    _type: 'reference';
+    _ref: string;
+  };
+  manuscriptURL: string;
+}
+
+export interface IProjectCategories extends SanityDocument {
+  titleFr: string;
+  titleEn: string;
+}
+
 export interface ISubject extends SanityDocument {
   titleFr: string;
   titleEn: string;
+}
+
+export interface IProjectYear extends SanityDocument {
+  year: number;
+}
+
+export interface IProject extends SanityDocument {
+  title: string;
+  titleEn: string;
+  descriptionFR: string;
+  descriptionEN: string;
+  keywords: string[];
+  slug: Slug;
+  url?: string;
+  mainImage: SanityImage;
+  subjects?: Subject[];
+  partners?: IPartners[];
+  categories?: IProjectCategories[];
+  files?: IFile[];
+  externalsLinks?: IExternalsLinks[];
+  projectYear: IProjectYear;
+  content: {
+    _id: string;
+    title: string;
+    titleEn: string;
+    textFR?: Block[];
+    textEn?: Block[];
+    gallery?: SanityImage[];
+    url?: string;
+    externalsLinks?: IExternalsLinks[];
+    files?: IFile[];
+  }[];
 }

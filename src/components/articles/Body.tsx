@@ -4,15 +4,15 @@ import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import { PortableText } from '@portabletext/react';
 import React from 'react';
 import RichTextComponents from '../global/text/RichTextComponent';
-import { Article } from '../../../types';
+import { Block } from '../../../types';
 
-function Body({ article }: { article: Article }) {
+function Body({ blockEn, blockFr }: { blockEn: Block[]; blockFr: Block[] }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
 
   return (
     <div className="mt-5 font-josefin">
       <PortableText
-        value={selectedLanguage === 'Fr' ? article.bodyFr : article.bodyEn}
+        value={selectedLanguage === 'Fr' ? blockFr : blockEn}
         components={RichTextComponents}
       />
     </div>

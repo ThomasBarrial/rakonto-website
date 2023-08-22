@@ -9,7 +9,7 @@ import { getAllArticles, getPages } from '@/lib/queries';
 import ImagesGallery from '@/components/homepage/ImagesGallery';
 import SupportUs from '@/components/homepage/SupportUs';
 
-import OurGoals from '@/components/homepage/OurGoals';
+// import OurGoals from '@/components/homepage/OurGoals';
 import OurOffers from '@/components/homepage/OurOffers';
 import getPageContent from '@/utils/getPageContent';
 import client from '../../../sanity/lib/client';
@@ -40,7 +40,7 @@ export default async function Home() {
     <PageContainer>
       <Header />
       <Presentation data={homePageContent.pageBuilder[0]} />
-      <OurGoals data={homePageContent.pageBuilder[1]} />
+      {/* <OurGoals data={homePageContent.pageBuilder[1]} /> */}
       <OurProjects data={homePageContent.pageBuilder[2]} />
       <LastestArticles
         data={homePageContent.pageBuilder[3]}

@@ -1,10 +1,13 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import handleAnimate from '@/utils/handleAnimate';
+import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import { Article, ISubject } from '../../../types';
 import SideBar from './SideBar';
 import H1 from '../global/text/H1';
 import ArticleCard from './ArticleCard';
+import SectionContainer from '../global/SectionContainer';
 
 interface IProps {
   subjects: ISubject[];
@@ -16,13 +19,7 @@ function ArticlesSection({ subjects, articles }: IProps) {
   const [articlesList, setArticlesList] = useState<Article[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isAnimate, setIsAnimate] = useState(false);
-
-  const handleAnimate = () => {
-    setIsAnimate(false);
-    setTimeout(() => {
-      setIsAnimate(true);
-    }, 10);
-  };
+  const { selectedLanguage } = useSelectedLanguagesFromStore();
 
   useEffect(() => {
     if (selectedSubject === 'All' || selectedSubject === 'Tous') {
@@ -41,19 +38,22 @@ function ArticlesSection({ subjects, articles }: IProps) {
 
       setArticlesList(newArticleList);
     }
-    handleAnimate();
+    handleAnimate(setIsAnimate);
   }, [selectedSubject, articles]);
 
-  const filteredData = articlesList.filter((item) =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredData = articlesList.filter((item) => {
+    if (selectedLanguage === 'Fr') {
+      return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+    }
+    return item.titleEn.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
-    <div className=" w-full pt-20 font-josefin">
+    <SectionContainer className=" w-full pt-20 font-josefin">
       <H1 contentEn="Our Articles" contentFr="Nos Articles" />
       <div className="flex flex-col lg:flex-row lg:mt-5">
         <SideBar
-          handleAnimate={handleAnimate}
+          setIsAnimate={setIsAnimate}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           selectedSubject={selectedSubject}
@@ -77,7 +77,7 @@ function ArticlesSection({ subjects, articles }: IProps) {
           </div>
         )}
       </div>
-    </div>
+    </SectionContainer>
   );
 }
 
