@@ -28,11 +28,14 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
   const inView = useInView(ref, { once: true });
 
   return (
-    <SectionContainer className="" bgImage="/backgroundHome/bgsupportus.webp">
+    <SectionContainer
+      className="h-screen"
+      bgImage="/backgroundHome/bgFooter3.png"
+    >
       <div
         ref={ref}
         id="supportUs"
-        className="my-10 pb-32 relative  font-josefin flex flex-col"
+        className="my-10 pb-32 relative  w-[100%] font-josefin flex flex-col"
       >
         {inView && (
           <SlideUp

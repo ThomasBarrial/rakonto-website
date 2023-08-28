@@ -32,16 +32,20 @@ function NavBar({ navLinks, desktopNavLinks, socialMedia }: IProps) {
       </Link>
 
       {/* DESKTOP NAVBAR */}
-      <div className="font-josefin hidden  md:flex uppercase space-x-4  md:text-[13px] text-primary">
+      <div className="font-josefin hidden  md:flex items-center uppercase space-x-4  md:text-[13px] text-primary">
         {desktopNavLinks.map((item) => (
           <div key={item.nameEn}>
             {item.nameEn === 'Explore' ? (
               <button
                 onClick={() => setIsOverlayOpen(true)}
                 type="button"
-                className="uppercase"
+                className="uppercase flex flex-col space-y-1 bg-none group hover:bg-primary 0 h-10 w-10 items-center justify-center rounded-full border border-primary"
               >
-                {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
+                <span className="h-[1.5px] w-4 bg-primary group-hover:bg-background" />
+                <span className="h-[1.5px] w-4 bg-primary group-hover:bg-background" />
+                <span className="h-[1.5px] w-4 bg-primary group-hover:bg-background" />
+
+                {/* {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn} */}
               </button>
             ) : (
               <Link href={item.link}>

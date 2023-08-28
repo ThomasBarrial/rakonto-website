@@ -25,22 +25,22 @@ interface IProps {
 function PresentationElement({ item, index }: IProps) {
   const { scrollYProgress } = useScroll();
 
-  const y = useParallax(scrollYProgress, -200, 400);
+  const y = useParallax(scrollYProgress, -200, 600);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
-  const variants = {
-    open: {
-      y: 0,
-      scale: 1,
-      transition: { duration: 2, bounce: 0, delay: 0 },
-    },
-    closed: {
-      y: '600px',
-      scale: 1,
-      transition: { duration: 2, bounce: 0, delay: 0 },
-    },
-  };
+  // const variants = {
+  //   open: {
+  //     y: 0,
+  //     scale: 1,
+  //     transition: { duration: 2, bounce: 0, delay: 0 },
+  //   },
+  //   closed: {
+  //     y: '600px',
+  //     scale: 1,
+  //     transition: { duration: 2, bounce: 0, delay: 0 },
+  //   },
+  // };
   return (
     <div
       ref={ref}
@@ -83,11 +83,11 @@ function PresentationElement({ item, index }: IProps) {
       )}
       {inView && (
         <div className="h-[100%] w-6/12 hidden lg:flex lg:flex-col lg:w-7/12 overflow-hidden">
-          <motion.div
+          <div
             className="relative min-h-[120%] w-full"
-            variants={variants}
-            initial="closed"
-            animate="open"
+            // variants={variants}
+            // initial="closed"
+            // animate="open"
           >
             <motion.div
               key={item._key}
@@ -101,7 +101,7 @@ function PresentationElement({ item, index }: IProps) {
                 alt={item.image.alt ? item.image.alt : 'unknow Image'}
               />
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       )}
     </div>

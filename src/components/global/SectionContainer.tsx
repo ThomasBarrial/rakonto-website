@@ -1,31 +1,29 @@
 'use client';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 import React from 'react';
+// import bg from '../../../public/backgroundHome/projectBg.png';
 
 interface IProps {
   className?: string;
   children: React.ReactNode;
   bgImage?: string;
+  id?: string;
 }
 
-function SectionContainer({ className, children, bgImage }: IProps) {
+function SectionContainer({ className, children, bgImage, id }: IProps) {
   return (
-    <section className={`${className} ${bgImage && 'relative'}`}>
-      {bgImage && (
-        <div className="h-screen w-screen max-w-screen hidden  left-0 md:flex flex-col absolute -z-10  top-[0]">
-          <div className="bg-gradient-to-b from-background to-transparent h-3/6 -translate-y-1 z-10 relative top-0" />
-          <div className="bg-gradient-to-t from-background to-transparent h-3/6 translate-y-1 z-10 relative bottom-0" />
-          <Image
-            className="object-cover object-center"
-            style={{ opacity: 0.6 }}
-            src={bgImage}
-            fill
-            alt=""
-          />
-        </div>
-      )}
-      <div className="max-w-content px-4 lg:px-10">{children}</div>
+    <section
+      id={id || ''}
+      className={`${className} w-screen flex flex-col items-center justify-center`}
+      style={{
+        backgroundImage: `${bgImage && `url(${bgImage})`}`,
+        backgroundPosition: 'center',
+        // backgroundAttachment: 'fixed',
+        backgroundSize: 'cover',
+      }}
+    >
+      <div className="max-w-content w-full px-4 lg:px-10">{children}</div>
     </section>
   );
 }

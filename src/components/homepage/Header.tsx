@@ -14,6 +14,20 @@ function Header() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const targetY = rect.top + scrollTop - 80;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <SectionContainer className="h-full min-h-screen flex flex-col justify-between  pt-20">
       <div ref={ref}>
@@ -45,21 +59,26 @@ function Header() {
             />
           </SlideUp>
           <SlideUp duration={2}>
-            <Image
-              className="mt-20 hidden md:flex"
-              src="/scrollArrow2.png"
-              alt="scroll"
-              height={100}
-              width={50}
-            />
+            <button
+              type="button"
+              onClick={() => scrollToSection('presentation')}
+            >
+              <Image
+                className="mt-20 hidden md:flex"
+                src="/scrollArrow2.png"
+                alt="scroll"
+                height={100}
+                width={50}
+              />
+            </button>
           </SlideUp>
         </div>
       )}
 
       <Background
-        image="/backgroundHome/bgHeader2.webp"
-        opacity={0.2}
-        start={300}
+        image="/backgroundHome/bgHeader.png"
+        opacity={1}
+        start={0}
         end={2000}
       />
     </SectionContainer>

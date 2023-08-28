@@ -1,8 +1,14 @@
 import React from 'react';
 
-function OverlayMenuButton({ children }: { children: React.ReactNode }) {
+function OverlayMenuButton({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode;
+  onClick?: () => void;
+}) {
   return (
-    <button type="button" className="w-full my-2 text-left font-light">
+    <button onClick={onClick} type="button" className="w-full my-2 text-left ">
       {children}
     </button>
   );

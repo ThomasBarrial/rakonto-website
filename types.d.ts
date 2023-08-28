@@ -277,7 +277,7 @@ export interface IProject extends SanityDocument {
   externalsLinks?: IExternalsLinks[];
   projectYear: IProjectYear;
   content: {
-    _id: string;
+    _key: string;
     title: string;
     titleEn: string;
     textFR?: Block[];

@@ -14,7 +14,7 @@ function OurOffers({ data }: { data: IHomeOurOffersSection }) {
 
   return (
     <SectionContainer
-      bgImage="/backgroundHome/bgoffer3.png"
+      bgImage="/backgroundHome/bgOffer3.png"
       className=" h-screen"
     >
       <div ref={ref} className="flex flex-col items-center  h-screen pt-52">

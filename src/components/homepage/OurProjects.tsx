@@ -26,7 +26,7 @@ function OurProjects({ data }: IProps) {
   }, []);
   return (
     <SectionContainer
-      bgImage="/backgroundHome/bgprojects.webp"
+      bgImage="/backgroundHome/bgProjec4.png"
       className=" h-screen my-10  flex flex-col  items-start justify-center"
     >
       <div ref={ref} className=" mt-10 lg:mt-0 w-full ">
