@@ -119,6 +119,9 @@ export interface IHomePresentationSection {
     descriptionEn: string;
     descriptionFr: string;
     image: SanityImage;
+    color: {
+      hex: string;
+    };
   }[];
 }
 
@@ -135,6 +138,16 @@ export interface IHomeOurProjectSection {
     nameEn: string;
     link: string;
   }[];
+  callToAction: {
+    link: string;
+    nameFr: string;
+    nameEn: string;
+  };
+}
+
+export interface IHomeHeader {
+  textEn: string;
+  textFr: string;
   callToAction: {
     link: string;
     nameFr: string;

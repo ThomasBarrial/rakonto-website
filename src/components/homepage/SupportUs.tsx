@@ -3,7 +3,6 @@
 import React, { useRef, useState } from 'react';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import { PortableText } from '@portabletext/react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { IHomeSupportUs } from '../../../types';
@@ -12,6 +11,7 @@ import RichTextComponents from '../global/text/RichTextComponent';
 import H3 from '../global/text/H3';
 import SectionContainer from '../global/SectionContainer';
 import SlideUp from '../animated/SlideUp';
+import LinkButton from '../global/buttons/LinkButton';
 
 function SupportUs({ data }: { data: IHomeSupportUs }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
@@ -29,8 +29,8 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
 
   return (
     <SectionContainer
-      className="h-screen"
-      bgImage="/backgroundHome/bgFooter3.png"
+      className="h-screen my-32 lg:my-0"
+      bgImage="/backgroundHome/bgFooter5.png"
     >
       <div
         ref={ref}
@@ -116,14 +116,13 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
                       components={RichTextComponents}
                     />
                   </div>
-                  <Link
-                    className="flex items-center m-5 justify-center bg-primary px-4 py-3  text-white font-bold"
-                    href={item.link}
-                  >
-                    {selectedLanguage === 'Fr'
-                      ? item.buttonNameFr
-                      : item.buttonNameEn}
-                  </Link>
+
+                  <LinkButton
+                    className="m-5"
+                    textEn={item.buttonNameEn}
+                    textFr={item.buttonNameFr}
+                    link={item.link}
+                  />
                 </motion.div>
               </SlideUp>
             ))}

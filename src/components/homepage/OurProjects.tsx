@@ -26,7 +26,7 @@ function OurProjects({ data }: IProps) {
   }, []);
   return (
     <SectionContainer
-      bgImage="/backgroundHome/bgProjec4.png"
+      bgImage="/backgroundHome/bgProjects5.png"
       className=" h-screen my-10  flex flex-col  items-start justify-center"
     >
       <div ref={ref} className=" mt-10 lg:mt-0 w-full ">
@@ -35,7 +35,7 @@ function OurProjects({ data }: IProps) {
             <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
           </SlideUp>
         )}
-        <ul className="flex flex-col w-full items-end text-primary space-y-5 lg:space-y-10">
+        <ul className="flex flex-col w-full mt-10 lg:mt-0 items-end text-primary space-y-5 lg:space-y-10">
           {data.projectCategories.map((item, index) => (
             <li key={item._key}>
               {inView && (

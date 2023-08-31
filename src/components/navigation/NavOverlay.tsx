@@ -25,7 +25,7 @@ function NavOverlay({
   return (
     <>
       <div
-        className={`fixed  top-0 z-50 bg-background p-4 md:p-10 h-full flex flex-col justify-between  right-0 w-full md:w-6/12 transform ${
+        className={`fixed  top-0 z-50 bg-primary text-background p-4 md:p-10 h-full flex flex-col justify-between  right-0 w-full md:w-6/12 transform ${
           isOverlayOpen ? 'translate-x-0' : 'translate-x-full'
         } ease-in-out duration-700`}
       >
@@ -36,7 +36,7 @@ function NavOverlay({
           <div className="flex flex-col space-y-2">
             {navLinks.map((item) => (
               <div
-                className="font-francoisOne uppercase text-[50px] lg:text-[65px] leading-none text-primary"
+                className="font-francoisOne uppercase text-[50px] lg:text-[65px] leading-none text-background"
                 key={item.nameFr}
               >
                 {item.nameEn === 'Join us' ? (
@@ -62,7 +62,7 @@ function NavOverlay({
           </div>
         </div>
 
-        <div className="text-primary flex flex-row items-center justify-between w-full">
+        <div className="text-background flex flex-row items-center justify-between w-full">
           <LangButton />
           <SocialMedia socialMedia={socialMedia} />
         </div>

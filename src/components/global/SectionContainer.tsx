@@ -1,7 +1,7 @@
 'use client';
 
 // import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import bg from '../../../public/backgroundHome/projectBg.png';
 
 interface IProps {
@@ -12,15 +12,23 @@ interface IProps {
 }
 
 function SectionContainer({ className, children, bgImage, id }: IProps) {
+  const [windowWidth, setWindowWith] = useState(0);
+
+  useEffect(() => {
+    setWindowWith(window.innerWidth);
+  }, []);
+
   return (
     <section
       id={id || ''}
       className={`${className} w-screen flex flex-col items-center justify-center`}
       style={{
-        backgroundImage: `${bgImage && `url(${bgImage})`}`,
+        backgroundImage: `${
+          bgImage && windowWidth > 1024 && `url(${bgImage})`
+        }`,
         backgroundPosition: 'center',
-        // backgroundAttachment: 'fixed',
-        backgroundSize: 'cover',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       <div className="max-w-content w-full px-4 lg:px-10">{children}</div>
