@@ -11,7 +11,7 @@ interface IProps {
 
 function Footer({ contactInfos, socialMedia }: IProps) {
   return (
-    <div className=" h-96 flex items-cente w-ful lg:items-end max-w-content lg:pb-10 lg:p-10 font-josefin">
+    <div className=" h-32 flex  items-cente w-full lg:items-end max-w-content lg:pb-10 lg:p-10 font-josefin">
       <div className="flex flex-col lg:flex-row lg:justify-between items-center justify-center w-full space-y-10 lg:space-y-0">
         <div className="text-xl  w-4/12 text-textColor flex flex-col items-center lg:items-start">
           <p>{+contactInfos.phoneNumber}</p>
