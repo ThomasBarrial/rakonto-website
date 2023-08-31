@@ -47,7 +47,7 @@ export default async function RootLayout({
   return (
     <html className="bg-background  " lang="en">
       <body
-        className={`${josefin.variable} ${francoisOne.variable}  w-screen flex flex-col items-center justify-center  text-textColor `}
+        className={`${josefin.variable} ${francoisOne.variable}  flex flex-col items-center justify-center  text-textColor `}
       >
         <ReduxProvider>
           <NavBar

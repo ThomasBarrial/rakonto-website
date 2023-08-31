@@ -73,7 +73,7 @@ function NavOverlay({
         <button
           type="button"
           onClick={() => setIsOverlayOpen(false)}
-          className="h-screen w-screen fixed z-10 left-0 top-0 opacity-[20%] bg-black  animate-backgroundOverlay"
+          className="h-screen w-full fixed z-10 left-0 top-0 opacity-[20%] bg-black  animate-backgroundOverlay"
         />
       )}
     </>

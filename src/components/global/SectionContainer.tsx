@@ -21,7 +21,7 @@ function SectionContainer({ className, children, bgImage, id }: IProps) {
   return (
     <section
       id={id || ''}
-      className={`${className} w-screen flex flex-col items-center justify-center`}
+      className={`${className} w-full flex flex-col items-center justify-center`}
       style={{
         backgroundImage: `${
           bgImage && windowWidth > 1024 && `url(${bgImage})`
