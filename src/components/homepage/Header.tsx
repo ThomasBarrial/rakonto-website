@@ -88,12 +88,12 @@ function Header({ data }: IProps) {
         )}
       </div>
 
-      {/* <Background
+      <Background
         image="/backgroundHome/bgHeader5.png"
         opacity={1}
         start={0}
         end={2000}
-      /> */}
+      />
     </section>
     // <section className="h-full min-h-screen flex flex-col items-center justify-start md:justify-center pt-24 pb-52">
     //   <div className="flex md:hidden flex-col items-center justify-center space-y-5">
