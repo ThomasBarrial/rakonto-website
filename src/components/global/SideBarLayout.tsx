@@ -40,7 +40,7 @@ function SideBarLayout({
   }, []);
   return (
     <div
-      className={`fixed  lg:sticky lg:top-20 z-20 bottom-7 w-[90%] lg:w-[22%] border-2 lg:border-none lg:p-0 border-primary  right-5 bg-background text-primary shadow-2xl lg:shadow-none  text-lg p-3 lg:mr-10  ${
+      className={`fixed overflow-hidden  lg:sticky lg:top-20 z-20 bottom-7 w-[90%] lg:w-[22%] border-2 lg:border-none lg:p-0 border-primary  right-5 bg-background text-primary shadow-2xl lg:shadow-none  text-lg p-3 lg:mr-10  ${
         isFilterOpen ? 'h-[85vh]' : 'h-[6vh] lg:h-screen'
       } transform duration-500 ease-out `}
     >

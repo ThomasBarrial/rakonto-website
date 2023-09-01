@@ -301,3 +301,19 @@ export interface IProject extends SanityDocument {
     files?: IFile[];
   }[];
 }
+
+export interface IOffer extends SanityDocument {
+  title: string;
+  titleEn: string;
+  descriptionFR: string;
+  descriptionEN: string;
+  keywords: string[];
+  slug: Slug;
+  mainImage: SanityImage;
+  bodyEn: Block[];
+  bodyFr: Block[];
+  startDate: string;
+  endDate: string;
+  files?: IFile[];
+  formLink: string;
+}
