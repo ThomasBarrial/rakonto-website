@@ -21,7 +21,7 @@ function Presentation({ data }: IProps) {
   const y = useParallax(scrollYProgress, -200, 400);
 
   return (
-    <section className="my-10 flex flex-col overflow-scroll lg:h-screen bg-red-200 stciky-top-0">
+    <section className="my-10 flex flex-col overflow-scroll lg:h-screen bg-red-200  snap-y snap-mandatory  stciky-top-0 no-scrollbar">
       <div className="min-h-screen w-full bg-red-400" />
       <div className="min-h-screen w-full bg-red-500" />
       <div className="min-h-screen w-full bg-red-600" />
