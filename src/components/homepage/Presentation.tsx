@@ -1,25 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import useParallax from '@/utils/useParralax';
-import { useScroll, motion } from 'framer-motion';
+import React from 'react';
 import { IHomePresentationSection } from '../../../types';
-import H1 from '../global/text/H1';
-import TextSmall from '../global/text/TextSmall';
-import urlForImage from '../../../sanity/lib/image';
+import PresentationElement from './PresentationElement';
+import SectionContainer from '../global/SectionContainer';
 
 interface IProps {
   data: IHomePresentationSection;
 }
 
 function Presentation({ data }: IProps) {
-  const [selected, setSelected] = useState(data.contentType[2].nameEn);
-
-  const { scrollYProgress } = useScroll();
-
-  const y = useParallax(scrollYProgress, -200, 400);
-
   return (
     <section className="my-10 flex flex-col overflow-scroll lg:h-screen bg-red-200  snap-y snap-mandatory  stciky-top-0 no-scrollbar">
       <div className="min-h-screen w-full bg-red-400" />

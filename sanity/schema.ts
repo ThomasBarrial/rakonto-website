@@ -20,6 +20,7 @@ import ourOffers from './schemas/homePage/ourOffers';
 import imagesGallery from './schemas/homePage/gallery';
 import ourGoals from './schemas/homePage/ourGoals';
 import supportUs from './schemas/homePage/supportUs';
+import homeHeader from './schemas/homePage/header';
 
 // Projects
 import projects from './schemas/projects/projects';
@@ -34,6 +35,7 @@ import author from './schemas/author';
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     projectContent,
+    homeHeader,
     projectYears,
     ourGoals,
     supportUscallToAction,

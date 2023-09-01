@@ -10,7 +10,7 @@ function VideoModal({ setIsModalOpen, isModalOpen }: IProps) {
     <button
       type="button"
       onClick={() => setIsModalOpen({ isOpen: false, url: '' })}
-      className="h-screen w-screen fixed flex flex-col items-center justify-center top-0 left-0 bg-background bg-opacity-90"
+      className="h-screen w-full fixed flex flex-col items-center justify-center top-0 left-0 bg-background bg-opacity-90"
       style={{ zIndex: 100 }}
     >
       <button

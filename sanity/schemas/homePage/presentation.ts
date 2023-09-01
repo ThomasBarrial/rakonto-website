@@ -66,6 +66,15 @@ export default defineType({
                 }),
               ],
             }),
+            defineField({
+              name: 'color',
+              title: 'Section Color',
+              type: 'color',
+              options: {
+                colorList: ['#91C98C', '#13795F', '#FEBE10', '#DD6D48'],
+              },
+              validation: (Rule) => Rule.required(),
+            }),
           ],
         },
       ],

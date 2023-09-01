@@ -7,6 +7,7 @@ import { Article, ISubject } from '../../../types';
 import SideBar from './SideBar';
 import H1 from '../global/text/H1';
 import ArticleCard from './ArticleCard';
+import SectionContainer from '../global/SectionContainer';
 
 interface IProps {
   subjects: ISubject[];
@@ -48,7 +49,7 @@ function ArticlesSection({ subjects, articles }: IProps) {
   });
 
   return (
-    <div className=" w-full pt-20 font-josefin">
+    <SectionContainer className=" w-full pt-20 font-josefin">
       <H1 contentEn="Our Articles" contentFr="Nos Articles" />
       <div className="flex flex-col lg:flex-row lg:mt-5">
         <SideBar
@@ -76,7 +77,7 @@ function ArticlesSection({ subjects, articles }: IProps) {
           </div>
         )}
       </div>
-    </div>
+    </SectionContainer>
   );
 }
 

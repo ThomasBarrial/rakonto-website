@@ -16,23 +16,40 @@ function ProjectSideBar({ project }: { project: IProject }) {
       setIsOpen(true);
     }
   }, []);
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const targetY = rect.top + scrollTop - 80;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <div
-      className={`fixed overflow-y-scroll lg:sticky lg:top-20 z-20 bottom-7 w-[90%] lg:w-3/12 border-2 lg:border-l lg:border-0  border-primary  right-5 bg-background  shadow-2xl lg:shadow-none  text-lg p-3 lg:ml-10 lg:p-5   ${
+      className={`fixed overflow-y-scroll lg:overflow-hidden lg:sticky lg:top-16 z-20 bottom-7 lg:bottom-2 w-[90%] lg:w-3/12 border-2 lg:border-l lg:border-0  border-primary  right-5 bg-background  shadow-2xl lg:shadow-none  text-lg p-3 lg:ml-10 lg:p-5   ${
         isOpen ? 'h-[85vh]' : 'h-[6vh] lg:h-screen'
-      } transform duration-500 ease-out `}
+      } transform duration-500 ease-out  `}
     >
       <div className="flex flex-col space-y-1  pb-2">
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="flex justify-between items-start text-left mb-5 w-full"
+          className="flex justify-between items-start text-left mb-5 lg:mb-0 w-full"
         >
-          <H3
-            className="text-primary"
-            contentEn="ABOUT THIS PROJECT"
-            contentFr="A PROPOS DE CE PROJET"
-          />
+          {project.content && (
+            <H3
+              className="text-primary"
+              contentEn="ABOUT THIS PROJECT"
+              contentFr="A PROPOS DE CE PROJET"
+            />
+          )}
           <Image
             className={`${
               isOpen ? 'rotate-180' : 'rotate-0'
@@ -43,7 +60,18 @@ function ProjectSideBar({ project }: { project: IProject }) {
             width={13}
           />
         </button>
-        <TextSmall contentEn={project.title} contentFr={project.titleEn} />
+        {project.content && (
+          <div className="mt-10">
+            {project.content.map((p) => (
+              <div key={p._key}>
+                <button type="button" onClick={() => scrollToSection(p._key)}>
+                  <TextSmall contentEn={p.titleEn} contentFr={p.title} />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+        {/* <TextSmall contentEn={project.title} contentFr={project.titleEn} />
         <ul>
           {project.subjects?.map((item) => (
             <li key={item._id}>
@@ -61,7 +89,7 @@ function ProjectSideBar({ project }: { project: IProject }) {
         <TextSmall
           contentEn={project.projectYear.year.toString()}
           contentFr={project.projectYear.year.toString()}
-        />
+        /> */}
       </div>
 
       <div className="mt-10">

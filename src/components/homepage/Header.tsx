@@ -1,46 +1,97 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
+import { useInView } from 'framer-motion';
 import Background from '../animated/Background';
 import BasicText from '../global/text/BasicText';
+import SlideUp from '../animated/SlideUp';
+import { IHomeHeader } from '../../../types';
+import LinkButton from '../global/buttons/LinkButton';
 // import TextUppercase from '../global/text/TextUppercase';
 // import Background from '../animated/Background';
 
-function Header() {
-  return (
-    <section className="h-full min-h-screen flex flex-col justify-between py-20">
-      <div className="">
-        <div className="font-francoisOne text-[4rem] md:text-[5rem]  leading-none mt-10 lg:text-[8rem] xl:text-[9rem] text-primary font-bold">
-          <h2>WE TRAIN AND INFORM</h2>
+interface IProps {
+  data: IHomeHeader;
+}
 
-          <h2 className="xl:text-center w-full">{`TOMORROW'S`}</h2>
-          <h2 className="xl:text-right w-full">SOLUTIONS</h2>
-        </div>
+function Header({ data }: IProps) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const targetY = rect.top + scrollTop - 80;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  return (
+    <section className=" h-screen w-full flex flex-col justify-between items-center  py-20 px-4 lg:px-10">
+      <div ref={ref} className="max-w-content w-full">
+        {inView && (
+          <div className="font-francoisOne   text-[60px] md:text-[5rem]  leading-none mt-10 lg:text-[8rem] xl:text-[9rem] text-primary font-bold">
+            <SlideUp duration={1}>
+              <h2>WE TRAIN AND INFORM</h2>
+            </SlideUp>
+            <SlideUp duration={1.5}>
+              <h2 className=" w-full">{`ON TOMORROW'S`}</h2>
+            </SlideUp>
+            <SlideUp duration={2}>
+              <h2 className=" w-full">SOLUTIONS</h2>
+            </SlideUp>
+          </div>
+        )}
       </div>
-      <div className="w-full flex  justify-between items-center">
-        <BasicText
-          className=" w-10/12 xl:w-5/12 font-josefin text-lg"
-          contentEn="   Rakonto is an association and a major player in European ecological
-          awareness projects. We invite young people from all over Europe to
-          take part in training weeks focusing on environmental issues."
-          contentFr="   Rakonto is an association and a major player in European ecological
-          awareness projects. We invite young people from all over Europe to
-          take part in training weeks focusing on environmental issues."
-        />
-        <Image
-          className="mt-20 hidden md:flex"
-          src="/scrollArrow2.png"
-          alt="scroll"
-          height={100}
-          width={50}
-        />
+      <div className="max-w-content">
+        {inView && (
+          <div className="w-full flex  justify-between items-center">
+            <div>
+              <SlideUp duration={2}>
+                <BasicText
+                  className=" w-10/12 xl:w-5/12 font-josefin text-lg"
+                  contentEn={data.textEn}
+                  contentFr={data.textFr}
+                />
+              </SlideUp>
+              <SlideUp duration={2.2}>
+                <LinkButton
+                  className="mt-5 w-52"
+                  textEn={data.callToAction.nameEn}
+                  textFr={data.callToAction.nameFr}
+                  link={data.callToAction.link}
+                />
+              </SlideUp>
+            </div>
+            <SlideUp duration={2}>
+              <button
+                type="button"
+                onClick={() => scrollToSection('presentation')}
+              >
+                <Image
+                  className="mt-20 hidden md:flex"
+                  src="/scrollArrow2.png"
+                  alt="scroll"
+                  height={100}
+                  width={50}
+                />
+              </button>
+            </SlideUp>
+          </div>
+        )}
       </div>
 
       <Background
-        image="/backgroundHome/bgheader.webp"
-        opacity={0.2}
-        start={300}
+        image="/backgroundHome/bgHeader5.png"
+        opacity={1}
+        start={0}
         end={2000}
       />
     </section>
