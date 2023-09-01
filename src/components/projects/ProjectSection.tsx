@@ -1,6 +1,7 @@
 'use client';
 
 import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
 import H3 from '../global/text/H3';
 import Body from '../articles/Body';
 import GalleryImage from '../global/images/GalleryImage';
@@ -13,7 +14,7 @@ import { Block, IExternalsLinks, IFile, SanityImage } from '../../../types';
 
 interface IProps {
   item: {
-    _id: string;
+    _key: string;
     title: string;
     titleEn: string;
     textFR?: Block[] | undefined;
@@ -30,6 +31,8 @@ interface IProps {
 function ProjectSection({ item, selected, setSelected }: IProps) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   // const [dropdownHeight, setDropdownHeight] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref);
   const [isModalOpen, setIsModalOpen] = useState({ isOpen: false, url: '' });
 
   // const handleClick = () => {
@@ -49,7 +52,7 @@ function ProjectSection({ item, selected, setSelected }: IProps) {
   // };
 
   return (
-    <div>
+    <div ref={ref}>
       {/* MODAL */}
       {isModalOpen.isOpen && (
         <VideoModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />

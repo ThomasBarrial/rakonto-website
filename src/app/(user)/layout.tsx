@@ -45,9 +45,9 @@ export default async function RootLayout({
   const contactInfos = await clientFetch(getContactInfos);
 
   return (
-    <html className="bg-background flex items-center justify-center" lang="en">
+    <html className="bg-background  " lang="en">
       <body
-        className={`${josefin.variable} ${francoisOne.variable}  w-full  text-textColor `}
+        className={`${josefin.variable} ${francoisOne.variable}  flex flex-col items-center justify-center  text-textColor `}
       >
         <ReduxProvider>
           <NavBar

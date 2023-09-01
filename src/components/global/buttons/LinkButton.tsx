@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import React from 'react';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 
@@ -14,18 +13,10 @@ function LinkButton({ link, textEn, textFr, className }: IProps) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
     <Link
-      className={`uppercase group font-josefin pb-[2px]  text-primary  flex border-b border-primary  items-center space-x-2 ${className}`}
+      className={`flex items-center text-background justify-center bg-primary border border-primary px-4 py-3 hover:bg-transparent hover:text-primary transform duration-500  font-bold ${className}`}
       href={link}
     >
-      <p>{selectedLanguage === 'Fr' ? textFr : textEn}</p>
-
-      <Image
-        className="mb-1"
-        src="/linkArrow.svg"
-        alt=""
-        height={12}
-        width={12}
-      />
+      {selectedLanguage === 'Fr' ? textFr : textEn}
     </Link>
   );
 }

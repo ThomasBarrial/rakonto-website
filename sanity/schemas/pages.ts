@@ -63,6 +63,11 @@ export default defineType({
           title: 'Our Goals',
           type: 'ourGoals',
         }),
+        defineArrayMember({
+          name: 'homeHeader',
+          title: 'Home Header',
+          type: 'homeHeader',
+        }),
       ],
     }),
   ],

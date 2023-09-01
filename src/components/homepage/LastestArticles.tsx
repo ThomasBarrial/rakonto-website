@@ -20,7 +20,7 @@ function LastestArticles({ data, articles }: IProps) {
   const inView = useInView(ref, { once: true, margin: '0px 100px -50px 0px' });
 
   return (
-    <SectionContainer className="xl:h-screen my-10 ">
+    <SectionContainer className="xl:h-screen my-32 ">
       <div ref={ref}>
         {inView && (
           <SlideUp duration={1.2} className="flex items-end justify-between">

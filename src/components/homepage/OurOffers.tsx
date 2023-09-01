@@ -14,7 +14,7 @@ function OurOffers({ data }: { data: IHomeOurOffersSection }) {
 
   return (
     <SectionContainer
-      bgImage="/backgroundHome/bgoffer3.png"
+      bgImage="/backgroundHome/bgOffer5.png"
       className=" h-screen"
     >
       <div ref={ref} className="flex flex-col items-center  h-screen pt-52">
@@ -30,7 +30,7 @@ function OurOffers({ data }: { data: IHomeOurOffersSection }) {
         {inView && (
           <SlideUp duration={1.5}>
             <LinkButton
-              className="w-8/12  lg:w-[240px] mt-10"
+              className="w-full  lg:w-[240px] mt-10"
               textEn={data.callToAction.nameEn}
               textFr={data.callToAction.nameFr}
               link={data.callToAction.link}

@@ -27,56 +27,37 @@ function ProjectsList({
   const [projectsList, setProjectList] = useState(projects);
   const [categorySelected, setCategorySelected] = useState<string | null>(null);
   const [subjectSelected, setSubjectSelected] = useState<string | null>(null);
-  const [yearSelected, setYearSelected] = useState<number | null>();
+  const [yearSelected, setYearSelected] = useState<number | null>(null);
 
   useEffect(() => {
     handleAnimate(setIsAnimate);
+    let filteredData = projects;
+    if (categorySelected) {
+      filteredData = projects.filter(
+        (item) =>
+          item.categories?.some(
+            (category) => category.titleFr === categorySelected
+          )
+      );
+    }
 
-    setProjectList(projects);
+    if (yearSelected) {
+      filteredData = projects.filter(
+        (item) => item.projectYear.year === yearSelected
+      );
+    }
 
-    // CATEGORIES
-    // const newArray = [];
-    // for (let i = 0; i < projects.length; i += 1) {
-    //   const projectCategory = projects[i].categories?.filter(
-    //     (c) => c.titleEn === categorySelected || c.titleFr === categorySelected
-    //   );
+    if (subjectSelected) {
+      filteredData = projects.filter(
+        (item) =>
+          item.subjects?.some((subject) => subject.titleFr === subjectSelected)
+      );
+    }
 
-    //   if (projectCategory && projectCategory.length > 0) {
-    //     newArray.push(projects[i]);
-    //   }
-    // }
+    setProjectList(filteredData);
 
-    // console.log(newArray);
-    // setProjectList(newArray);
-
-    // // SUBJECTS
-    // if (subjectSelected) {
-    //   for (let i = 0; i < projects.length; i += 1) {
-    //     const projectSubject = projects[i].subjects?.filter(
-    //       (c) => c.titleEn === subjectSelected || c.titleFr === subjectSelected
-    //     );
-
-    //     if (projectSubject && projectSubject.length > 0) {
-    //       projectsList.push(projects[i]);
-    //     }
-    //   }
-    // }
-
-    // // YEARS
-    // if (yearSelected) {
-    //   for (let i = 0; i < projects.length; i += 1) {
-    //     const projectYear = projects[i].projectYear?.year;
-
-    //     if (projectYear && projectYear === yearSelected) {
-    //       projectsList.push(projects[i]);
-    //     }
-    //   }
-    // }
-
-    // if (!yearSelected && !subjectSelected && !categorySelected) {
-    //   setProjectList(projects);
-    // }
-  }, [projects, subjectSelected, yearSelected, categorySelected]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categorySelected, subjectSelected, yearSelected]);
 
   const filteredData = projectsList.filter((item) => {
     if (selectedLanguage === 'Fr') {
@@ -92,9 +73,14 @@ function ProjectsList({
           setIsAnimate={setIsAnimate}
           setCategorySelected={setCategorySelected}
           searchTerm={searchTerm}
+          categorySelected={categorySelected}
+          subjectSelected={subjectSelected}
+          yearSelected={yearSelected}
+          setSubjectSelected={setSubjectSelected}
           setSearchTerm={setSearchTerm}
           projectCategories={projectCategories}
           subjects={subjects}
+          setYearSelected={setYearSelected}
           years={years}
         />
         {isAnimate && (

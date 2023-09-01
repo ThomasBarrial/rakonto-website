@@ -38,7 +38,7 @@ export default async function Home() {
 
   return (
     <PageContainer>
-      <Header />
+      <Header data={homePageContent.pageBuilder[7]} />
       <Presentation data={homePageContent.pageBuilder[0]} />
       {/* <OurGoals data={homePageContent.pageBuilder[1]} /> */}
       <OurProjects data={homePageContent.pageBuilder[2]} />

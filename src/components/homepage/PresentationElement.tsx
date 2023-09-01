@@ -18,6 +18,9 @@ interface IProps {
     descriptionEn: string;
     descriptionFr: string;
     image: SanityImage;
+    color: {
+      hex: string;
+    };
   };
   index: number;
 }
@@ -25,33 +28,21 @@ interface IProps {
 function PresentationElement({ item, index }: IProps) {
   const { scrollYProgress } = useScroll();
 
-  const y = useParallax(scrollYProgress, -200, 400);
+  const y = useParallax(scrollYProgress, -200, 600);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
-  const variants = {
-    open: {
-      y: 0,
-      scale: 1,
-      transition: { duration: 2, bounce: 0, delay: 0 },
-    },
-    closed: {
-      y: '600px',
-      scale: 1,
-      transition: { duration: 2, bounce: 0, delay: 0 },
-    },
-  };
   return (
     <div
       ref={ref}
-      className={`lg:h-[90vh]  flex  my-10 ${
+      className={`lg:h-[60vh]   flex  my-14 ${
         index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
       } items-end`}
     >
       {inView && (
         <div
           className={`w-full h-[100%] flex flex-col items-end  lg:w-5/12 ${
-            index % 2 === 0 ? 'pr-10' : 'pl-10'
+            index % 2 === 0 ? 'lg:pr-10' : 'lg:pl-10'
           } lg:justify-between`}
         >
           <SlideUp
@@ -59,36 +50,47 @@ function PresentationElement({ item, index }: IProps) {
             duration={1.2}
           >
             <H1
-              className=" w-full"
+              className={`w-full ${
+                item.color.hex === '#febe10' && 'text-tertiary'
+              } ${item.color.hex === '#dd6d48' && 'text-quaternary'}`}
               contentEn={item.nameEn}
               contentFr={item.nameFr}
             />
 
             <BasicText
               key={item._key}
-              className="w-8/12 mt-20 lg:mt-10 lg:w-10/12"
+              className="mt-10 w-10/12"
               contentEn={item.descriptionEn}
               contentFr={item.descriptionFr}
             />
           </SlideUp>
-          <Image
+          {/* <Image
             className="mt-10"
             src="/BLGreenPatternt.svg"
             height={50}
             width={50}
             priority
             alt="pattern"
-          />
+          /> */}
+          <div className="mt-10  h-28 w-28 flex flex-col justify-end items-end">
+            <div
+              className={`${item.color.hex === '#febe10' && 'bg-tertiary'} ${
+                item.color.hex === '#dd6d48' && 'bg-quaternary'
+              } ${
+                item.color.hex === '#13795f' && 'bg-primary'
+              }   w-full h-6 rotate-90 translate-x-[45px] -translate-y-[21px]`}
+            />
+            <div
+              className={`${item.color.hex === '#febe10' && 'bg-tertiary'} ${
+                item.color.hex === '#dd6d48' && 'bg-quaternary'
+              } ${item.color.hex === '#13795f' && 'bg-primary'}  w-full h-6`}
+            />
+          </div>
         </div>
       )}
       {inView && (
         <div className="h-[100%] w-6/12 hidden lg:flex lg:flex-col lg:w-7/12 overflow-hidden">
-          <motion.div
-            className="relative min-h-[120%] w-full"
-            variants={variants}
-            initial="closed"
-            animate="open"
-          >
+          <div className="relative min-h-[120%] w-full">
             <motion.div
               key={item._key}
               style={{ y }}
@@ -101,7 +103,7 @@ function PresentationElement({ item, index }: IProps) {
                 alt={item.image.alt ? item.image.alt : 'unknow Image'}
               />
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       )}
     </div>
