@@ -2,9 +2,9 @@ import React from 'react';
 import { Slug } from 'sanity';
 import { getAllOffersSlug, getOneOffer } from '@/lib/queries';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import client from '../../../../../../sanity/lib/client';
 import { IOffer } from '../../../../../../types';
-import Image from 'next/image';
 import urlForImage from '../../../../../../sanity/lib/image';
 
 type Props = {
@@ -46,17 +46,16 @@ export async function generateMetadata({
 async function formOffer({ params: { slug } }: Props) {
   const offer: IOffer = await client.fetch(getOneOffer, { slug });
 
-  console.log(offer.formLink);
   return (
     <div className="w-full flex">
-      <div className="w-full lg:w-6/12 h-screen min-h-screen  flex items-center justify-center mt-10">
+      <div className="w-full lg:w-6/12 mt-10 h-screen min-h-screen  flex items-center justify-center  overflow-hidden">
         <iframe
           className="no-scroll"
           src={offer.formLink}
           title="Register"
           width="100%"
           allowTransparency
-          height="100%"
+          height="120%"
           style={{ background: 'none', overflow: 'scroll' }}
           allowFullScreen
           loading="eager"
