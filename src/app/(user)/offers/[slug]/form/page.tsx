@@ -3,6 +3,7 @@ import { Slug } from 'sanity';
 import { getAllOffersSlug, getOneOffer } from '@/lib/queries';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import OffersForm from '@/components/offers/OffersForm';
 import client from '../../../../../../sanity/lib/client';
 import { IOffer } from '../../../../../../types';
 import urlForImage from '../../../../../../sanity/lib/image';
@@ -49,17 +50,7 @@ async function formOffer({ params: { slug } }: Props) {
   return (
     <div className="w-full flex">
       <div className="w-full lg:w-6/12 mt-10 h-screen min-h-screen  flex items-center justify-center  overflow-hidden">
-        <iframe
-          className="no-scroll"
-          src={offer.formLink}
-          title="Register"
-          width="100%"
-          allowTransparency
-          height="120%"
-          style={{ background: 'none', overflow: 'scroll' }}
-          allowFullScreen
-          loading="eager"
-        />
+        <OffersForm />
       </div>
       <div className="w-6/12 sticky top-10">
         <Image
