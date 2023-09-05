@@ -47,10 +47,30 @@ export async function generateMetadata({
 async function formOffer({ params: { slug } }: Props) {
   const offer: IOffer = await client.fetch(getOneOffer, { slug });
 
+  const query =
+    '{ boards (limit:5) {name id groups{title id} columns{title id type settings_str} }  }';
+
+  const getEventMondayArray = await fetch('https://api.monday.com/v2', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization:
+        'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI3ODk4OTExMSwiYWFpIjoxMSwidWlkIjo0ODA1NTc2NiwiaWFkIjoiMjAyMy0wOS0wMVQxMzozNzo1My4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTg1MzI0NjAsInJnbiI6ImV1YzEifQ.MvZWF1Z3_vdY0r4QlQ2GkKpIgcjEzLcY7Mk2chvNsvo',
+    },
+    body: JSON.stringify({
+      query,
+    }),
+  }).then((res) => res.json());
+  // .then((res) => JSON.stringify(res, null, 2));
+
+  const findMondayBoardName = getEventMondayArray.data.boards.find(
+    (board: any) => board.name === offer.mondayArrayName
+  );
+
   return (
     <div className="w-full flex">
       <div className="w-full lg:w-6/12 mt-10 h-screen min-h-screen  flex items-center justify-center  overflow-hidden">
-        <OffersForm />
+        <OffersForm mondayBoard={findMondayBoardName} />
       </div>
       <div className="w-6/12 sticky top-10">
         <Image

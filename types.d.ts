@@ -316,4 +316,14 @@ export interface IOffer extends SanityDocument {
   endDate: string;
   files?: IFile[];
   formLink: string;
+  mondayArrayName: string;
+  mondayGroupName: string;
+}
+
+export interface IMondayClmnArray {
+  title: string;
+  id: string;
+  type: string;
+  settings_str: string;
+  value?: string;
 }

@@ -2,31 +2,71 @@
 
 'use client';
 
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
+import { IMondayClmnArray } from '../../../types';
+import TextInput from '../inputs/TextInput';
+import TextAreaInput from '../inputs/TextAreaInput';
+import EmailInput from '../inputs/EmailInput';
 
-function OffersForm() {
+function OffersForm({ mondayBoard }: { mondayBoard: any }) {
+  const { selectedLanguage } = useSelectedLanguagesFromStore();
   const apiKey = process.env.NEXT_PUBLIC_MONDAY_API_KEY as string;
   const apiUrl = process.env.NEXT_PUBLIC_MONDAY_API_URL as string;
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    text: '',
-  });
+  const [userName, setUserName] = useState('');
+  const [userFirstName, setUserFirstName] = useState('');
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  const [formInputs, setFormInputs] = useState<IMondayClmnArray[]>([]);
+
+  useEffect(() => {
+    console.log('hello', mondayBoard);
+    // Créez une copie des colonnes de mondayBoard avec la propriété "value"
+    const updatedFormInputs = mondayBoard.columns.map(
+      (element: IMondayClmnArray) => ({ ...element, value: '' })
+    );
+
+    setFormInputs(updatedFormInputs);
+  }, []);
+
+  // console.log(mondayBoard.id);
+
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    id: string
   ) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
+    const updatedFormInputs = formInputs.map((colmn) => {
+      if (colmn.id === id) {
+        return { ...colmn, value: e.target.value };
+      }
+      return colmn;
     });
+
+    setFormInputs(updatedFormInputs);
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    // Supprimez l'élément avec l'id "name" du tableau
+    const filteredFormInputs = formInputs.filter(
+      (colmn) => colmn.id !== 'name'
+    );
+
+    // Utilisez reduce pour créer l'objet souhaité
+    const resultObject: Record<string, string> = filteredFormInputs.reduce(
+      (acc: any, colmn) => {
+        acc[colmn.id] = colmn.value || '';
+        return acc;
+      },
+      {}
+    );
+
+    console.log('result', resultObject);
+
+    console.log('submit', formInputs);
+
+    console.log(parseInt(mondayBoard.id, 10));
 
     const body = {
       query: `
@@ -41,12 +81,9 @@ function OffersForm() {
       }
       `,
       variables: {
-        boardId: 1260935178,
-        itemName: 'New item name',
-        columnValues: JSON.stringify({
-          texte4: formData.email,
-          texte0: formData.text,
-        }),
+        boardId: parseInt(mondayBoard.id, 10),
+        itemName: `${userFirstName} ${userName}`,
+        columnValues: JSON.stringify(resultObject),
       },
     };
 
@@ -73,59 +110,45 @@ function OffersForm() {
 
   const query = '{ boards (limit:5) {name id groups{title id} }  }';
 
-  fetch('https://api.monday.com/v2', {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization:
-        'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI3ODk4OTExMSwiYWFpIjoxMSwidWlkIjo0ODA1NTc2NiwiaWFkIjoiMjAyMy0wOS0wMVQxMzozNzo1My4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTg1MzI0NjAsInJnbiI6ImV1YzEifQ.MvZWF1Z3_vdY0r4QlQ2GkKpIgcjEzLcY7Mk2chvNsvo',
-    },
-    body: JSON.stringify({
-      query,
-    }),
-  })
-    .then((res) => res.json())
-    .then((res) => console.log(JSON.stringify(res, null, 2)));
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Prénom:</label>
-        <input
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
+        <TextInput
+          value={userFirstName}
+          name={selectedLanguage === 'Fr' ? 'Prénoms' : 'Firstname'}
+          onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+            setUserFirstName(e.target.value)
+          }
         />
-      </div>
-      <div>
-        <label>Nom:</label>
-        <input
-          type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
+        <TextInput
+          value={userName}
+          name={selectedLanguage === 'Fr' ? 'Noms' : 'LastName'}
+          onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+            setUserName(e.target.value)
+          }
         />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Texte:</label>
-        <textarea
-          name="text"
-          value={formData.text}
-          onChange={handleChange}
-          required
-        />
+        {formInputs.map((colmn) => (
+          <div key={colmn.id}>
+            {colmn.type === 'text' && colmn.title.toLowerCase() !== 'email' && (
+              <TextAreaInput
+                value={colmn.value}
+                name={colmn.title}
+                onChange={(
+                  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                ) => handleInputChange(e, colmn.id)}
+              />
+            )}
+            {colmn.type === 'text' && colmn.title.toLowerCase() === 'email' && (
+              <EmailInput
+                value={colmn.value}
+                name={colmn.title}
+                onChange={(
+                  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                ) => handleInputChange(e, colmn.id)}
+              />
+            )}
+          </div>
+        ))}
       </div>
       <button type="submit">Créer</button>
     </form>
