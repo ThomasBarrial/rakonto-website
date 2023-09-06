@@ -2,25 +2,28 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import { IOffer } from '../../../types';
 import urlForImage from '../../../sanity/lib/image';
 import H2 from '../global/text/H2';
 import BasicText from '../global/text/BasicText';
 import LinkButton from '../global/buttons/LinkButton';
+import H3 from '../global/text/H3';
+import DateFormat from '../global/DateFormat';
+import Body from '../articles/Body';
+import Files from '../projects/Files';
 
-function OneOffer({
-  offer,
-  link,
-  nameButton,
-}: {
-  offer: IOffer;
-  link: string;
-  nameButton: string;
-}) {
+function OneOffer({ offer, link }: { offer: IOffer; link: string }) {
+  const { selectedLanguage } = useSelectedLanguagesFromStore();
+
   return (
-    <div className="my-5 flex flex-col lg:flex-row">
-      <div className="lg:w-6/12">
-        <H2 contentEn={offer.titleEn} contentFr={offer.title} />
+    <div className="my-5 flex flex-col font-josefin lg:flex-row-reverse pt-20">
+      <div className="lg:w-5/12  lg:h-[80vh] lg:sticky lg:top-16 right-0">
+        <H2
+          className="lg:hidden flex"
+          contentEn={offer.titleEn}
+          contentFr={offer.title}
+        />
         <Image
           src={urlForImage(offer.mainImage.asset).url()}
           width={1200}
@@ -28,17 +31,75 @@ function OneOffer({
           alt={offer.mainImage.alt ? offer.mainImage.alt : 'unkown image'}
         />
       </div>
-      <div className="lg:w-5/12 lg:px-10">
+      <div className="lg:w-7/12 lg:pr-10">
+        <H2
+          className="hidden lg:flex"
+          contentEn={offer.titleEn}
+          contentFr={offer.title}
+        />
         <BasicText
           className="mt-10"
           contentEn={offer.descriptionEN}
           contentFr={offer.descriptionFR}
         />
 
+        <div className="mt-10">
+          <H3 contentEn="Date & Location" contentFr="Date et lieux" />
+          <div className="flex">
+            <span className="mr-2">
+              {selectedLanguage === 'Fr' ? 'Date de début' : 'Starting Date'} :
+            </span>
+            <DateFormat date={offer.startDate} />
+          </div>
+          <div className="flex">
+            <span className="mr-2">
+              {selectedLanguage === 'Fr' ? 'Date de Fin' : 'Ending Date'} :
+            </span>
+            <DateFormat date={offer.startDate} />
+          </div>
+          <div className="flex">
+            <span className="mr-2">
+              {selectedLanguage === 'Fr' ? 'Localisation' : 'Location'} :
+            </span>
+            <span>{offer.location}</span>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <H3
+            contentEn="ABOUT THIS EVENT"
+            contentFr="À PROPOS DE CET ÉVÉNEMENT"
+          />
+          <Body blockEn={offer.bodyEn} blockFr={offer.bodyFr} />
+        </div>
+
+        {offer.files && (
+          <div>
+            <Files files={offer.files} />
+            <span className="mr-2">
+              {selectedLanguage === 'Fr'
+                ? `C'est important que vous lisiez ce document attentivement.`
+                : `It's important that you read this document carefully.`}
+            </span>
+          </div>
+        )}
+
+        <div className="mt-10 text-quaternary text-lg">
+          <div className="flex">
+            <span className="mr-2">
+              {selectedLanguage === 'Fr'
+                ? 'Places deisponibles'
+                : 'Places Available'}{' '}
+              :
+            </span>
+            <span>{offer.PlacesAvailable - offer.placesOccupied}</span>
+          </div>
+        </div>
+
         <LinkButton
           className="mt-10"
-          textEn={nameButton}
-          textFr={nameButton}
+          textEn="Apply"
+          textFr="Postuler"
           link={link}
         />
       </div>

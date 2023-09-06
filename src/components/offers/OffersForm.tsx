@@ -13,6 +13,8 @@ import SelectInput from '../inputs/SelectInput';
 import NumberInput from '../inputs/NumberInput';
 import PhoneInput from '../inputs/PhoneInput';
 import DateInput from '../inputs/DateInput';
+import BasicText from '../global/text/BasicText';
+import LinkButton from '../global/buttons/LinkButton';
 
 function OffersForm({ mondayBoard }: { mondayBoard: any }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
@@ -116,12 +118,39 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
   };
 
   return (
-    <div>
-      {formStatus === 'validate' && <div>Formulaire validé</div>}
-      {formStatus === 'error' && <div>Erreur</div>}
+    <div className="w-full">
+      {formStatus === 'validate' && (
+        <div className=" w-full  pt-16">
+          <BasicText
+            contentFr="Merci pour votre demande, notre équipe vous recontactera bientôt pour les étapes suivantes."
+            contentEn="Thanks for your apply, our team will back to you soon for the following steps. "
+          />
+          <LinkButton
+            className=" w-full lg:w-4/12 mt-5"
+            link="/offers"
+            textEn="Back to the offers"
+            textFr="Retour vers les offres"
+          />
+        </div>
+      )}
+      {formStatus === 'error' && (
+        <div className=" w-full  pt-16">
+          <BasicText
+            className="text-quaternary"
+            contentFr="Oupss.. une erreur est survenu. Veuillez ressayer plus tard ou contacter notre équipe pour faire un rapport de l'incident."
+            contentEn="Oops... an error has occurred. Please try again later or contact our team to report the incident."
+          />
+          <LinkButton
+            className=" w-full lg:w-4/12 mt-5"
+            link="/contact"
+            textEn="Contact us"
+            textFr="Contactez nous"
+          />
+        </div>
+      )}
       {formStatus === 'inProgress' && formInputs.length > 0 && (
         <form
-          className="w-full  py-20 px-4 lg:px-10t flex flex-col space-y-5"
+          className="w-full  py-10 pr-10 flex flex-col space-y-5"
           onSubmit={handleSubmit}
         >
           <TextInput

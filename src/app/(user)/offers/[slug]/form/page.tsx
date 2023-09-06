@@ -4,7 +4,7 @@ import { getAllOffersSlug, getOneOffer } from '@/lib/queries';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import OffersForm from '@/components/offers/OffersForm';
-import { toast } from 'react-toastify';
+import H2 from '@/components/global/text/H2';
 import client from '../../../../../../sanity/lib/client';
 import { IOffer } from '../../../../../../types';
 import urlForImage from '../../../../../../sanity/lib/image';
@@ -69,19 +69,23 @@ async function formOffer({ params: { slug } }: Props) {
   );
 
   return (
-    <div className="w-full flex items-center justify-center max-w-content">
-      <div className="w-full lg:w-6/12 mt-10  min-h-screen  flex items-center justify-center  overflow-hidden">
+    <div className="w-full flex px-4 lg:px-10  max-w-content">
+      <div className="w-full lg:w-8/12 mt-10  min-h-[70vh]  flex  overflow-hidden">
         <OffersForm mondayBoard={findMondayBoardName} />
       </div>
-
-      {/* <div className="w-6/12 sticky top-10">
+      <div className="lg:w-4/12  lg:h-[80vh] lg:sticky lg:top-16 right-0">
+        <H2
+          className="flex"
+          contentEn={offer.titleEn}
+          contentFr={offer.title}
+        />
         <Image
           src={urlForImage(offer.mainImage.asset).url()}
           width={1200}
           height={300}
           alt={offer.mainImage.alt ? offer.mainImage.alt : 'unkown image'}
         />
-      </div> */}
+      </div>
     </div>
   );
 }

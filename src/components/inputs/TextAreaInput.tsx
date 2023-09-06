@@ -15,7 +15,7 @@ function TextAreaInput({ value, onChange, name }: IProps) {
         className='"w-full border border-primary bg-transparent focus:outline-none px-3 py-2 mt-1'
         name={name}
         value={value}
-        rows={10}
+        rows={5}
         onChange={onChange}
         required
       />

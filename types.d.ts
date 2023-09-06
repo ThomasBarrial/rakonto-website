@@ -318,6 +318,9 @@ export interface IOffer extends SanityDocument {
   formLink: string;
   mondayArrayName: string;
   mondayGroupName: string;
+  placesOccupied: number;
+  PlacesAvailable: number;
+  location: string;
 }
 
 export interface IMondayClmnArray {

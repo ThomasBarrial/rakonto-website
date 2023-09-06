@@ -48,15 +48,10 @@ export async function generateMetadata({
 async function Offer({ params: { slug } }: Props) {
   const offer = await client.fetch(getOneOffer, { slug });
 
-  console.log(offer);
   return (
     <PageContainer>
       <SectionContainer>
-        <OneOffer
-          offer={offer}
-          link={`/offers/${offer.slug.current}/form`}
-          nameButton="Register"
-        />
+        <OneOffer offer={offer} link={`/offers/${offer.slug.current}/form`} />
       </SectionContainer>
     </PageContainer>
   );

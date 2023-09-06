@@ -80,6 +80,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'bodyFr',
       title: 'Content FR',
       type: 'blockContent',
@@ -97,6 +103,19 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'PlacesAvailable',
+      title: 'Places Available',
+      type: 'number',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'placesOccupied',
+      title: 'Places occupied',
+      type: 'number',
+      validation: (Rule) => Rule.required(),
+    }),
+
     defineField({
       name: 'files',
       title: 'Files',
