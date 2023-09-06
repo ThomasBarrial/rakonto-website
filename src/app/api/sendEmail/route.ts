@@ -8,7 +8,8 @@ export async function POST(req: Request) {
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'barrialthomas@gmail.com',
+      user: 'EMAIL',
+      pass: 'PASS',
     },
   });
 
@@ -17,12 +18,13 @@ export async function POST(req: Request) {
     port: 465,
     secure: true, //ssl
     auth: {
-      user: 'rakontoservice64000@zohomail.eu',
+      user: 'EMAIL',
+      pass: 'PASS',
     },
   });
 
   const mailOptions = {
-    from: 'barrialthomas@gmail.com',
+    from: 'EMAIL',
     to: userEmail,
     subject: 'Confirmation de formulaire de contact',
     text: `Bonjour ${userFirstName} ${userName},\n\nVotre message a été reçu : ${message}`,
