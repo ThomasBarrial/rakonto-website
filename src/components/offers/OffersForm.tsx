@@ -9,6 +9,10 @@ import { IMondayClmnArray } from '../../../types';
 import TextInput from '../inputs/TextInput';
 import TextAreaInput from '../inputs/TextAreaInput';
 import EmailInput from '../inputs/EmailInput';
+import SelectInput from '../inputs/SelectInput';
+import NumberInput from '../inputs/NumberInput';
+import PhoneInput from '../inputs/PhoneInput';
+import DateInput from '../inputs/DateInput';
 
 function OffersForm({ mondayBoard }: { mondayBoard: any }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
@@ -16,23 +20,29 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
   const apiUrl = process.env.NEXT_PUBLIC_MONDAY_API_URL as string;
   const [userName, setUserName] = useState('');
   const [userFirstName, setUserFirstName] = useState('');
+  const [formStatus, setFormStatus] = useState('inProgress');
 
   const [formInputs, setFormInputs] = useState<IMondayClmnArray[]>([]);
 
   useEffect(() => {
-    console.log('hello', mondayBoard);
     // Créez une copie des colonnes de mondayBoard avec la propriété "value"
     const updatedFormInputs = mondayBoard.columns.map(
       (element: IMondayClmnArray) => ({ ...element, value: '' })
     );
 
     setFormInputs(updatedFormInputs);
+
+    if (formInputs.length < 0) {
+      setFormStatus('error');
+    }
   }, []);
 
   // console.log(mondayBoard.id);
 
   const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e:
+      | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      | ChangeEvent<HTMLSelectElement>,
     id: string
   ) => {
     const updatedFormInputs = formInputs.map((colmn) => {
@@ -62,12 +72,6 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
       {}
     );
 
-    console.log('result', resultObject);
-
-    console.log('submit', formInputs);
-
-    console.log(parseInt(mondayBoard.id, 10));
-
     const body = {
       query: `
       mutation ($boardId: Int!, $itemName: String!, $columnValues: JSON!) {
@@ -96,62 +100,112 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
         })
         .catch((err) => {
           console.error(err.data);
+          setFormStatus('error');
         })
         .then((res) => {
           console.log(res);
+          setFormStatus('validate');
         });
     } catch (error) {
       console.error(
         "Erreur lors de la création de l'élément dans Monday.com",
         error
       );
+      setFormStatus('error');
     }
   };
 
-  const query = '{ boards (limit:5) {name id groups{title id} }  }';
-
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <TextInput
-          value={userFirstName}
-          name={selectedLanguage === 'Fr' ? 'Prénoms' : 'Firstname'}
-          onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-            setUserFirstName(e.target.value)
-          }
-        />
-        <TextInput
-          value={userName}
-          name={selectedLanguage === 'Fr' ? 'Noms' : 'LastName'}
-          onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-            setUserName(e.target.value)
-          }
-        />
-        {formInputs.map((colmn) => (
-          <div key={colmn.id}>
-            {colmn.type === 'text' && colmn.title.toLowerCase() !== 'email' && (
-              <TextAreaInput
-                value={colmn.value}
-                name={colmn.title}
-                onChange={(
-                  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-                ) => handleInputChange(e, colmn.id)}
-              />
-            )}
-            {colmn.type === 'text' && colmn.title.toLowerCase() === 'email' && (
-              <EmailInput
-                value={colmn.value}
-                name={colmn.title}
-                onChange={(
-                  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-                ) => handleInputChange(e, colmn.id)}
-              />
-            )}
-          </div>
-        ))}
-      </div>
-      <button type="submit">Créer</button>
-    </form>
+    <div>
+      {formStatus === 'validate' && <div>Formulaire validé</div>}
+      {formStatus === 'error' && <div>Erreur</div>}
+      {formStatus === 'inProgress' && formInputs.length > 0 && (
+        <form
+          className="w-full  py-20 px-4 lg:px-10t flex flex-col space-y-5"
+          onSubmit={handleSubmit}
+        >
+          <TextInput
+            value={userFirstName}
+            name={selectedLanguage === 'Fr' ? 'Prénoms' : 'Firstname'}
+            onChange={(
+              e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+            ) => setUserFirstName(e.target.value)}
+          />
+          <TextInput
+            value={userName}
+            name={selectedLanguage === 'Fr' ? 'Noms' : 'LastName'}
+            onChange={(
+              e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+            ) => setUserName(e.target.value)}
+          />
+
+          {formInputs.map((colmn) => (
+            <div key={colmn.id}>
+              {colmn.type === 'text' &&
+                colmn.title.toLowerCase() !== 'email' && (
+                  <TextAreaInput
+                    value={colmn.value}
+                    name={colmn.title}
+                    onChange={(
+                      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                    ) => handleInputChange(e, colmn.id)}
+                  />
+                )}
+              {colmn.type === 'text' &&
+                colmn.title.toLowerCase() === 'email' && (
+                  <EmailInput
+                    value={colmn.value}
+                    name={colmn.title}
+                    onChange={(
+                      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                    ) => handleInputChange(e, colmn.id)}
+                  />
+                )}
+              {colmn.type === 'color' && (
+                <SelectInput
+                  name={colmn.title}
+                  options={Object.values(JSON.parse(colmn.settings_str).labels)}
+                  onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                    handleInputChange(e, colmn.id)
+                  }
+                />
+              )}
+              {colmn.type === 'numeric' && colmn.title !== 'Phone Number' && (
+                <NumberInput
+                  name={colmn.title}
+                  value={colmn.value}
+                  onChange={(
+                    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                  ) => handleInputChange(e, colmn.id)}
+                />
+              )}
+              {colmn.type === 'numeric' && colmn.title === 'Phone Number' && (
+                <PhoneInput
+                  name={colmn.title}
+                  value={colmn.value}
+                  onChange={(
+                    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                  ) => handleInputChange(e, colmn.id)}
+                />
+              )}
+              {colmn.type === 'date' && (
+                <DateInput
+                  name={colmn.title}
+                  onChange={(e) => handleInputChange(e, colmn.id)}
+                />
+              )}
+            </div>
+          ))}
+
+          <button
+            className="flex items-center text-background justify-center bg-primary border border-primary px-4 py-3 hover:bg-transparent hover:text-primary transform duration-500  font-bold"
+            type="submit"
+          >
+            {selectedLanguage === 'Fr' ? 'Postuler' : 'Apply'}
+          </button>
+        </form>
+      )}
+    </div>
   );
 }
 

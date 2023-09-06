@@ -9,18 +9,17 @@ interface IProps {
 
 function TextAreaInput({ value, onChange, name }: IProps) {
   return (
-    <div>
-      <label htmlFor="textArea">
-        {name}
-        <input
-          type="textarea"
-          name={name}
-          value={value}
-          onChange={onChange}
-          required
-        />
-      </label>
-    </div>
+    <label className="flex flex-col font-josefin" htmlFor="textArea">
+      {name}
+      <textarea
+        className='"w-full border border-primary bg-transparent focus:outline-none px-3 py-2 mt-1'
+        name={name}
+        value={value}
+        rows={10}
+        onChange={onChange}
+        required
+      />
+    </label>
   );
 }
 

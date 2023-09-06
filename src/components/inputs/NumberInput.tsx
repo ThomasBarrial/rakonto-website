@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { ChangeEvent } from 'react';
 
 interface IProps {
@@ -7,21 +8,23 @@ interface IProps {
   name: string;
 }
 
-function EmailInput({ value, onChange, name }: IProps) {
+function NumberInput({ value, onChange, name }: IProps) {
   return (
-    <label className="flex flex-col font-josefin" htmlFor="email">
+    <label htmlFor={name}>
       {name}
+
       <input
-        className="w-full border border-primary bg-transparent focus:outline-none px-3 py-2 mt-1"
-        id="email"
-        type="email"
-        name={name}
+        type="number"
         value={value}
         onChange={onChange}
+        id={name}
+        name={name}
+        min="1"
+        max="2000"
         required
       />
     </label>
   );
 }
 
-export default EmailInput;
+export default NumberInput;
