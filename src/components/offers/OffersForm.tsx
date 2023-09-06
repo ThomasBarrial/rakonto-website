@@ -5,6 +5,7 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
+import sendConfirmationMail from '@/utils/sendConfirmationMail';
 import { IMondayClmnArray } from '../../../types';
 import TextInput from '../inputs/TextInput';
 import TextAreaInput from '../inputs/TextAreaInput';
@@ -63,6 +64,10 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
       (colmn) => colmn.id !== 'name'
     );
 
+    const userEmail = formInputs.filter(
+      (colmn) => colmn.title.toLowerCase() === 'email'
+    )[0].value;
+
     // Utilisez reduce pour créer l'objet souhaité
     const resultObject: Record<string, string> = filteredFormInputs.reduce(
       (acc: any, colmn) => {
@@ -102,9 +107,23 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
           console.error(err.data);
           setFormStatus('error');
         })
-        .then((res) => {
+        .then(async (res) => {
           console.log(res);
           setFormStatus('validate');
+          if (userEmail) {
+            await fetch('/api/sendEmail', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                userFirstName,
+                userName,
+                userEmail,
+                message: 'bonjour vos demande à été enregistrer',
+              }),
+            });
+          }
         });
     } catch (error) {
       console.error(
@@ -113,6 +132,21 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
       );
       setFormStatus('error');
     }
+  };
+
+  const handleClick = async () => {
+    await fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userFirstName: 'Thomas',
+        userName: 'Barrial',
+        userEmail: 'thomas.barrial@gmail.com',
+        message: 'bonjour vos demande à été enregistrer',
+      }),
+    }).then((response) => console.log(response));
   };
 
   return (
@@ -202,6 +236,9 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
             type="submit"
           >
             {selectedLanguage === 'Fr' ? 'Postuler' : 'Apply'}
+          </button>
+          <button type="button" onClick={handleClick}>
+            fetch
           </button>
         </form>
       )}

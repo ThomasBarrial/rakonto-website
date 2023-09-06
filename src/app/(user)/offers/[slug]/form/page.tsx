@@ -4,7 +4,6 @@ import { getAllOffersSlug, getOneOffer } from '@/lib/queries';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import OffersForm from '@/components/offers/OffersForm';
-import { toast } from 'react-toastify';
 import client from '../../../../../../sanity/lib/client';
 import { IOffer } from '../../../../../../types';
 import urlForImage from '../../../../../../sanity/lib/image';
