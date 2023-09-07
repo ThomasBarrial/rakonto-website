@@ -18,7 +18,7 @@ import LinkButton from '../global/buttons/LinkButton';
 function OffersSection({ offers }: { offers: IOffer[] }) {
   const [currentVisibleOfferId, setCurrentVisibleOfferId] = useState<
     string | null
-  >(null);
+  >(offers[0]._id);
 
   function isElementInViewport(el: HTMLElement | null) {
     if (!el) return false;
@@ -72,11 +72,9 @@ function OffersSection({ offers }: { offers: IOffer[] }) {
               onClick={() => scrollToSection(item._id, 50)}
               type="button"
               key={item._id}
-              className="text-primary"
+              className="text-primary font-bold"
               style={{
                 opacity: currentVisibleOfferId === item._id ? '1' : '0.8',
-                fontWeight:
-                  currentVisibleOfferId === item._id ? 'bold' : 'light',
               }}
             >
               <div className="flex items-center">
