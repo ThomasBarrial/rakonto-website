@@ -37,7 +37,7 @@ function FullWidthImage({
 
   return (
     <div
-      className={`w-full h-52  lg:h-screen z-0 relative max-h-[65rem] overflow-hidden ${className}`}
+      className={`w-full h-80  lg:h-96 z-0 relative max-h-[65rem] overflow-hidden ${className}`}
     >
       {title && titleEn && (
         <div className=" bg-primary bg-opacity-50 h-[100%] w-[100%] relative flex justify-center items-center -translate-y-1/2  top-1/2 z-10">
@@ -52,7 +52,7 @@ function FullWidthImage({
       {isModalOpen.isOpen && (
         <VideoModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       )}{' '}
-      <motion.div style={{ y }} className="w-[100%] h-[110%]">
+      <motion.div style={{ y }} className="w-[100%] h-[130%]">
         {videoUrl ? (
           <Video
             container="h-full"

@@ -74,8 +74,8 @@ async function OneArticle({ params: { slug } }: Props) {
           className="mt-5"
           path={urlForImage(article.mainImage.asset).url()}
           alt={article.mainImage.alt ? article.mainImage.alt : 'unknow Image'}
-          end={600}
-          start={-900}
+          end={200}
+          start={-400}
         />
         <BasicText
           className="mt-5"
