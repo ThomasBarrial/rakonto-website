@@ -11,6 +11,7 @@ import {
   getContactInfos,
 } from '@/lib/queries';
 import Footer from '@/components/global/Footer';
+
 import client from '../../../sanity/lib/client';
 
 const josefin = Josefin_Sans({

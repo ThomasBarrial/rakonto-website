@@ -113,3 +113,27 @@ export const getOneProject = groq`
     "manuscriptURL": asset->url
   }
 }`;
+
+export const getAllOffers = groq`
+*[_type == "offers"] {
+    ...,
+    files[]{
+    ...,
+    "manuscriptURL": asset->url
+    }
+}`;
+
+export const getAllOffersSlug = groq`
+*[_type == "offers"] {
+slug
+}`;
+
+export const getOneOffer = groq`
+*[_type == "offers" && slug.current == $slug][0] {
+    ...,
+    files[]{
+    ...,
+    "manuscriptURL": asset->url
+  }
+} 
+`;

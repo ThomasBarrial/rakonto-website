@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import scrollToSection from '@/utils/scrollToSection';
 import { IProject } from '../../../types';
 import H3 from '../global/text/H3';
 import TextSmall from '../global/text/TextSmall';
@@ -16,20 +17,6 @@ function ProjectSideBar({ project }: { project: IProject }) {
       setIsOpen(true);
     }
   }, []);
-
-  const scrollToSection = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-      const rect = section.getBoundingClientRect();
-      const scrollTop = window.scrollY || window.pageYOffset;
-      const targetY = rect.top + scrollTop - 80;
-
-      window.scrollTo({
-        top: targetY,
-        behavior: 'smooth',
-      });
-    }
-  };
 
   return (
     <div
@@ -64,32 +51,16 @@ function ProjectSideBar({ project }: { project: IProject }) {
           <div className="mt-10">
             {project.content.map((p) => (
               <div key={p._key}>
-                <button type="button" onClick={() => scrollToSection(p._key)}>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection(p._key, 80)}
+                >
                   <TextSmall contentEn={p.titleEn} contentFr={p.title} />
                 </button>
               </div>
             ))}
           </div>
         )}
-        {/* <TextSmall contentEn={project.title} contentFr={project.titleEn} />
-        <ul>
-          {project.subjects?.map((item) => (
-            <li key={item._id}>
-              <TextSmall contentEn={item.titleEn} contentFr={item.titleFr} />{' '}
-            </li>
-          ))}
-        </ul>
-        <ul>
-          {project.categories?.map((item) => (
-            <li key={item._id}>
-              <TextSmall contentEn={item.titleEn} contentFr={item.titleFr} />{' '}
-            </li>
-          ))}
-        </ul>
-        <TextSmall
-          contentEn={project.projectYear.year.toString()}
-          contentFr={project.projectYear.year.toString()}
-        /> */}
       </div>
 
       <div className="mt-10">

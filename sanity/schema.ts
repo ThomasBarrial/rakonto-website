@@ -32,6 +32,9 @@ import projectContent from './schemas/projects/projectContent';
 import articles from './schemas/articles';
 import author from './schemas/author';
 
+// Offers
+import offers from './schemas/ourOffers/offers';
+
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     projectContent,
@@ -58,6 +61,7 @@ const schema: { types: SchemaTypeDefinition[] } = {
     externalLinks,
     projects,
     projectsCategories,
+    offers,
   ],
 };
 
