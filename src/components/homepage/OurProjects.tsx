@@ -10,6 +10,7 @@ import BasicText from '../global/text/BasicText';
 import H2 from '../global/text/H2';
 import SlideUp from '../animated/SlideUp';
 import SectionContainer from '../global/SectionContainer';
+import H3 from '../global/text/H3';
 
 interface IProps {
   data: IHomeOurProjectSection;
@@ -27,7 +28,7 @@ function OurProjects({ data }: IProps) {
   return (
     <SectionContainer
       bgImage="/backgroundHome/bgProjects5.png"
-      className=" h-screen my-10  flex flex-col  items-start justify-center"
+      className="  flex flex-col  items-start justify-center"
     >
       <div ref={ref} className=" mt-10 lg:mt-0 w-full ">
         {inView && (
@@ -47,8 +48,8 @@ function OurProjects({ data }: IProps) {
                   }}
                 >
                   <Link href={item.link}>
-                    <H2
-                      className="hover:font-bold transform duration-200"
+                    <H3
+                      className="hover:bg-transparent hover:text-primary border border-primary transform duration-200 bg-primary text-white px-5 pt-1 flex items-center"
                       contentEn={item.nameEn}
                       contentFr={item.nameFr}
                     />
@@ -68,7 +69,7 @@ function OurProjects({ data }: IProps) {
         {inView && (
           <SlideUp
             duration={1.2}
-            className=" mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between lg:mt-52"
+            className=" mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between lg:mt-32"
           >
             <LinkButton
               className="w-8/12  lg:w-[240px] mt-10"

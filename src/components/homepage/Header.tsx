@@ -34,10 +34,10 @@ function Header({ data }: IProps) {
   };
 
   return (
-    <section className=" h-screen w-full flex flex-col justify-between items-center  py-20 px-4 lg:px-10">
+    <section className=" w-full flex flex-col justify-between items-center  py-20 px-4 lg:px-10">
       <div ref={ref} className="max-w-content w-full">
         {inView && (
-          <div className="font-francoisOne   text-[60px] md:text-[5rem]  leading-none mt-10 lg:text-[8rem] xl:text-[9rem] text-primary font-bold">
+          <div className="font-francoisOne   text-[60px] md:text-[5rem]  leading-none mt-10 lg:text-[7rem] xl:text-[8rem] text-primary font-bold">
             <SlideUp duration={1}>
               <h2>WE TRAIN AND INFORM</h2>
             </SlideUp>
@@ -56,7 +56,7 @@ function Header({ data }: IProps) {
             <div>
               <SlideUp duration={2}>
                 <BasicText
-                  className=" w-10/12 xl:w-5/12 font-josefin text-lg"
+                  className=" w-10/12 xl:w-6/12 font-josefin text-lg mt-5"
                   contentEn={data.textEn}
                   contentFr={data.textFr}
                 />

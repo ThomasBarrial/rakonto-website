@@ -63,21 +63,24 @@ async function OneArticle({ params: { slug } }: Props) {
   return (
     <PageContainer>
       <SectionContainer>
-        <H2
+        {/* <H2
           contentEn={article.titleEn}
           contentFr={article.title}
           className="mt-24"
+        /> */}
+        <FullWidthImage
+          title={article.title}
+          titleEn={article.titleEn}
+          className="mt-5"
+          path={urlForImage(article.mainImage.asset).url()}
+          alt={article.mainImage.alt ? article.mainImage.alt : 'unknow Image'}
+          end={600}
+          start={-900}
         />
         <BasicText
           className="mt-5"
           contentEn={article.descriptionEN}
           contentFr={article.descriptionFR}
-        />
-        <FullWidthImage
-          className="mt-5"
-          path={urlForImage(article.mainImage.asset).url()}
-          alt={article.mainImage.alt ? article.mainImage.alt : 'unknow Image'}
-          end={600}
         />
         <div className="flex mt-10">
           <div className="w-full lg:w-8/12">

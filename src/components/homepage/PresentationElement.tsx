@@ -35,7 +35,7 @@ function PresentationElement({ item, index }: IProps) {
   return (
     <div
       ref={ref}
-      className={`lg:h-[60vh]   flex  my-14 ${
+      className={`lg:h-[60vh]   flex  my-20 ${
         index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
       } items-end`}
     >
