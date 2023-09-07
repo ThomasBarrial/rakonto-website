@@ -97,12 +97,7 @@ export default defineType({
       type: 'blockContent',
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'formLink',
-      title: 'Form Link',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
+
     defineField({
       name: 'PlacesAvailable',
       title: 'Places Available',
@@ -143,12 +138,6 @@ export default defineType({
     defineField({
       title: 'Monday Array Name',
       name: 'mondayArrayName',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      title: 'Monday Group Name',
-      name: 'mondayGroupName',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),

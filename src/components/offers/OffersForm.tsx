@@ -57,6 +57,8 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
     setFormInputs(updatedFormInputs);
   };
 
+  console.log(mondayBoard.columns[4].title.toLowerCase());
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
@@ -199,24 +201,26 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
                   }
                 />
               )}
-              {colmn.type === 'numeric' && colmn.title !== 'Phone Number' && (
-                <NumberInput
-                  name={colmn.title}
-                  value={colmn.value}
-                  onChange={(
-                    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-                  ) => handleInputChange(e, colmn.id)}
-                />
-              )}
-              {colmn.type === 'numeric' && colmn.title === 'Phone Number' && (
-                <PhoneInput
-                  name={colmn.title}
-                  value={colmn.value}
-                  onChange={(
-                    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-                  ) => handleInputChange(e, colmn.id)}
-                />
-              )}
+              {colmn.type === 'numeric' &&
+                colmn.title.toLowerCase() !== 'phone number' && (
+                  <NumberInput
+                    name={colmn.title}
+                    value={colmn.value}
+                    onChange={(
+                      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                    ) => handleInputChange(e, colmn.id)}
+                  />
+                )}
+              {colmn.type === 'numeric' &&
+                colmn.title.toLowerCase() === 'phone number' && (
+                  <PhoneInput
+                    name={colmn.title}
+                    value={colmn.value}
+                    onChange={(
+                      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                    ) => handleInputChange(e, colmn.id)}
+                  />
+                )}
               {colmn.type === 'date' && (
                 <DateInput
                   name={colmn.title}

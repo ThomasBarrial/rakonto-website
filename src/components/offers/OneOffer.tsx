@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
+import Link from 'next/link';
 import { IOffer } from '../../../types';
 import urlForImage from '../../../sanity/lib/image';
 import H2 from '../global/text/H2';
@@ -96,12 +97,28 @@ function OneOffer({ offer, link }: { offer: IOffer; link: string }) {
           </div>
         </div>
 
-        <LinkButton
-          className="mt-10"
-          textEn="Apply"
-          textFr="Postuler"
-          link={link}
-        />
+        {offer.PlacesAvailable - offer.placesOccupied !== 0 ? (
+          <LinkButton
+            className="mt-10"
+            textEn="Apply"
+            textFr="Postuler"
+            link={link}
+          />
+        ) : (
+          <div className="bg-quaternary px-10 py-3 lg:w-4/12 flex flex-col items-center justify-center  text-white mt-5">
+            <p>
+              {' '}
+              {selectedLanguage === 'Fr'
+                ? 'Les inscriptions sont closes'
+                : 'Registration closed'}
+            </p>
+            <Link className="underline" href="/offers">
+              {selectedLanguage === 'Fr'
+                ? 'Voir autres événements'
+                : 'See other events'}
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
