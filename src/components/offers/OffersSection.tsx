@@ -52,8 +52,6 @@ function OffersSection({ offers }: { offers: IOffer[] }) {
     };
   }, [offers]);
 
-  console.log('Offre actuellement visible :', currentVisibleOfferId);
-
   const ItemArrayPosition = (index: number) => {
     if (index + 1 >= 10 && index + 1 <= 99) {
       return `${index + 1} - `;

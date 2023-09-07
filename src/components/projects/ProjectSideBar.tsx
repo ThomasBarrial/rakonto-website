@@ -61,25 +61,6 @@ function ProjectSideBar({ project }: { project: IProject }) {
             ))}
           </div>
         )}
-        {/* <TextSmall contentEn={project.title} contentFr={project.titleEn} />
-        <ul>
-          {project.subjects?.map((item) => (
-            <li key={item._id}>
-              <TextSmall contentEn={item.titleEn} contentFr={item.titleFr} />{' '}
-            </li>
-          ))}
-        </ul>
-        <ul>
-          {project.categories?.map((item) => (
-            <li key={item._id}>
-              <TextSmall contentEn={item.titleEn} contentFr={item.titleFr} />{' '}
-            </li>
-          ))}
-        </ul>
-        <TextSmall
-          contentEn={project.projectYear.year.toString()}
-          contentFr={project.projectYear.year.toString()}
-        /> */}
       </div>
 
       <div className="mt-10">
