@@ -36,12 +36,12 @@ const RichTextComponents = {
       </h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="font-josefin uppercase text-[18px] leading-none  md:text-[20px] my-5">
+      <h2 className="font-josefin uppercase text-secondary text-[18px] leading-none  md:text-[20px] my-5">
         {children}
       </h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="font-josefin uppercase text-[16px] leading-none  md:text-[18px] my-5">
+      <h3 className="font-josefin uppercase text-secondary text-[16px] leading-none  md:text-[18px] my-5">
         {children}
       </h3>
     ),
