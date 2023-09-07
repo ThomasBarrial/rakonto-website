@@ -41,7 +41,7 @@ function ArticleSideBar({ article, allArticles }: IProps) {
   }, [allArticles, article]);
 
   return (
-    <div className="h-[80vh] w-4/12 font-josefin border-l pl-10 border-primary hidden lg:flex flex-col lg:sticky top-20 ml-20">
+    <div className="h-[80vh] w-[25%] font-josefin border-l pl-10 border-primary hidden lg:flex flex-col lg:sticky top-20 ml-20">
       <div>
         <SlideUp duration={2} scaleInit={0.8} scaleFinish={1}>
           <H3
