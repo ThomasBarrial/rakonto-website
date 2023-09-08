@@ -28,7 +28,7 @@ function OurProjects({ data }: IProps) {
   return (
     <SectionContainer
       bgImage="/backgroundHome/bgProjects5.png"
-      className="  flex flex-col  items-start justify-center"
+      className="  flex flex-col lg:mb-20  items-start justify-center"
     >
       <div ref={ref} className=" mt-10 lg:mt-0 w-full ">
         {inView && (
