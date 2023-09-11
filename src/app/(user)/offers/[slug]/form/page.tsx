@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import OffersForm from '@/components/offers/OffersForm';
 import H2 from '@/components/global/text/H2';
+import ErrorMessage from '@/components/global/errors/ErrorMessage';
 import client from '../../../../../../sanity/lib/client';
 import { IOffer } from '../../../../../../types';
 import urlForImage from '../../../../../../sanity/lib/image';
@@ -47,22 +48,22 @@ export async function generateMetadata({
 
 async function formOffer({ params: { slug } }: Props) {
   const offer: IOffer = await client.fetch(getOneOffer, { slug });
+  const MONDAY_API_KEY = process.env.NEXT_PUBLIC_MONDAY_API_KEY;
+  const MONDAY_API_URL = process.env.NEXT_PUBLIC_MONDAY_API_URL;
 
   const query =
     '{ boards (limit:5) {name id groups{title id} columns{title id type settings_str} }  }';
 
-  const getEventMondayArray = await fetch('https://api.monday.com/v2', {
+  const getEventMondayArray = await fetch(MONDAY_API_URL as string, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
-      Authorization:
-        'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI3ODk4OTExMSwiYWFpIjoxMSwidWlkIjo0ODA1NTc2NiwiaWFkIjoiMjAyMy0wOS0wMVQxMzozNzo1My4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTg1MzI0NjAsInJnbiI6ImV1YzEifQ.MvZWF1Z3_vdY0r4QlQ2GkKpIgcjEzLcY7Mk2chvNsvo',
+      Authorization: MONDAY_API_KEY as string,
     },
     body: JSON.stringify({
       query,
     }),
   }).then((res) => res.json());
-  // .then((res) => JSON.stringify(res, null, 2));
 
   const findMondayBoardName = getEventMondayArray.data.boards.find(
     (board: any) => board.name === offer.mondayArrayName
@@ -71,9 +72,13 @@ async function formOffer({ params: { slug } }: Props) {
   return (
     <div className="w-full flex px-4 lg:px-10  max-w-content">
       <div className="w-full lg:w-8/12 mt-10  min-h-[70vh]  flex  overflow-hidden">
-        <OffersForm mondayBoard={findMondayBoardName} />
+        {findMondayBoardName ? (
+          <OffersForm mondayBoard={findMondayBoardName} />
+        ) : (
+          <ErrorMessage />
+        )}
       </div>
-      <div className="lg:w-4/12  lg:h-[80vh] lg:sticky lg:top-16 right-0">
+      <div className="lg:w-4/12  lg:h-[80vh] mt-20 lg:sticky lg:top-20 right-0">
         <H2
           className="flex"
           contentEn={offer.titleEn}
