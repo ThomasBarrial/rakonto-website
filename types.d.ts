@@ -13,6 +13,12 @@ export interface Span {
   text: string;
 }
 
+export interface IColor {
+  alpha: number;
+  _type: string;
+  hex: string;
+}
+
 export interface Slug {
   _type: 'slug';
   current: string;
@@ -39,6 +45,7 @@ export interface Subject extends SanityDocument {
   description: string;
   titleFr: string;
   titleEn: string;
+  subjectColor: IColor;
 }
 
 export interface IPartners extends SanityDocument {
@@ -228,6 +235,7 @@ export interface Article extends SanityDocument {
   subjects: Subject[];
   partners: IPartners[];
   mainImage: SanityImage;
+  banner: SanityImage;
   slug: Slug;
   title: string;
   titleEn: string;
@@ -263,6 +271,7 @@ export interface IFile extends SanityDocument {
 export interface IProjectCategories extends SanityDocument {
   titleFr: string;
   titleEn: string;
+  projectColor: IColor;
 }
 
 export interface ISubject extends SanityDocument {
@@ -283,9 +292,10 @@ export interface IProject extends SanityDocument {
   slug: Slug;
   url?: string;
   mainImage: SanityImage;
+  banner: SanityImage;
   subjects?: Subject[];
   partners?: IPartners[];
-  categories?: IProjectCategories[];
+  categories: IProjectCategories[];
   files?: IFile[];
   externalsLinks?: IExternalsLinks[];
   projectYear: IProjectYear;

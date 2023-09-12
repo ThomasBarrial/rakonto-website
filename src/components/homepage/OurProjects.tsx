@@ -69,7 +69,7 @@ function OurProjects({ data }: IProps) {
         {inView && (
           <SlideUp
             duration={1.2}
-            className=" mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between lg:mt-32"
+            className=" mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between lg:mt-14"
           >
             <LinkButton
               className="w-8/12  lg:w-[240px] mt-10"

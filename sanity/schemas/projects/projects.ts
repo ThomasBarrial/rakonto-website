@@ -68,6 +68,21 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'banner',
+      title: 'Banner image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+        }),
+      ],
+    }),
+    defineField({
       type: 'string',
       name: 'url',
       title: 'Video URL',

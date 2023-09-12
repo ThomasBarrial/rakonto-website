@@ -57,21 +57,25 @@ async function page({ params: { slug } }: Props) {
   return (
     <PageContainer>
       <SectionContainer>
-        <H2
-          contentEn={project.titleEn}
-          contentFr={project.title}
-          className="mt-24"
-        />
-        <BasicText
-          contentEn={project.descriptionEN}
-          contentFr={project.title}
-        />
         <FullWidthImage
+          bgColor={project.categories[0].projectColor.hex}
+          title={project.title}
+          titleEn={project.titleEn}
           videoUrl={project.url}
           className="mt-5"
-          path={urlForImage(project.mainImage.asset).url()}
+          path={
+            project.banner
+              ? urlForImage(project.banner.asset).url()
+              : urlForImage(project.mainImage.asset).url()
+          }
           alt={project.mainImage.alt ? project.mainImage.alt : 'unknow Image'}
-          end={300}
+          end={200}
+          start={-400}
+        />
+        <BasicText
+          className="mt-10 font-bold"
+          contentEn={project.descriptionEN}
+          contentFr={project.title}
         />
         <div className="mt-10 flex">
           <div className="w-full lg:w-9/12">

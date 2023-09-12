@@ -6,7 +6,6 @@ import {
 } from '@/lib/queries';
 import { Slug } from 'sanity';
 import PageContainer from '@/components/global/PageContainer';
-import H2 from '@/components/global/text/H2';
 import BasicText from '@/components/global/text/BasicText';
 import FullWidthImage from '@/components/global/images/FullWidthImage';
 import Body from '@/components/articles/Body';
@@ -63,22 +62,21 @@ async function OneArticle({ params: { slug } }: Props) {
   return (
     <PageContainer>
       <SectionContainer>
-        {/* <H2
-          contentEn={article.titleEn}
-          contentFr={article.title}
-          className="mt-24"
-        /> */}
         <FullWidthImage
           title={article.title}
           titleEn={article.titleEn}
           className="mt-5"
-          path={urlForImage(article.mainImage.asset).url()}
+          path={
+            article.banner
+              ? urlForImage(article.banner.asset).url()
+              : urlForImage(article.mainImage.asset).url()
+          }
           alt={article.mainImage.alt ? article.mainImage.alt : 'unknow Image'}
           end={200}
           start={-400}
         />
         <BasicText
-          className="mt-5"
+          className="mt-5 font-bold"
           contentEn={article.descriptionEN}
           contentFr={article.descriptionFR}
         />

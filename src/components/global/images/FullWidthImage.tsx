@@ -17,6 +17,7 @@ interface IProps {
   videoUrl?: string;
   title?: string;
   titleEn?: string;
+  bgColor?: string;
 }
 
 function FullWidthImage({
@@ -28,6 +29,7 @@ function FullWidthImage({
   videoUrl,
   title,
   titleEn,
+  bgColor,
 }: IProps) {
   const { scrollYProgress } = useScroll();
   const [isModalOpen, setIsModalOpen] = useState({ isOpen: false, url: '' });
@@ -40,7 +42,14 @@ function FullWidthImage({
       className={`w-full h-80  lg:h-96 z-0 relative max-h-[65rem] overflow-hidden ${className}`}
     >
       {title && titleEn && (
-        <div className=" bg-primary bg-opacity-50 h-[100%] w-[100%] relative flex justify-center items-center -translate-y-1/2  top-1/2 z-10">
+        <div
+          className={` ${bgColor === '#dd6d48' && 'bg-quaternary'} ${
+            bgColor === '#febe10' && 'bg-tertiary'
+          } ${bgColor === '#12795F' && 'bg-primary'} 
+            ${bgColor === '#91c98c' && 'bg-secondary'}  ${
+              !bgColor && 'bg-primary'
+            } bg-opacity-50 h-[100%] w-[100%] relative flex justify-center items-center -translate-y-1/2  top-1/2 z-10`}
+        >
           <h1
             className={`font-francoisOne text-center text-[50px] leading-none text-white md:text-[60px] xl:text-[90px] uppercase ${className}`}
           >

@@ -17,5 +17,10 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'projectColor',
+      title: 'Project Color',
+      type: 'color',
+    }),
   ],
 });
