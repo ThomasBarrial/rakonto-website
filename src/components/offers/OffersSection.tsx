@@ -99,7 +99,7 @@ function OffersSection({ offers }: { offers: IOffer[] }) {
               alt={item.mainImage.alt ? item.mainImage.alt : 'unkown image'}
             />
           </div>
-          <div className="mt-10 px-10 lg:w-[55%]">
+          <div className="mt-10 lg:px-10 lg:w-[55%]">
             <div className="flex items-center">
               <H2
                 className="mr-2"

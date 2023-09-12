@@ -5,16 +5,17 @@ interface IProps {
   // eslint-disable-next-line no-unused-vars
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   name: string;
+  required: boolean;
 }
 
-function DateInput({ onChange, name }: IProps) {
+function DateInput({ onChange, name, required }: IProps) {
   return (
     <label className="flex flex-col font-josefin" htmlFor="start">
       {name}
 
       <input
         className="w-full border border-primary bg-transparent focus:outline-none px-3 py-2 mt-1"
-        required
+        required={required}
         onChange={onChange}
         type="date"
         id="start"

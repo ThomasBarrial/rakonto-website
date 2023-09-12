@@ -5,9 +5,10 @@ interface IProps {
   value?: string;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   name: string;
+  required: boolean;
 }
 
-function TextInput({ value, onChange, name }: IProps) {
+function TextInput({ value, onChange, name, required }: IProps) {
   return (
     <label className="flex flex-col font-josefin" htmlFor="text">
       {name}
@@ -17,7 +18,7 @@ function TextInput({ value, onChange, name }: IProps) {
         name={name}
         value={value}
         onChange={onChange}
-        required
+        required={required}
       />
     </label>
   );
