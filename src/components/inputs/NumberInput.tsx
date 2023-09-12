@@ -3,12 +3,13 @@
 import React, { ChangeEvent } from 'react';
 
 interface IProps {
-  value: string | undefined;
+  value: string | number | undefined;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   name: string;
+  required: boolean;
 }
 
-function NumberInput({ value, onChange, name }: IProps) {
+function NumberInput({ value, onChange, name, required }: IProps) {
   return (
     <label htmlFor={name}>
       {name}
@@ -21,7 +22,7 @@ function NumberInput({ value, onChange, name }: IProps) {
         name={name}
         min="1"
         max="2000"
-        required
+        required={required}
       />
     </label>
   );

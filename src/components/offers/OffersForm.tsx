@@ -7,16 +7,18 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
+import { PhoneInput } from 'react-international-phone';
 import { IMondayClmnArray } from '../../../types';
 import TextInput from '../inputs/TextInput';
 import TextAreaInput from '../inputs/TextAreaInput';
 import EmailInput from '../inputs/EmailInput';
 import SelectInput from '../inputs/SelectInput';
 import NumberInput from '../inputs/NumberInput';
-import PhoneInput from '../inputs/PhoneInput';
+
 import DateInput from '../inputs/DateInput';
 import BasicText from '../global/text/BasicText';
 import LinkButton from '../global/buttons/LinkButton';
+import 'react-international-phone/style.css';
 
 function OffersForm({ mondayBoard }: { mondayBoard: any }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
@@ -30,11 +32,17 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
 
   useEffect(() => {
     // Créez une copie des colonnes de mondayBoard avec la propriété "value"
-    const updatedFormInputs = mondayBoard.columns.map(
+    const filterFormInput = mondayBoard.columns.filter(
+      (el: IMondayClmnArray) => el.title.toLowerCase() !== 'name'
+    );
+
+    const updatedFormInputs = filterFormInput.map(
       (element: IMondayClmnArray) => ({ ...element, value: '' })
     );
 
     setFormInputs(updatedFormInputs);
+
+    console.log(formInputs);
 
     if (formInputs.length < 0) {
       setFormStatus('error');
@@ -43,15 +51,10 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
 
   // console.log(mondayBoard.id);
 
-  const handleInputChange = (
-    e:
-      | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-      | ChangeEvent<HTMLSelectElement>,
-    id: string
-  ) => {
+  const handleInputChange = (e: string | number, id: string) => {
     const updatedFormInputs = formInputs.map((colmn) => {
       if (colmn.id === id) {
-        return { ...colmn, value: e.target.value };
+        return { ...colmn, value: e };
       }
       return colmn;
     });
@@ -59,7 +62,7 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
     setFormInputs(updatedFormInputs);
   };
 
-  console.log(mondayBoard.columns[4].title.toLowerCase());
+  console.log(mondayBoard.columns);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -154,7 +157,7 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
       )}
       {formStatus === 'inProgress' && formInputs.length > 0 && (
         <form
-          className="w-full  py-10 pr-10 flex flex-col space-y-5"
+          className="w-full  py-10 lg:pr-10 flex flex-col space-y-5"
           onSubmit={handleSubmit}
         >
           <TextInput
@@ -163,6 +166,7 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
             onChange={(
               e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
             ) => setUserFirstName(e.target.value)}
+            required
           />
           <TextInput
             value={userName}
@@ -170,28 +174,35 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
             onChange={(
               e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
             ) => setUserName(e.target.value)}
+            required
           />
 
           {formInputs.map((colmn) => (
             <div key={colmn.id}>
-              {colmn.type === 'text' &&
-                colmn.title.toLowerCase() !== 'email' && (
-                  <TextAreaInput
-                    value={colmn.value}
-                    name={colmn.title}
-                    onChange={(
-                      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-                    ) => handleInputChange(e, colmn.id)}
-                  />
-                )}
-              {colmn.type === 'text' &&
-                colmn.title.toLowerCase() === 'email' && (
+              {(colmn.type === 'text' &&
+                colmn.title.toLowerCase() === 'email') ||
+                (colmn.title.toLowerCase() === '*email' && (
                   <EmailInput
                     value={colmn.value}
                     name={colmn.title}
                     onChange={(
                       e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-                    ) => handleInputChange(e, colmn.id)}
+                    ) => handleInputChange(e.target.value, colmn.id)}
+                    required={colmn.title.split('')[0] === '*'}
+                  />
+                ))}
+              {colmn.type === 'text' &&
+                colmn.title.toLowerCase() !== 'email' &&
+                colmn.title.toLowerCase() !== '*email' &&
+                colmn.title.toLowerCase() !== 'phone number' &&
+                colmn.title.toLowerCase() !== '*phone number' && (
+                  <TextAreaInput
+                    value={colmn.value}
+                    name={colmn.title}
+                    onChange={(
+                      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                    ) => handleInputChange(e.target.value, colmn.id)}
+                    required={colmn.title.split('')[0] === '*'}
                   />
                 )}
               {colmn.type === 'color' && (
@@ -199,34 +210,60 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
                   name={colmn.title}
                   options={Object.values(JSON.parse(colmn.settings_str).labels)}
                   onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                    handleInputChange(e, colmn.id)
+                    handleInputChange(e.target.value, colmn.id)
                   }
+                  required={colmn.title.split('')[0] === '*'}
                 />
               )}
-              {colmn.type === 'numeric' &&
-                colmn.title.toLowerCase() !== 'phone number' && (
-                  <NumberInput
-                    name={colmn.title}
-                    value={colmn.value}
-                    onChange={(
-                      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-                    ) => handleInputChange(e, colmn.id)}
-                  />
-                )}
-              {colmn.type === 'numeric' &&
-                colmn.title.toLowerCase() === 'phone number' && (
-                  <PhoneInput
-                    name={colmn.title}
-                    value={colmn.value}
-                    onChange={(
-                      e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-                    ) => handleInputChange(e, colmn.id)}
-                  />
-                )}
+              {(colmn.type === 'numeric' &&
+                colmn.title.toLowerCase() !== 'phone number') ||
+                (colmn.type === 'numeric' &&
+                  colmn.title.toLowerCase() !== '*phone number' && (
+                    <NumberInput
+                      name={colmn.title}
+                      value={colmn.value}
+                      onChange={(
+                        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                      ) => handleInputChange(e.target.value, colmn.id)}
+                      required={colmn.title.split('')[0] === '*'}
+                    />
+                  ))}
+              {(colmn.type === 'text' &&
+                colmn.title.toLowerCase() === 'phone number') ||
+                (colmn.type === 'text' &&
+                  colmn.title.toLowerCase() === '*phone number' && (
+                    <div>
+                      <label className="flex flex-col font-josefin">
+                        {colmn.title}
+                      </label>
+                      <PhoneInput
+                        defaultCountry="fr"
+                        value={colmn.value as string}
+                        onChange={(phone) => {
+                          handleInputChange(phone, colmn.id);
+                        }}
+                        inputStyle={{
+                          border: '1px solid #13795F',
+                          borderRadius: '1px',
+                          background: 'transparent',
+                          color: '#13795F',
+                        }}
+                        countrySelectorStyleProps={{
+                          buttonStyle: {
+                            border: '1px solid #13795F',
+                            borderRadius: '1px',
+                            background: 'transparent',
+                            color: '#13795F',
+                          },
+                        }}
+                      />
+                    </div>
+                  ))}
               {colmn.type === 'date' && (
                 <DateInput
                   name={colmn.title}
-                  onChange={(e) => handleInputChange(e, colmn.id)}
+                  onChange={(e) => handleInputChange(e.target.value, colmn.id)}
+                  required={colmn.title.split('')[0] === '*'}
                 />
               )}
             </div>

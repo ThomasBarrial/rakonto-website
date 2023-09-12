@@ -328,5 +328,5 @@ export interface IMondayClmnArray {
   id: string;
   type: string;
   settings_str: string;
-  value?: string;
+  value?: string | number;
 }

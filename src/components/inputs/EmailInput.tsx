@@ -2,12 +2,13 @@
 import React, { ChangeEvent } from 'react';
 
 interface IProps {
-  value: string | undefined;
+  value: string | number | undefined;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   name: string;
+  required: boolean;
 }
 
-function EmailInput({ value, onChange, name }: IProps) {
+function EmailInput({ value, onChange, name, required }: IProps) {
   return (
     <label className="flex flex-col font-josefin" htmlFor="email">
       {name}
