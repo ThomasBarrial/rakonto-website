@@ -1,7 +1,6 @@
 'use client';
 
-import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
+import React, { useRef, useState } from 'react';
 import H3 from '../global/text/H3';
 import Body from '../articles/Body';
 import GalleryImage from '../global/images/GalleryImage';

@@ -1,7 +1,5 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import Image from 'next/image';
 import { Gallery } from 'next-gallery';
 import { SanityImage } from '../../../../types';
 import urlForImage from '../../../../sanity/lib/image';
