@@ -24,32 +24,14 @@ interface IProps {
     externalsLinks?: IExternalsLinks[] | undefined;
     files?: IFile[] | undefined;
   };
-  selected: string | null;
-  setSelected: Dispatch<SetStateAction<string | null>>;
 }
 
-function ProjectSection({ item, selected, setSelected }: IProps) {
+function ProjectSection({ item }: IProps) {
   const dropdownRef = useRef<HTMLDivElement>(null);
-  // const [dropdownHeight, setDropdownHeight] = useState(0);
   const ref = useRef(null);
-  const inView = useInView(ref);
   const [isModalOpen, setIsModalOpen] = useState({ isOpen: false, url: '' });
 
-  // const handleClick = () => {
-  //   if (selected === item.title) {
-  //     setSelected(null);
-  //   } else {
-  //     setSelected(item.title);
-  //   }
-
-  //   if (dropdownRef.current) {
-  //     // Récupérer la hauteur réelle du contenu
-  //     const contentHeight = dropdownRef.current?.scrollHeight;
-  //     setDropdownHeight(contentHeight);
-
-  //     console.log(contentHeight);
-  //   }
-  // };
+  console.log(item.gallery);
 
   return (
     <div ref={ref}>
@@ -62,14 +44,7 @@ function ProjectSection({ item, selected, setSelected }: IProps) {
         contentEn={item.titleEn}
         contentFr={item.title}
       />
-      <div
-        ref={dropdownRef}
-        // className={`${
-        //   selected === item.title
-        //     ? `h-[80vh]  overflow-y-scroll`
-        //     : 'h-[0vh] overflow-hidden'
-        // }  transform duration-500 ease-out`}
-      >
+      <div ref={dropdownRef}>
         {' '}
         {/* TEXTE */}
         {item.textEn && item.textFR && (
@@ -112,22 +87,6 @@ function ProjectSection({ item, selected, setSelected }: IProps) {
           </div>
         )}
       </div>
-      {/* <button
-        onClick={handleClick}
-        className="w-full flex justify-end my-2"
-        type="button"
-      >
-        {' '}
-        <Image
-          className={`${
-            selected === item.title ? 'rotate-180' : 'rotate-0'
-          } transform duration-500 ease-out flex `}
-          src="/downArrow.svg"
-          alt="down"
-          height={15}
-          width={13}
-        />
-      </button> */}
     </div>
   );
 }

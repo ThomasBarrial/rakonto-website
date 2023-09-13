@@ -3,7 +3,6 @@ import { getOneProject, getProjects, getProjectsSlug } from '@/lib/queries';
 import SectionContainer from '@/components/global/SectionContainer';
 import { Metadata } from 'next';
 import PageContainer from '@/components/global/PageContainer';
-import H2 from '@/components/global/text/H2';
 import BasicText from '@/components/global/text/BasicText';
 import FullWidthImage from '@/components/global/images/FullWidthImage';
 import ProjectContent from '@/components/projects/ProjectContent';

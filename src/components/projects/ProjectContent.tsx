@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { IProject } from '../../../types';
 import ProjectSection from './ProjectSection';
 
@@ -9,8 +8,6 @@ interface IProps {
 }
 
 function ProjectContent({ project }: IProps) {
-  const [selected, setSelected] = useState<string | null>(null);
-
   return (
     <div>
       {project.content && (
@@ -21,11 +18,7 @@ function ProjectContent({ project }: IProps) {
               className="border-b border-primary"
               id={item._key}
             >
-              <ProjectSection
-                item={item}
-                setSelected={setSelected}
-                selected={selected}
-              />
+              <ProjectSection item={item} />
             </li>
           ))}
         </ul>
