@@ -1,23 +1,59 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect } from 'react';
 import Image from 'next/image';
+import { Gallery } from 'next-gallery';
 import { SanityImage } from '../../../../types';
 import urlForImage from '../../../../sanity/lib/image';
 
 function GalleryImage({ data }: { data: SanityImage[] }) {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-4 mt-10">
-      {data.map((item) => (
-        <div className="w-full h-[30rem] relative" key={item.asset._ref}>
-          <Image
-            className="object-cover"
-            src={urlForImage(item.asset).url()}
-            fill
-            alt={item.alt ? item.alt : 'unknow Image'}
-          />
-        </div>
-      ))}
-    </div>
-  );
+  const images: { src: string; aspect_ratio: number }[] = [];
+
+  function AspectRatio(largeur: number, hauteur: number) {
+    function gcd(a: number, b: number) {
+      if (b === 0) {
+        return a;
+      }
+      return gcd(b, a % b);
+    }
+
+    const pgcd = gcd(largeur, hauteur);
+
+    const widt = largeur / pgcd;
+    const height = hauteur / pgcd;
+
+    const aspectRatio = widt / height;
+
+    return aspectRatio;
+  }
+
+  const getImageApsectRatio = (image: SanityImage) => {
+    const parseUrl = image.asset._ref.split('-');
+    const width = parseInt(parseUrl[2].split('x')[0], 10);
+    const height = parseInt(parseUrl[2].split('x')[1], 10);
+
+    const aspecRatio = AspectRatio(width, height);
+
+    return aspecRatio;
+  };
+
+  getImageApsectRatio(data[0]);
+
+  const generateImageArray = () => {
+    for (let i = 0; i < data.length; i += 1) {
+      images.push({
+        src: urlForImage(data[i].asset).url(),
+        aspect_ratio: getImageApsectRatio(data[i]),
+      });
+    }
+  };
+
+  generateImageArray();
+
+  const widths = [500, 1000, 1600];
+  const ratios = [2.5, 3, 3, 3];
+
+  return <Gallery {...{ images, widths, ratios }} initState={false} />;
 }
 
 export default GalleryImage;

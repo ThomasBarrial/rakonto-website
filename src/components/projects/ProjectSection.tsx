@@ -31,8 +31,6 @@ function ProjectSection({ item }: IProps) {
   const ref = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState({ isOpen: false, url: '' });
 
-  console.log(item.gallery);
-
   return (
     <div ref={ref}>
       {/* MODAL */}

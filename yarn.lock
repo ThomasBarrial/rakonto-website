@@ -5058,6 +5058,11 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
+next-gallery@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/next-gallery/-/next-gallery-1.2.1.tgz#8fb0c5d5e78055e9754a9b205f51f68bbe59e909"
+  integrity sha512-sCNNN9ANNzgEyjtefuxpEkG/MH6erCfCUsfHvZrD3jG+zlhi3jwdSg/S4G+ZRjlcgYbhyhBE475nciQz0+jUXQ==
+
 next-sanity@^5.1.0:
   version "5.4.6"
   resolved "https://registry.yarnpkg.com/next-sanity/-/next-sanity-5.4.6.tgz#3d9cf8802c7a48662cfb43841745ab89b7a37917"
