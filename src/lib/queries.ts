@@ -73,7 +73,7 @@ export const getProjects = groq`
   subjects[]->,
   categories[]->,
   externalsLinks[]->
-} 
+}| order(startDate desc)
 `;
 
 export const getProjectsYear = groq`

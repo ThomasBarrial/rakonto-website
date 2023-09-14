@@ -151,6 +151,20 @@ export default defineType({
     }),
 
     defineField({
+      name: 'startDate',
+      title: 'Start date',
+      type: 'datetime',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'endDate',
+      title: 'End date',
+      type: 'datetime',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
