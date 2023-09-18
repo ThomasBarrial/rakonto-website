@@ -72,13 +72,13 @@ function PresentationElement({ item, index }: IProps) {
             priority
             alt="pattern"
           /> */}
-          <div className="mt-10  h-28 w-28 flex flex-col justify-end items-end">
+          <div className="mt-10  h-20 w-20 flex flex-col justify-end items-end">
             <div
               className={`${item.color.hex === '#febe10' && 'bg-tertiary'} ${
                 item.color.hex === '#dd6d48' && 'bg-quaternary'
               } ${
                 item.color.hex === '#13795f' && 'bg-primary'
-              }   w-full h-6 rotate-90 translate-x-[45px] -translate-y-[21px]`}
+              }   w-full h-6 rotate-90 translate-x-[28px] -translate-y-[4px]`}
             />
             <div
               className={`${item.color.hex === '#febe10' && 'bg-tertiary'} ${

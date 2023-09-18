@@ -13,11 +13,8 @@ function OurOffers({ data }: { data: IHomeOurOffersSection }) {
   const inView = useInView(ref, { once: true });
 
   return (
-    <SectionContainer
-      bgImage="/backgroundHome/bgOffer5.png"
-      className=" h-screen"
-    >
-      <div ref={ref} className="flex flex-col items-center  h-screen pt-52">
+    <SectionContainer bgImage="/backgroundHome/bgOffer5.png" className="">
+      <div ref={ref} className="flex flex-col items-center py-52">
         {inView && (
           <SlideUp duration={1.2} className="text-center lg:w-full ">
             <H1

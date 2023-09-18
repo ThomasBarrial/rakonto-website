@@ -71,14 +71,14 @@ async function formOffer({ params: { slug } }: Props) {
 
   return (
     <div className="w-full flex flex-col  lg:flex-row px-4 lg:px-10  max-w-content">
-      <div className="w-full lg:w-8/12 mt-10  min-h-[70vh]  flex  overflow-hidden">
+      <div className="w-full lg:w-7/12 mt-10  min-h-[70vh]  flex  overflow-hidden">
         {findMondayBoardName ? (
           <OffersForm mondayBoard={findMondayBoardName} />
         ) : (
           <ErrorMessage />
         )}
       </div>
-      <div className="hidden lg:flex flex-col lg:w-4/12  lg:h-[80vh] mt-20 lg:sticky lg:top-20 right-0">
+      <div className="hidden lg:flex flex-col lg:w-5/12  lg:h-[80vh] mt-20 lg:sticky lg:top-20 right-0">
         <H2
           className="flex"
           contentEn={offer.titleEn}

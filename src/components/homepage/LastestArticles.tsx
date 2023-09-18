@@ -27,7 +27,7 @@ function LastestArticles({ data, articles }: IProps) {
             <H1 contentEn={data.titleEn} contentFr={data.titleFr} />
           </SlideUp>
         )}
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  items-start gap-10 -mt-0">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4  items-start gap-10 -mt-0">
           {latestAticles.map((item, index) => (
             <li key={item._id} className="my-5 w-full">
               {inView && (
