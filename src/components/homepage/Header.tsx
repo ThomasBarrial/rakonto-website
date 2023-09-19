@@ -34,7 +34,7 @@ function Header({ data }: IProps) {
   };
 
   return (
-    <section className=" w-full flex flex-col justify-between items-center  py-20 px-4 lg:px-10">
+    <section className=" w-full flex min-h-screen flex-col justify-between items-center  py-20 px-4 lg:px-10">
       <div ref={ref} className="max-w-content w-full">
         {inView && (
           <div className="font-francoisOne   text-[60px] md:text-[5rem]  leading-none mt-10 lg:text-[7rem] xl:text-[8rem] text-primary font-bold">
