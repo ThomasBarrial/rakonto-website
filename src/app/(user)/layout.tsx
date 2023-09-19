@@ -12,6 +12,7 @@ import {
 } from '@/lib/queries';
 import Footer from '@/components/global/Footer';
 
+import { Analytics } from '@vercel/analytics/react';
 import client from '../../../sanity/lib/client';
 
 const josefin = Josefin_Sans({
@@ -59,6 +60,7 @@ export default async function RootLayout({
           {children}
           <Footer contactInfos={contactInfos[0]} socialMedia={socialMedia} />
         </ReduxProvider>
+        <Analytics />
       </body>
     </html>
   );
