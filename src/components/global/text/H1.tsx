@@ -15,7 +15,7 @@ function H1({
   const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
     <h1
-      className={`font-francoisOne text-[50px] leading-none text-primary md:text-[60px] xl:text-[90px] uppercase ${className}`}
+      className={`font-francoisOne text-[50px] leading-none text-primary md:text-[60px] xl:text-[90px] uppercase  ${className}`}
     >
       {selectedLanguage === 'Fr' ? contentFr : contentEn}
     </h1>

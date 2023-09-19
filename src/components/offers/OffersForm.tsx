@@ -19,6 +19,7 @@ import DateInput from '../inputs/DateInput';
 import BasicText from '../global/text/BasicText';
 import LinkButton from '../global/buttons/LinkButton';
 import 'react-international-phone/style.css';
+import SubmitButton from '../global/buttons/SubmitButton';
 
 function OffersForm({ mondayBoard }: { mondayBoard: any }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
@@ -42,8 +43,6 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
 
     setFormInputs(updatedFormInputs);
 
-    console.log(formInputs);
-
     if (formInputs.length < 0) {
       setFormStatus('error');
     }
@@ -61,8 +60,6 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
 
     setFormInputs(updatedFormInputs);
   };
-
-  console.log(mondayBoard.columns);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -107,12 +104,10 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
             Authorization: apiKey,
           },
         })
-        .catch((err) => {
-          console.error(err.data);
+        .catch(() => {
           setFormStatus('error');
         })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           setFormStatus('validate');
         });
     } catch (error) {
@@ -269,12 +264,7 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
             </div>
           ))}
 
-          <button
-            className="flex items-center text-background justify-center bg-primary border border-primary px-4 py-3 hover:bg-transparent hover:text-primary transform duration-500  font-bold"
-            type="submit"
-          >
-            {selectedLanguage === 'Fr' ? 'Postuler' : 'Apply'}
-          </button>
+          <SubmitButton nameEn="Apply" nameFr="Postuler" />
         </form>
       )}
     </div>

@@ -20,14 +20,14 @@ function OurOffers({ data }: { data: IHomeOurOffersSection }) {
             <H1
               contentEn={data.titleEn}
               contentFr={data.titleFr}
-              className=""
+              className="py-5"
             />
           </SlideUp>
         )}
         {inView && (
           <SlideUp duration={1.5}>
             <LinkButton
-              className="w-full  lg:w-[240px] mt-10"
+              className="w-full  lg:w-[250px] mt-10"
               textEn={data.callToAction.nameEn}
               textFr={data.callToAction.nameFr}
               link={data.callToAction.link}

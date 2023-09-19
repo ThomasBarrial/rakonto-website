@@ -15,5 +15,25 @@ export default defineType({
       title: 'PhoneNumber',
       type: 'number',
     }),
+    defineField({
+      name: 'contactPageTitleEn',
+      title: 'Contact page title EN',
+      type: 'string',
+    }),
+    defineField({
+      name: 'contactPageTitleFr',
+      title: 'Contact page title FR',
+      type: 'string',
+    }),
+    defineField({
+      name: 'contactPageTextFr',
+      title: 'Contact page text FR',
+      type: 'text',
+    }),
+    defineField({
+      name: 'contactPageTextEn',
+      title: 'Contact page text EN',
+      type: 'text',
+    }),
   ],
 });

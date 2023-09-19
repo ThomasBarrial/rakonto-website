@@ -255,6 +255,10 @@ export interface IExternalsLinks extends SanityDocument {
 export interface IContactInfos extends SanityDocument {
   email: string;
   phoneNumber: number;
+  contactPageTitleEn: string;
+  contactPageTitleFr: string;
+  contactPageTextFr: string;
+  contactPageTextEn: string;
 }
 
 export interface IFile extends SanityDocument {

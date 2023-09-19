@@ -10,6 +10,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "@portabletext/react": "^3.0.4",
     "@reduxjs/toolkit": "^1.9.5",
     "@sanity/client": "^6.1.6",

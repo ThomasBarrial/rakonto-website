@@ -28,7 +28,7 @@ interface IProps {
 function PresentationElement({ item, index }: IProps) {
   const { scrollYProgress } = useScroll();
 
-  const y = useParallax(scrollYProgress, -200, 600);
+  const y = useParallax(scrollYProgress, -200, 500);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
