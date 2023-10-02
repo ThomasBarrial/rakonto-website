@@ -42,7 +42,7 @@ async function page() {
           />
           <div className=" mt-5 max-h-36  lg:w-4/12 flex justify-end">
             <Image
-              src="/notreaventure.webp"
+              src="/notreAventure.webp"
               width={150}
               height={150}
               alt="notre aventure"
@@ -64,7 +64,7 @@ async function page() {
 
         <div className=" mt-10 lg:mt-32 flex flex-col lg:flex-row lg:items-center">
           <div className="hidden lg:flex flex-row justify-center w-4/12 items-center ">
-            <Image src="/Carte.webp" alt="" width={300} height={300} />
+            <Image src="/carte.webp" alt="" width={300} height={300} />
           </div>
           <div className="ml-10 lg:ml-20 lg:w-8/12">
             <H2

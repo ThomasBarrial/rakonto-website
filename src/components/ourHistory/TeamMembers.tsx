@@ -30,7 +30,7 @@ function TeamMembers({ team }: IProps) {
                 priority
               />
             </div>
-            <div className=" flex  justify-between mt-2">
+            <div className="flex justify-between mt-2">
               <H3
                 className="text-primary"
                 contentEn={member.firstName}
