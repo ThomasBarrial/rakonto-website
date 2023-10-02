@@ -35,8 +35,12 @@ import author from './schemas/author';
 // Offers
 import offers from './schemas/ourOffers/offers';
 
+// ourHistory
+import team from './schemas/team';
+
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    team,
     projectContent,
     homeHeader,
     projectYears,

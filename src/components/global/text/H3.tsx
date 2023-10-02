@@ -15,11 +15,11 @@ function H3({
 }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
-    <h2
+    <h3
       className={`font-josefin uppercase  text-[20px] md:text-[25px]" ${className}`}
     >
       {selectedLanguage === 'Fr' ? contentFr : contentEn}
-    </h2>
+    </h3>
   );
 }
 

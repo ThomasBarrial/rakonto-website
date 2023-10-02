@@ -344,3 +344,13 @@ export interface IMondayClmnArray {
   settings_str: string;
   value?: string | number;
 }
+
+export interface ITeam extends SanityDocument {
+  firstName: string;
+  lastName?: string;
+  roleFr: string;
+  roleEn: string;
+  descriptionFr: string;
+  descriptionEn: string;
+  profilPicture: SanityImage;
+}
