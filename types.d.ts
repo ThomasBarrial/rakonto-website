@@ -354,3 +354,13 @@ export interface ITeam extends SanityDocument {
   descriptionEn: string;
   profilPicture: SanityImage;
 }
+
+export interface IOurHistoryTextSection {
+  _type: string;
+  _key: string;
+  titleEn: string;
+  titleFr: string;
+  textFr: Block[];
+  TextEn: Block[];
+  image: SanityImage;
+}

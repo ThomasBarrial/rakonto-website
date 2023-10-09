@@ -37,9 +37,15 @@ import offers from './schemas/ourOffers/offers';
 
 // ourHistory
 import team from './schemas/team';
+import ourHistoryHeader from './schemas/ourHistory/ourHistoryHeader';
+import ourHistoryTextSection from './schemas/ourHistory/ourHistoryTextSection';
+import ourMissonAndValue from './schemas/ourHistory/ourMissonAndValue';
+import formStartToToday from './schemas/ourHistory/formStartToToday';
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    formStartToToday,
+    ourMissonAndValue,
     team,
     projectContent,
     homeHeader,
@@ -66,6 +72,8 @@ const schema: { types: SchemaTypeDefinition[] } = {
     projects,
     projectsCategories,
     offers,
+    ourHistoryHeader,
+    ourHistoryTextSection,
   ],
 };
 

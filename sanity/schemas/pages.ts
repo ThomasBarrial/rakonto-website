@@ -68,6 +68,26 @@ export default defineType({
           title: 'Home Header',
           type: 'homeHeader',
         }),
+        defineArrayMember({
+          name: 'ourHistoryTextHeader',
+          title: 'Our History Text Header',
+          type: 'ourHistoryTextHeader',
+        }),
+        defineArrayMember({
+          name: 'ourHistoryTextSection',
+          title: 'Our History Text Section',
+          type: 'ourHistoryTextSection',
+        }),
+        defineArrayMember({
+          name: 'ourMissonAndValue',
+          title: 'our Misson And Value',
+          type: 'ourMissonAndValue',
+        }),
+        defineArrayMember({
+          name: 'formStartToToday',
+          title: 'Form Start To Today (Our History)',
+          type: 'formStartToToday',
+        }),
       ],
     }),
   ],
