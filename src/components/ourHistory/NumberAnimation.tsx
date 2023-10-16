@@ -5,9 +5,10 @@ import H1 from '../global/text/H1';
 
 interface IProps {
   targetValue: number;
+  animationDuration: number;
 }
 
-function NumberAnimation({ targetValue }: IProps) {
+function NumberAnimation({ targetValue, animationDuration }: IProps) {
   const [currentValue, setCurrentValue] = useState(0);
 
   useEffect(() => {
@@ -16,13 +17,13 @@ function NumberAnimation({ targetValue }: IProps) {
     if (currentValue < targetValue) {
       interval = setInterval(() => {
         setCurrentValue((prevValue) => prevValue + 1);
-      }, 100);
+      }, animationDuration);
     }
 
     return () => {
       clearInterval(interval);
     };
-  }, [currentValue, targetValue]);
+  }, [animationDuration, currentValue, targetValue]);
 
   return (
     <H1

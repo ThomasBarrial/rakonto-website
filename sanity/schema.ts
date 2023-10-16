@@ -41,9 +41,11 @@ import ourHistoryHeader from './schemas/ourHistory/ourHistoryHeader';
 import ourHistoryTextSection from './schemas/ourHistory/ourHistoryTextSection';
 import ourMissonAndValue from './schemas/ourHistory/ourMissonAndValue';
 import formStartToToday from './schemas/ourHistory/formStartToToday';
+import rakontoNumbers from './schemas/ourHistory/rakontoNumbers';
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    rakontoNumbers,
     formStartToToday,
     ourMissonAndValue,
     team,

@@ -57,7 +57,11 @@ async function page({ params: { slug } }: Props) {
     <PageContainer>
       <SectionContainer>
         <FullWidthImage
-          bgColor={project.categories[0].projectColor.hex}
+          bgColor={
+            project.categories
+              ? project.categories[0].projectColor.hex
+              : undefined
+          }
           title={project.title}
           titleEn={project.titleEn}
           videoUrl={project.url}

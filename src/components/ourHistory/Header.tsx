@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { SanityImage } from '../../../types';
-import SectionContainer from '../global/SectionContainer';
 import FullWidthImage from '../global/images/FullWidthImage';
 import H1 from '../global/text/H1';
 import urlForImage from '../../../sanity/lib/image';
@@ -19,7 +18,7 @@ interface IProps {
 
 function Header({ dataBanner, dataIntro }: IProps) {
   return (
-    <SectionContainer>
+    <>
       {' '}
       <FullWidthImage
         title={dataBanner.titleFr}
@@ -52,7 +51,7 @@ function Header({ dataBanner, dataIntro }: IProps) {
           />
         </div>
       </div>
-    </SectionContainer>
+    </>
   );
 }
 

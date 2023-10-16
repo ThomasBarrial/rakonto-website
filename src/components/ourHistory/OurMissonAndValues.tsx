@@ -21,7 +21,7 @@ function OurMissonAndValues({
   };
 }) {
   return (
-    <div className="ml-10 mt-10 lg:mt-52 flex flex-col lg:flex-row lg:items-center lg:mx-24">
+    <div className="mt-10 lg:mt-52 flex flex-col lg:flex-row lg:items-center lg:mx-24">
       <div className="hidden lg:flex flex-row justify-center w-4/12 items-center ">
         <Image
           src={urlForImage(data.image.asset).url()}
@@ -30,7 +30,7 @@ function OurMissonAndValues({
           height={200}
         />
       </div>
-      <div className="lg:w-9/12 mr-2">
+      <div className="lg:w-9/12">
         <H2
           className="font-bold italic"
           contentEn={data.titleEn}

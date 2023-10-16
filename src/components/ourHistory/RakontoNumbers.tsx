@@ -6,62 +6,46 @@ import H2 from '../global/text/H2';
 import BasicText from '../global/text/BasicText';
 import NumberAnimation from './NumberAnimation';
 import FullWidthImage from '../global/images/FullWidthImage';
+import { IRakontoNumbers } from '../../../types';
+import H1 from '../global/text/H1';
 
-function RakontoNumbers() {
+function RakontoNumbers({ data }: { data: IRakontoNumbers }) {
   const ref = useRef(null);
   const inView = useInView(ref);
 
   return (
     <div
       ref={ref}
-      className="bg-primary mt-20 lg:mt-52 p-5 flex flex-col items-center mb-10"
+      className="bg-primary mt-20 lg:mt-52  flex flex-col items-center mb-10"
     >
-      <H2
-        textColor="text-white font-bold text-center"
-        contentEn="rakonto, c’est aussi"
-        contentFr="rakonto, c’est aussi"
-      />
-      <BasicText
-        className="text-center text-white"
-        contentEn="Une association à taille humaine"
-        contentFr="Une association à taille humaine"
-      />
+      <div className="p-5">
+        <H1
+          textColor="text-white font-bold text-center"
+          contentEn={data.titleEn}
+          contentFr={data.titleFr}
+        />
+        <H2
+          className="text-center text-white mt-2"
+          contentEn={data.titleBisEn}
+          contentFr={data.titleBisFr}
+        />
 
-      <div className="flex flex-col lg:flex-row lg:justify-between lg:w-8/12">
-        <div>
-          {inView && <NumberAnimation targetValue={52} />}
-          <BasicText
-            className="text-center text-white"
-            contentEn="Membres"
-            contentFr="Membres"
-          />
-        </div>
-
-        <div>
-          {inView && <NumberAnimation targetValue={235} />}
-          <BasicText
-            className="text-center  text-white"
-            contentEn="Participants"
-            contentFr="Participants"
-          />
-        </div>
-
-        <div>
-          {inView && <NumberAnimation targetValue={18} />}
-          <BasicText
-            className="text-center text-white"
-            contentEn="Erasmus + mobilities"
-            contentFr="Erasmus + mobilities"
-          />
-        </div>
-
-        <div>
-          {inView && <NumberAnimation targetValue={3} />}
-          <BasicText
-            className="text-center text-white"
-            contentEn="Projets artistiques produits"
-            contentFr="Projets artistiques produits"
-          />
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:w-full">
+          {data.numbers.map((element) => (
+            <div className="" key={element._key}>
+              {inView && (
+                <NumberAnimation
+                  targetValue={element.number}
+                  animationDuration={element.animationDuration}
+                />
+              )}
+              <BasicText
+                className="text-center text-white"
+                contentEn={element.titleEn}
+                contentFr={element.titleFr}
+              />
+            </div>
+          ))}
         </div>
       </div>
 

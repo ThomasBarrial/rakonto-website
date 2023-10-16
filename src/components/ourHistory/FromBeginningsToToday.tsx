@@ -17,15 +17,13 @@ interface IProps {
       image: SanityImage;
     }[];
     Dates: {
-      type: string;
       _key: string;
-      Date: {
-        date: string;
-        titleEn: string;
-        titleFr: string;
-        textEn: string;
-        textFr: string;
-      };
+      _type: string;
+      date: string;
+      titleEn: string;
+      titleFr: string;
+      textEn: string;
+      textFr: string;
     }[];
   };
 }
@@ -43,7 +41,10 @@ function FromBeginningsToToday({ data }: IProps) {
       {data.logos && (
         <div className="flex flex-col lg:flex-row items-center mt-5 ">
           {data.logos.map((logo, index) => (
-            <div key={logo._key}>
+            <div
+              className="flex flex-col lg:flex-row items-center"
+              key={logo._key}
+            >
               <Image
                 className="mt-8"
                 src={urlForImage(logo.image.asset).url()}
@@ -69,22 +70,22 @@ function FromBeginningsToToday({ data }: IProps) {
               <div className="w-9/12 mr-2">
                 <H3
                   className="w-full font-bold text-center lg:text-left text-secondary"
-                  contentEn="04.2019"
-                  contentFr="04.2019"
+                  contentEn={date.date}
+                  contentFr={date.date}
                 />
                 <H3
                   className="w-full text-center lg:text-left text-secondary"
-                  contentEn="La création de l’asso"
-                  contentFr="La création de l’asso"
+                  contentEn={date.titleEn}
+                  contentFr={date.titleFr}
                 />
                 <BasicText
                   className="text-center lg:text-left"
-                  contentEn="Création de l’association “Le tour du monde en 80 défis” par Robin, Corentin et Magali. Le tour du monde sans avion est le point de départ de cette grande aventure."
-                  contentFr="Création de l’association “Le tour du monde en 80 défis” par Robin, Corentin et Magali. Le tour du monde sans avion est le point de départ de cette grande aventure."
+                  contentEn={date.textEn}
+                  contentFr={date.textFr}
                 />
               </div>
               {index !== data.Dates.length - 1 && (
-                <Length className="mt-10 -rotate-45" />
+                <Length className="mt-10 rotate-45 lg:-rotate-45" />
               )}
             </div>
           ))}

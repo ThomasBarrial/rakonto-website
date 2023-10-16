@@ -50,7 +50,7 @@ function Header({ data }: IProps) {
           </div>
         )}
       </div>
-      <div className="max-w-content">
+      <div className="max-w-content w-full">
         {inView && (
           <div className="w-full flex  justify-between items-center">
             <div>

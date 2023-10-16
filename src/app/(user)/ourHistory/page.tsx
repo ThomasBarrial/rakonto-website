@@ -1,15 +1,10 @@
 import PageContainer from '@/components/global/PageContainer';
 import SectionContainer from '@/components/global/SectionContainer';
-import BasicText from '@/components/global/text/BasicText';
-import H2 from '@/components/global/text/H2';
 import TextWithPicture from '@/components/ourHistory/TextWithPicture';
-import Image from 'next/image';
 import React, { cache } from 'react';
 import { getAllTeamMembers, getPages } from '@/lib/queries';
 import TeamMembers from '@/components/ourHistory/TeamMembers';
-import H3 from '@/components/global/text/H3';
 import OurMissonAndValues from '@/components/ourHistory/OurMissonAndValues';
-import Length from '@/components/global/Length';
 import TextSection from '@/components/ourHistory/TextSection';
 import RakontoNumbers from '@/components/ourHistory/RakontoNumbers';
 import getPageContent from '@/utils/getPageContent';
@@ -41,8 +36,6 @@ async function page() {
   const team = await clientFetch(getAllTeamMembers);
   const pageContent = getPageContent(pages, '/ourHistory').pageBuilder;
 
-  // console.log(pageContent[1]);
-
   const textSectionArray = pageContent.slice(2, 6);
 
   return (
@@ -54,7 +47,7 @@ async function page() {
         <TeamMembers team={team} />
         <OurMissonAndValues data={pageContent[7]} />
         <FromBeginningsToToday data={pageContent[8]} />
-        <RakontoNumbers />
+        <RakontoNumbers data={pageContent[9]} />
       </SectionContainer>
     </PageContainer>
   );

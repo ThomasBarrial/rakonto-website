@@ -364,3 +364,18 @@ export interface IOurHistoryTextSection {
   TextEn: Block[];
   image: SanityImage;
 }
+
+export interface IRakontoNumbers {
+  titleEn: string;
+  titleFr: string;
+  titleBisFr: string;
+  titleBisEn: string;
+  numbers: {
+    animationDuration: number;
+    number: number;
+    titleEn: string;
+    _type: string;
+    _key: string;
+    titleFr: string;
+  }[];
+}

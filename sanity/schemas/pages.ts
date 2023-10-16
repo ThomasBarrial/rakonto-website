@@ -88,6 +88,11 @@ export default defineType({
           title: 'Form Start To Today (Our History)',
           type: 'formStartToToday',
         }),
+        defineArrayMember({
+          name: 'rakontoNumbers',
+          title: 'Rakonto Numbers',
+          type: 'rakontoNumbers',
+        }),
       ],
     }),
   ],
