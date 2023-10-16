@@ -32,17 +32,17 @@ function Header({ dataBanner, dataIntro }: IProps) {
         start={-400}
         bgColor="none"
       />
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row lg:items-end">
         <H1
           className="mt-10 lg:w-8/12"
           contentEn={dataIntro.titleEn}
           contentFr={dataIntro.titleEn}
         />
-        <div className=" mt-5 max-h-36  lg:w-4/12 flex justify-end">
+        <div className=" mt-5 max-h-36  lg:w-4/12 lg:flex justify-end hidden">
           <Image
             src={urlForImage(dataIntro.introImage.asset).url()}
-            width={150}
-            height={150}
+            width={180}
+            height={180}
             alt={
               dataIntro.introImage.alt
                 ? dataIntro.introImage.alt
