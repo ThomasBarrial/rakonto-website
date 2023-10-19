@@ -344,3 +344,38 @@ export interface IMondayClmnArray {
   settings_str: string;
   value?: string | number;
 }
+
+export interface ITeam extends SanityDocument {
+  firstName: string;
+  lastName?: string;
+  roleFr: string;
+  roleEn: string;
+  descriptionFr: string;
+  descriptionEn: string;
+  profilPicture: SanityImage;
+}
+
+export interface IOurHistoryTextSection {
+  _type: string;
+  _key: string;
+  titleEn: string;
+  titleFr: string;
+  textFr: Block[];
+  TextEn: Block[];
+  image: SanityImage;
+}
+
+export interface IRakontoNumbers {
+  titleEn: string;
+  titleFr: string;
+  titleBisFr: string;
+  titleBisEn: string;
+  numbers: {
+    animationDuration: number;
+    number: number;
+    titleEn: string;
+    _type: string;
+    _key: string;
+    titleFr: string;
+  }[];
+}

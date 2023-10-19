@@ -18,17 +18,19 @@ interface IProps {
   title?: string;
   titleEn?: string;
   bgColor?: string;
+  h1ClassName?: string;
 }
 
 function FullWidthImage({
   path,
   alt,
-  className = '',
+  className = 'max-h-[65rem] lg:h-96',
   start = -100,
   end = 200,
   videoUrl,
   title,
   titleEn,
+  h1ClassName = '',
   bgColor,
 }: IProps) {
   const { scrollYProgress } = useScroll();
@@ -38,9 +40,7 @@ function FullWidthImage({
   const { selectedLanguage } = useSelectedLanguagesFromStore();
 
   return (
-    <div
-      className={`w-full h-80  lg:h-96 z-0 relative max-h-[65rem] overflow-hidden ${className}`}
-    >
+    <div className={`w-full h-80   z-0 relative  overflow-hidden ${className}`}>
       {title && titleEn && (
         <div
           className={` ${bgColor === '#dd6d48' && 'bg-quaternary'} ${
@@ -48,10 +48,12 @@ function FullWidthImage({
           } ${bgColor === '#12795F' && 'bg-primary'} 
             ${bgColor === '#91c98c' && 'bg-secondary'}  ${
               !bgColor && 'bg-primary'
+            } ${
+              bgColor === 'none' && 'bg-transparent'
             } bg-opacity-50 h-[100%] w-[100%] relative flex justify-center items-center -translate-y-1/2  top-1/2 z-10`}
         >
           <h1
-            className={`font-francoisOne text-center text-[50px] leading-none text-white md:text-[60px] xl:text-[90px] uppercase ${className}`}
+            className={`font-francoisOne text-center text-[50px] leading-none ${h1ClassName}  text-white md:text-[60px] xl:text-[90px] uppercase ${className}`}
           >
             {selectedLanguage === 'Fr' ? title : titleEn}
           </h1>

@@ -137,3 +137,9 @@ export const getOneOffer = groq`
   }
 } 
 `;
+
+export const getAllTeamMembers = groq`
+*[_type == "team"] {
+    ...,
+  } | order(orderPlacement asc)
+`;

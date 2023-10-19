@@ -32,6 +32,7 @@ export default defineType({
       title: 'Keywords',
       type: 'array',
       of: [{ type: 'string' }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'descriptionEN',

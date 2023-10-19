@@ -51,7 +51,7 @@ const RichTextComponents = {
       </h4>
     ),
     normal: ({ children }: any) => (
-      <p className="whitespace-pre-line my-2 text-[16px]  lg:text-[18px]">
+      <p className="whitespace-pre-line my-4 text-[16px]  lg:text-[18px]">
         {children}
       </p>
     ),
