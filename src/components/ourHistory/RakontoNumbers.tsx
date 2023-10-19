@@ -18,7 +18,7 @@ function RakontoNumbers({ data }: { data: IRakontoNumbers }) {
       ref={ref}
       className="bg-primary mt-20 lg:mt-52  flex flex-col items-center mb-10"
     >
-      <div className="p-5">
+      <div className="p-5 w-full flex flex-col items-center">
         <H1
           textColor="text-white font-bold text-center"
           contentEn={data.titleEn}
@@ -30,7 +30,7 @@ function RakontoNumbers({ data }: { data: IRakontoNumbers }) {
           contentFr={data.titleBisFr}
         />
 
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:w-full">
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:w-8/12 lg:mt-5">
           {data.numbers.map((element) => (
             <div className="" key={element._key}>
               {inView && (

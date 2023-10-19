@@ -61,7 +61,7 @@ function FromBeginningsToToday({ data }: IProps) {
       )}
 
       {data.Dates && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 lg:mx-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-10 lg:mx-20">
           {data.Dates.map((date, index) => (
             <div
               key={date._key}

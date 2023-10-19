@@ -36,7 +36,7 @@ function Header({ dataBanner, dataIntro }: IProps) {
         <H1
           className="mt-10 lg:w-8/12"
           contentEn={dataIntro.titleEn}
-          contentFr={dataIntro.titleEn}
+          contentFr={dataIntro.titleFr}
         />
         <div className=" mt-5 max-h-36  lg:w-4/12 lg:flex justify-end hidden">
           <Image

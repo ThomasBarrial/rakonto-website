@@ -43,7 +43,7 @@ async function page() {
       <SectionContainer>
         <Header dataBanner={pageContent[0]} dataIntro={pageContent[1]} />
         <TextSection data={textSectionArray} />
-        <TextWithPicture />
+        <TextWithPicture data={pageContent[6]} />
         <TeamMembers team={team} />
         <OurMissonAndValues data={pageContent[7]} />
         <FromBeginningsToToday data={pageContent[8]} />

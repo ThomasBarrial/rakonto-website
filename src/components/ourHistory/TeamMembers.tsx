@@ -15,7 +15,7 @@ function TeamMembers({ team }: IProps) {
     <div className="mt-10 lg:mt-52 lg:mx-52">
       <H1
         className="text-center"
-        contentEn="la team derrière l’asso"
+        contentEn="the team behind the association"
         contentFr="la team derrière l’asso"
       />
       <div className="mt-5 lg:mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
