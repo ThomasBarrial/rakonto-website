@@ -50,8 +50,8 @@ function RakontoNumbers({ data }: { data: IRakontoNumbers }) {
       </div>
 
       <FullWidthImage
-        title="des projets, des sourires, des solutions"
-        titleEn="des projets, des sourires, des solutions"
+        title={data.textImageFR}
+        titleEn={data.textImageEn}
         className="mt-10 max-h-[105rem] lg:h-[50rem]"
         path="/woarewe.webp"
         h1ClassName="lg:translate-y-[35%]"

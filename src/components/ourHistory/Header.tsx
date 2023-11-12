@@ -4,6 +4,7 @@ import { SanityImage } from '../../../types';
 import FullWidthImage from '../global/images/FullWidthImage';
 import H1 from '../global/text/H1';
 import urlForImage from '../../../sanity/lib/image';
+import SlideUp from '../animated/SlideUp';
 
 interface Data {
   titleFr: string;
@@ -33,22 +34,26 @@ function Header({ dataBanner, dataIntro }: IProps) {
         bgColor="none"
       />
       <div className="flex flex-col lg:flex-row lg:items-end">
-        <H1
-          className="mt-10 lg:w-8/12"
-          contentEn={dataIntro.titleEn}
-          contentFr={dataIntro.titleFr}
-        />
-        <div className=" mt-5 max-h-36  lg:w-4/12 lg:flex justify-end hidden">
-          <Image
-            src={urlForImage(dataIntro.introImage.asset).url()}
-            width={180}
-            height={180}
-            alt={
-              dataIntro.introImage.alt
-                ? dataIntro.introImage.alt
-                : 'unknow Image'
-            }
+        <SlideUp duration={1.2}>
+          <H1
+            className="mt-10 lg:w-8/12"
+            contentEn={dataIntro.titleEn}
+            contentFr={dataIntro.titleFr}
           />
+        </SlideUp>
+        <div className=" mt-5 max-h-36  lg:w-4/12 lg:flex justify-end hidden">
+          <SlideUp duration={1.2}>
+            <Image
+              src={urlForImage(dataIntro.introImage.asset).url()}
+              width={180}
+              height={180}
+              alt={
+                dataIntro.introImage.alt
+                  ? dataIntro.introImage.alt
+                  : 'unknow Image'
+              }
+            />
+          </SlideUp>
         </div>
       </div>
     </>

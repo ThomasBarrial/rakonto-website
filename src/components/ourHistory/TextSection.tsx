@@ -1,82 +1,42 @@
-import Image from 'next/image';
-import React from 'react';
-import Body from '../articles/Body';
-import H2 from '../global/text/H2';
-import urlForImage from '../../../sanity/lib/image';
+'use client';
+
 import { IOurHistoryTextSection } from '../../../types';
+import Section1 from './textSections/Section1';
+import Section from './textSections/Section';
 
 interface IProps {
   data: IOurHistoryTextSection[];
 }
 
 function TextSection({ data }: IProps) {
+  const textSectionsArray = [data[1], data[2], data[3]];
   return (
     <>
-      <div className="mt-10 lg:mt-32 lg:w-10/12">
-        <H2
-          className="font-bold italic"
-          contentEn={data[0].titleEn}
-          contentFr={data[0].titleFr}
+      <Section1 data={data} />
+
+      {textSectionsArray.map((section, index) => (
+        <Section
+          data={section}
+          key={section._key}
+          class1={
+            (index === 0 && 'mt-10 lg:mt-32 lg:flex-row  ') ||
+            (index === 1 && 'mr-10 mt-10 lg:mr-52 lg:flex-row-reverse') ||
+            (index === 2 &&
+              'mr-10 mt-10 lg:mt-12 lg:max-w-[900px] lg:flex-row ')
+          }
+          class2={
+            (index === 0 && 'w-4/12') ||
+            (index === 1 && 'w-4/12') ||
+            (index === 2 && ' w-5/12')
+          }
+          class3={
+            (index === 0 && 'lg:ml-20 lg:w-8/12') ||
+            (index === 1 && 'lg:w-8/12 lg:ml-52') ||
+            (index === 2 && ' lg:w-7/12')
+          }
+          imageSize={index === 2 ? 200 : 300}
         />
-        <Body blockEn={data[0].TextEn} blockFr={data[0].textFr} />
-      </div>
-
-      <div className=" mt-10 lg:mt-32 flex flex-col lg:flex-row lg:items-center">
-        <div className="hidden lg:flex flex-row justify-center w-4/12 items-center ">
-          <Image
-            src={urlForImage(data[1].image.asset).url()}
-            alt=""
-            width={300}
-            height={300}
-          />
-        </div>
-        <div className="lg:ml-20 lg:w-8/12">
-          <H2
-            className="font-bold italic"
-            contentEn={data[1].titleEn}
-            contentFr={data[1].titleFr}
-          />
-          <Body blockEn={data[1].TextEn} blockFr={data[1].textFr} />
-        </div>
-      </div>
-
-      <div className="mr-10 mt-10 flex flex-col lg:flex-row-reverse items-center lg:mr-52">
-        <div className="hidden lg:flex flex-row justify-center w-4/12 items-center ">
-          <Image
-            src={urlForImage(data[2].image.asset).url()}
-            alt=""
-            width={300}
-            height={300}
-          />
-        </div>
-        <div className=" lg:w-8/12 lg:ml-52">
-          <H2
-            className="font-bold italic"
-            contentEn={data[2].titleEn}
-            contentFr={data[2].titleFr}
-          />
-          <Body blockEn={data[2].TextEn} blockFr={data[2].textFr} />
-        </div>
-      </div>
-
-      <div className="mr-10 mt-10 flex flex-col lg:flex-row lg:items-center lg:max-w-[900px]">
-        <div className="hidden lg:flex flex-row justify-center w-5/12 items-center ">
-          <Image
-            src={urlForImage(data[3].image.asset).url()}
-            alt=""
-            width={200}
-            height={200}
-          />
-        </div>
-        <div className="lg:w-7/12">
-          <H2
-            className="font-bold italic"
-            contentEn={data[3].titleEn}
-            contentFr={data[3].titleFr}
-          />
-          <Body blockEn={data[3].TextEn} blockFr={data[3].textFr} />
-        </div>
-      </div>
+      ))}
     </>
   );
 }
