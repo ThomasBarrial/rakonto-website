@@ -350,6 +350,7 @@ export interface ITeam extends SanityDocument {
   lastName?: string;
   roleFr: string;
   roleEn: string;
+  s;
   descriptionFr: string;
   descriptionEn: string;
   profilPicture: SanityImage;
@@ -370,6 +371,8 @@ export interface IRakontoNumbers {
   titleFr: string;
   titleBisFr: string;
   titleBisEn: string;
+  textImageFR: string;
+  textImageEn: string;
   numbers: {
     animationDuration: number;
     number: number;

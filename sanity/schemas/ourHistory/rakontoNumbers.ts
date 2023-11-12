@@ -30,6 +30,18 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'textImageFR',
+      title: `Image s text FR`,
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'textImageEn',
+      title: `Image s text EN`,
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'numbers',
       type: 'array',
       title: 'Numbers',
