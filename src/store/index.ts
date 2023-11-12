@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import isLoaderReducer from './isLoader.slice';
 import selectedLanguagesReducer from './selectedLanguages.slice';
+import projectSubjectSelectedReducer from './projectSubjectSelected';
 
 export const store = configureStore({
   reducer: {
     isLoader: isLoaderReducer,
     selectedLanguage: selectedLanguagesReducer,
+    projectSelectedSuject: projectSubjectSelectedReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),

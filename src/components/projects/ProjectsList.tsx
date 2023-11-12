@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import handleAnimate from '@/utils/handleAnimate';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
+import { useProjectSelectedSubjectFromStore } from '@/store/projectSubjectSelected';
 import SideBar from './SideBar';
 import { IProject, IProjectCategories, IYear, Subject } from '../../../types';
 import ProjectCard from './ProjectCard';
@@ -26,8 +27,8 @@ function ProjectsList({
   const { selectedLanguage } = useSelectedLanguagesFromStore();
   const [projectsList, setProjectList] = useState(projects);
   const [categorySelected, setCategorySelected] = useState<string | null>(null);
-  const [subjectSelected, setSubjectSelected] = useState<string | null>(null);
   const [yearSelected, setYearSelected] = useState<number | null>(null);
+  const { projectSelectedSuject } = useProjectSelectedSubjectFromStore();
 
   useEffect(() => {
     handleAnimate(setIsAnimate);
@@ -47,17 +48,19 @@ function ProjectsList({
       );
     }
 
-    if (subjectSelected) {
+    if (projectSelectedSuject) {
       filteredData = projects.filter(
         (item) =>
-          item.subjects?.some((subject) => subject.titleFr === subjectSelected)
+          item.subjects?.some(
+            (subject) => subject.titleFr === projectSelectedSuject
+          )
       );
     }
 
     setProjectList(filteredData);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categorySelected, subjectSelected, yearSelected]);
+  }, [categorySelected, projectSelectedSuject, yearSelected]);
 
   const filteredData = projectsList.filter((item) => {
     if (selectedLanguage === 'Fr') {
@@ -74,9 +77,7 @@ function ProjectsList({
           setCategorySelected={setCategorySelected}
           searchTerm={searchTerm}
           categorySelected={categorySelected}
-          subjectSelected={subjectSelected}
           yearSelected={yearSelected}
-          setSubjectSelected={setSubjectSelected}
           setSearchTerm={setSearchTerm}
           projectCategories={projectCategories}
           subjects={subjects}

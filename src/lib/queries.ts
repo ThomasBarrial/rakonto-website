@@ -62,7 +62,7 @@ export const getContactInfos = groq`
 export const getSubjects = groq`
 *[_type == "subjects"] {
     ...,
-} 
+} | order(orderPlacement asc)
 `;
 
 export const getProjects = groq`

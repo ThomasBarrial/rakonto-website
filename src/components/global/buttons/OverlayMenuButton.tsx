@@ -8,7 +8,7 @@ function OverlayMenuButton({
   onClick?: () => void;
 }) {
   return (
-    <button onClick={onClick} type="button" className="w-full my-2 text-left ">
+    <button onClick={onClick} type="button" className="w-full my-1  text-left ">
       {children}
     </button>
   );

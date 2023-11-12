@@ -25,7 +25,7 @@ function Section({ data, class1, class2, class3, imageSize = 300 }: IProps) {
   });
   return (
     <div>
-      <div className={`flex flex-col lg:items-center ${class1}`}>
+      <div className={`flex flex-col lg:items-center min-h-screen ${class1}`}>
         <div
           className={`hidden lg:flex flex-row justify-center  items-center ${class2}`}
         >

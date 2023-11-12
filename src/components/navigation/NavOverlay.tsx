@@ -39,24 +39,11 @@ function NavOverlay({
                 className="font-francoisOne uppercase text-[50px] lg:text-[65px] leading-none text-background"
                 key={item.nameFr}
               >
-                {item.nameEn === 'Join us' ? (
-                  <Link
-                    onClick={() => setIsOverlayOpen(false)}
-                    href={item.link}
-                  >
-                    {' '}
+                <Link onClick={() => setIsOverlayOpen(false)} href={item.link}>
+                  <h1>
                     {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
-                  </Link>
-                ) : (
-                  <Link
-                    onClick={() => setIsOverlayOpen(false)}
-                    href={item.link}
-                  >
-                    <h1>
-                      {selectedLanguage === 'Fr' ? item.nameFr : item.nameEn}
-                    </h1>
-                  </Link>
-                )}
+                  </h1>
+                </Link>
               </div>
             ))}
           </div>

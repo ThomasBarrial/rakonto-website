@@ -22,5 +22,11 @@ export default defineType({
       title: 'Subject Color',
       type: 'color',
     }),
+    defineField({
+      name: 'orderPlacement',
+      title: 'Order Placement',
+      type: 'number',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 });

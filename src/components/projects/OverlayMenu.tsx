@@ -20,7 +20,7 @@ function OverlayMenu({ isOpen, children, nameEn, nameFr, setIsOpen }: IProps) {
   };
 
   return (
-    <div>
+    <div className="">
       <TextUppercase
         className="text-primary translate-y-4 bg-background z-10 relative"
         contentEn={nameEn}
@@ -28,9 +28,7 @@ function OverlayMenu({ isOpen, children, nameEn, nameFr, setIsOpen }: IProps) {
       />
       <div
         className={`${
-          isOpen === nameEn && isOpen
-            ? 'h-[200px] mb-6 mt-5 translate-y-5'
-            : 'h-[0px]'
+          isOpen === nameEn && isOpen ? 'h-[200px] mb-6 mt-5 ' : 'h-[0px]'
         }  transform duration-500 ease-out  overflow-hidden`}
       >
         {children}

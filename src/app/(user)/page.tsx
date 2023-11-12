@@ -5,7 +5,7 @@ import LastestArticles from '@/components/homepage/LastestArticles';
 import type { Metadata } from 'next';
 import OurProjects from '@/components/homepage/OurProjects';
 import { cache } from 'react';
-import { getAllArticles, getPages } from '@/lib/queries';
+import { getAllArticles, getPages, getSubjects } from '@/lib/queries';
 import ImagesGallery from '@/components/homepage/ImagesGallery';
 import SupportUs from '@/components/homepage/SupportUs';
 
@@ -35,13 +35,17 @@ export default async function Home() {
 
   const homePageContent = getPageContent(pages, '/');
   const articles = await clientFetch(getAllArticles);
+  const subjects = await clientFetch(getSubjects);
 
   return (
     <PageContainer>
       <Header data={homePageContent.pageBuilder[7]} />
       <Presentation data={homePageContent.pageBuilder[0]} />
       {/* <OurGoals data={homePageContent.pageBuilder[1]} /> */}
-      <OurProjects data={homePageContent.pageBuilder[2]} />
+      <OurProjects
+        data={homePageContent.pageBuilder[2]}
+        projectsSubjects={subjects}
+      />
       <LastestArticles
         data={homePageContent.pageBuilder[3]}
         articles={articles}

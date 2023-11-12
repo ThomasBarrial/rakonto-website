@@ -54,6 +54,7 @@ function ProjectSideBar({ project }: { project: IProject }) {
                 <button
                   type="button"
                   onClick={() => scrollToSection(p._key, 80)}
+                  className="flex text-left my-1 hover:text-primary hover:font-bold underline"
                 >
                   <TextSmall contentEn={p.titleEn} contentFr={p.title} />
                 </button>
@@ -64,25 +65,27 @@ function ProjectSideBar({ project }: { project: IProject }) {
       </div>
 
       <div className="mt-10">
-        <H3
-          className="text-primary"
-          contentEn="PARTENERS"
-          contentFr="PARTENAIRES"
-        />
-        {project.partners && (
-          <ul>
-            {project.partners?.map((item) => (
-              <li key={item._id}>
-                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                  <TextSmall
-                    className="underline"
-                    contentEn={item.name}
-                    contentFr={item.name}
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
+        {project.partners && project.partners.length > 0 && (
+          <div>
+            <H3
+              className="text-primary"
+              contentEn="PARTNERS"
+              contentFr="PARTENAIRES"
+            />
+            <ul>
+              {project.partners?.map((item) => (
+                <li key={item._id}>
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                    <TextSmall
+                      className="underline"
+                      contentEn={item.name}
+                      contentFr={item.name}
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
 
         {project.files && (

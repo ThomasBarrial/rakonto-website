@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { useInView } from 'framer-motion';
+import { useProjectSelectedSubjectFromStore } from '@/store/projectSubjectSelected';
+import { useRouter } from 'next/navigation';
 import H1 from '../global/text/H1';
-import { IHomeOurProjectSection } from '../../../types';
+import { IHomeOurProjectSection, Subject } from '../../../types';
 import LinkButton from '../global/buttons/LinkButton';
 import BasicText from '../global/text/BasicText';
 import H2 from '../global/text/H2';
@@ -14,10 +15,13 @@ import H3 from '../global/text/H3';
 
 interface IProps {
   data: IHomeOurProjectSection;
+  projectsSubjects: Subject[];
 }
 
-function OurProjects({ data }: IProps) {
+function OurProjects({ data, projectsSubjects }: IProps) {
   const [size, setSize] = useState(0);
+  const { setProjectSelectedSubject } = useProjectSelectedSubjectFromStore();
+  const router = useRouter();
 
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
@@ -25,6 +29,12 @@ function OurProjects({ data }: IProps) {
   useEffect(() => {
     setSize(window.innerWidth);
   }, []);
+
+  const handleClick = (item: string | null) => {
+    setProjectSelectedSubject(item);
+    router.push('/projects');
+  };
+
   return (
     <SectionContainer
       bgImage="/backgroundHome/bgProjects5.png"
@@ -37,8 +47,8 @@ function OurProjects({ data }: IProps) {
           </SlideUp>
         )}
         <ul className="flex flex-col w-full mt-10 lg:mt-0 items-end text-primary space-y-5 lg:space-y-10">
-          {data.projectCategories.map((item, index) => (
-            <li key={item._key}>
+          {projectsSubjects.map((item, index) => (
+            <li key={item._id}>
               {inView && (
                 <SlideUp
                   duration={index * 0.25 + 0.5}
@@ -47,22 +57,29 @@ function OurProjects({ data }: IProps) {
                     paddingRight: size >= 1024 ? `${index * 80}px` : '0',
                   }}
                 >
-                  <Link href={item.link}>
+                  <button
+                    type="button"
+                    onClick={() => handleClick(item.titleFr)}
+                  >
                     <H3
                       className="hover:bg-transparent hover:text-primary border border-primary transform duration-200 bg-primary text-white px-5 pt-1 flex items-center"
-                      contentEn={item.nameEn}
-                      contentFr={item.nameFr}
+                      contentEn={item.titleEn}
+                      contentFr={item.titleFr}
                     />
-                  </Link>
+                  </button>
                 </SlideUp>
               )}
-              <Link className="flex flex-col lg:hidden" href={item.link}>
+              <button
+                type="button"
+                onClick={() => handleClick(item.titleFr)}
+                className="flex flex-col lg:hidden"
+              >
                 <H2
                   className="hover:font-bold transform duration-200"
-                  contentEn={item.nameEn}
-                  contentFr={item.nameFr}
+                  contentEn={item.titleEn}
+                  contentFr={item.titleFr}
                 />
-              </Link>
+              </button>
             </li>
           ))}
         </ul>{' '}

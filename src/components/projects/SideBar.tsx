@@ -1,7 +1,8 @@
 'use client';
 
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
+import { useProjectSelectedSubjectFromStore } from '@/store/projectSubjectSelected';
 import SideBarLayout from '../global/SideBarLayout';
 import { IProjectCategories, IYear, Subject } from '../../../types';
 import OverlayMenu from './OverlayMenu';
@@ -14,13 +15,11 @@ interface IProps {
   setIsAnimate: Dispatch<SetStateAction<boolean>>;
   projectCategories: IProjectCategories[];
   setYearSelected: Dispatch<SetStateAction<number | null>>;
-  setSubjectSelected: Dispatch<SetStateAction<string | null>>;
   subjects: Subject[];
   years: IYear[];
   setCategorySelected: Dispatch<SetStateAction<string | null>>;
   yearSelected: number | null;
   categorySelected: string | null;
-  subjectSelected: string | null;
 }
 
 function SideBar({
@@ -29,16 +28,22 @@ function SideBar({
   setSearchTerm,
   setCategorySelected,
   setYearSelected,
-  setSubjectSelected,
   projectCategories,
   subjects,
   yearSelected,
   categorySelected,
-  subjectSelected,
   years,
 }: IProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const { selectedLanguage } = useSelectedLanguagesFromStore();
+  const { projectSelectedSuject, setProjectSelectedSubject } =
+    useProjectSelectedSubjectFromStore();
+
+  useEffect(() => {
+    if (projectSelectedSuject) {
+      setSelected('Subjects');
+    }
+  }, [projectSelectedSuject]);
 
   return (
     <SideBarLayout
@@ -84,16 +89,18 @@ function SideBar({
             <OverlayMenuButton
               key={item._id}
               onClick={() => {
-                if (subjectSelected === item.titleFr) {
-                  setSubjectSelected(null);
+                if (projectSelectedSuject === item.titleFr) {
+                  setProjectSelectedSubject(null);
                 } else {
-                  setSubjectSelected(item.titleFr);
+                  setProjectSelectedSubject(item.titleFr);
                 }
               }}
             >
               <BasicText
                 className={`uppercase hover:underline transform duration-300 pb-1 text-sm ${
-                  subjectSelected === item.titleFr ? 'font-bold' : 'font-light'
+                  projectSelectedSuject === item.titleFr
+                    ? 'font-bold'
+                    : 'font-light'
                 }`}
                 contentEn={item.titleEn}
                 contentFr={item.titleFr}
@@ -132,15 +139,17 @@ function SideBar({
         <div>
           <div className="flex flex-wrap  text-xs uppercase mt-10">
             {categorySelected && <p>{categorySelected}&nbsp;/ &nbsp;</p>}
-            {subjectSelected && <p>{subjectSelected}&nbsp;/ &nbsp;</p>}
+            {projectSelectedSuject && (
+              <p>{projectSelectedSuject}&nbsp;/ &nbsp;</p>
+            )}
             {yearSelected && <p>{yearSelected}</p>}
           </div>
-          {categorySelected || subjectSelected || yearSelected ? (
+          {categorySelected || projectSelectedSuject || yearSelected ? (
             <button
               onClick={() => {
                 setCategorySelected(null);
                 setYearSelected(null);
-                setSubjectSelected(null);
+                setProjectSelectedSubject(null);
               }}
               type="button"
               className="mt-5 text-sm "

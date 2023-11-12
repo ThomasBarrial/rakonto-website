@@ -30,7 +30,7 @@ function TextWithPicture({ data }: IProps) {
   const inView = useInView(ref, { once: true });
 
   return (
-    <div className="mt-10 flex flex-col lg:flex-row justify-center items-center lg:mt-32 lg:mx-32">
+    <div className="mt-10 min-h-screen flex flex-col lg:flex-row justify-center items-center lg:mt-32 lg:mx-32">
       <div ref={ref} className="lg:w-6/12 flex flex-col lg:items-end">
         {inView && (
           <SlideUp duration={1.5}>

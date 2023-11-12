@@ -18,7 +18,7 @@ function TeamMembers({ team }: IProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   return (
-    <div className="mt-10 lg:mt-52 lg:mx-52">
+    <div className="mt-10 lg:mt-52 lg:mx-52 min-h-screen">
       <div ref={ref}>
         {inView && (
           <SlideUp duration={1.5}>
@@ -30,39 +30,38 @@ function TeamMembers({ team }: IProps) {
           </SlideUp>
         )}
       </div>
-      {inView && (
-        <div className="mt-5 lg:mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {team.map((member) => (
-            <div key={member._id}>
-              <SlideUp duration={1.5} className=" relative w-full h-96">
-                <Image
-                  className="object-cover"
-                  src={urlForImage(member.profilPicture.asset).url()}
-                  fill
-                  alt="notre aventure"
-                  priority
-                />
-              </SlideUp>
-              <div className="flex justify-between mt-2">
-                <H3
-                  className="text-primary"
-                  contentEn={member.firstName}
-                  contentFr={member.firstName}
-                />
-                <BasicText
-                  className="text-primary"
-                  contentEn={member.roleEn}
-                  contentFr={member.roleFr}
-                />
-              </div>
-              <BasicText
-                contentEn={member.descriptionEn}
-                contentFr={member.descriptionFr}
+
+      <div className="mt-5 lg:mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {team.map((member) => (
+          <div key={member._id}>
+            <div className=" relative w-full h-96">
+              <Image
+                className="object-cover"
+                src={urlForImage(member.profilPicture.asset).url()}
+                fill
+                alt="notre aventure"
+                priority
               />
             </div>
-          ))}
-        </div>
-      )}
+            <div className="flex justify-between mt-2">
+              <H3
+                className="text-primary"
+                contentEn={member.firstName}
+                contentFr={member.firstName}
+              />
+              <BasicText
+                className="text-primary"
+                contentEn={member.roleEn}
+                contentFr={member.roleFr}
+              />
+            </div>
+            <BasicText
+              contentEn={member.descriptionEn}
+              contentFr={member.descriptionFr}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
