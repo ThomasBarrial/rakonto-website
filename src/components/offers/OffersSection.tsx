@@ -122,7 +122,7 @@ function OffersSection({ offers }: { offers: IOffer[] }) {
                 contentEn={`${
                   item.PlacesAvailable - item.placesOccupied === 0 ? '' : ''
                 }"Places Available"`}
-                contentFr="Places deisponibles"
+                contentFr="Places disponibles"
               />
               <BasicText
                 className="ml-2"

@@ -55,8 +55,8 @@ function ArticleCard({ item }: { item: Article }) {
       <LinkButton
         link={`/articles/${item.slug.current}`}
         className="w-[130px] mt-3 text-sm"
-        textEn="read article"
-        textFr={`lire l'article`}
+        textEn="Read article"
+        textFr={`Lire l'article`}
       />
     </div>
   );

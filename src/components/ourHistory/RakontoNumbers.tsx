@@ -16,7 +16,7 @@ function RakontoNumbers({ data }: { data: IRakontoNumbers }) {
   return (
     <div
       ref={ref}
-      className="bg-primary mt-20 lg:mt-52  flex flex-col items-center mb-10"
+      className="bg-primary mt-20 lg:mt-52  flex flex-col items-center mb-10 pt-10"
     >
       <div className="p-5 w-full flex flex-col items-center">
         <H1

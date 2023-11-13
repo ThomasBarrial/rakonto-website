@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { useInView } from 'framer-motion';
+import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import Background from '../animated/Background';
 import BasicText from '../global/text/BasicText';
 import SlideUp from '../animated/SlideUp';
@@ -18,6 +19,7 @@ interface IProps {
 function Header({ data }: IProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
+  const { selectedLanguage } = useSelectedLanguagesFromStore();
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
@@ -37,15 +39,31 @@ function Header({ data }: IProps) {
     <section className=" w-full flex min-h-screen flex-col justify-between items-center  py-20 px-4 lg:px-10">
       <div ref={ref} className="max-w-content w-full">
         {inView && (
-          <div className="font-francoisOne   text-[60px] md:text-[5rem]  leading-none mt-10 lg:text-[7rem] xl:text-[8rem] text-primary font-bold">
+          <div
+            className={`${
+              selectedLanguage === 'Fr'
+                ? 'text-[55px] md:text-[5rem] leading-none lg:text-[7rem] xl:text-[8rem] mt-5'
+                : 'text-[60px] md:text-[5rem] leading-none lg:text-[7rem] xl:text-[8rem]  mt-10'
+            } font-francoisOne  text-primary font-bold`}
+          >
             <SlideUp duration={1}>
-              <h2>WE TRAIN AND INFORM</h2>
+              <h2>
+                {selectedLanguage === 'Fr'
+                  ? 'NOUS FORMONS ET INFORMONS'
+                  : 'WE TRAIN AND INFORM'}
+              </h2>
             </SlideUp>
             <SlideUp duration={1.5}>
-              <h2 className=" w-full">{`ON TOMORROW'S`}</h2>
+              <h2 className=" w-full">
+                {selectedLanguage === 'Fr'
+                  ? 'SUR LES SOLUTIONS'
+                  : `ON TOMORROW'S`}
+              </h2>
             </SlideUp>
             <SlideUp duration={2}>
-              <h2 className=" w-full">SOLUTIONS</h2>
+              <h2 className=" w-full">
+                {selectedLanguage === 'Fr' ? 'DE DEMAIN' : 'SOLUTIONS'}
+              </h2>
             </SlideUp>
           </div>
         )}

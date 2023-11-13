@@ -7,6 +7,7 @@ import useParallax from '@/utils/useParralax';
 import Video from '@/components/videos/Video';
 import VideoModal from '@/components/videos/VideoModal';
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
+import SlideUp from '@/components/animated/SlideUp';
 
 interface IProps {
   path: string;
@@ -52,11 +53,13 @@ function FullWidthImage({
               bgColor === 'none' && 'bg-transparent'
             } bg-opacity-50 h-[100%] w-[100%] relative flex justify-center items-center -translate-y-1/2  top-1/2 z-10`}
         >
-          <h1
-            className={`font-francoisOne text-center text-[50px] leading-none ${h1ClassName}  text-white md:text-[60px] xl:text-[90px] uppercase ${className}`}
-          >
-            {selectedLanguage === 'Fr' ? title : titleEn}
-          </h1>
+          <SlideUp duration={1}>
+            <h1
+              className={`font-francoisOne text-center text-[50px] leading-none ${h1ClassName}  text-white md:text-[60px] xl:text-[90px] uppercase ${className}`}
+            >
+              {selectedLanguage === 'Fr' ? title : titleEn}
+            </h1>
+          </SlideUp>
         </div>
       )}
       {/* MODAL */}
