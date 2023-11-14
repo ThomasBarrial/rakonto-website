@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 import OurProjects from '@/components/homepage/OurProjects';
 import { cache } from 'react';
 import { getAllArticles, getPages, getSubjects } from '@/lib/queries';
-import ImagesGallery from '@/components/homepage/ImagesGallery';
+import ImagesGallery from '@/components/homepage/gallery/ImagesGallery';
 import SupportUs from '@/components/homepage/SupportUs';
 
 // import OurGoals from '@/components/homepage/OurGoals';
