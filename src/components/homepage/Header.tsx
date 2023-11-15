@@ -49,20 +49,20 @@ function Header({ data }: IProps) {
             <SlideUp duration={1}>
               <h2>
                 {selectedLanguage === 'Fr'
-                  ? 'NOUS FORMONS ET INFORMONS'
+                  ? 'NOUS FORMONS ET INFORMONS SUR LES '
                   : 'WE TRAIN AND INFORM'}
               </h2>
             </SlideUp>
             <SlideUp duration={1.5}>
               <h2 className=" w-full">
                 {selectedLanguage === 'Fr'
-                  ? 'SUR LES SOLUTIONS'
+                  ? 'SOLUTIONS DE DEMAIN'
                   : `ON TOMORROW'S`}
               </h2>
             </SlideUp>
             <SlideUp duration={2}>
               <h2 className=" w-full">
-                {selectedLanguage === 'Fr' ? 'DE DEMAIN' : 'SOLUTIONS'}
+                {selectedLanguage === 'Fr' ? '' : 'SOLUTIONS'}
               </h2>
             </SlideUp>
           </div>
@@ -74,7 +74,7 @@ function Header({ data }: IProps) {
             <div>
               <SlideUp duration={2}>
                 <BasicText
-                  className=" w-10/12 xl:w-6/12 font-josefin text-lg mt-5"
+                  className="w-10/12 md:w-6/12 xl:w-6/12 font-josefin text-lg mt-5"
                   contentEn={data.textEn}
                   contentFr={data.textFr}
                 />
@@ -107,10 +107,10 @@ function Header({ data }: IProps) {
       </div>
 
       <Background
-        image="/backgroundHome/bgHeader5.png"
+        image="/backgroundHome/bgHeader6.webp"
         opacity={1}
         start={0}
-        end={2000}
+        end={1000}
       />
     </section>
     // <section className="h-full min-h-screen flex flex-col items-center justify-start md:justify-center pt-24 pb-52">

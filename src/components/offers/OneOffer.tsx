@@ -89,7 +89,7 @@ function OneOffer({ offer, link }: { offer: IOffer; link: string }) {
           <div className="flex">
             <span className="mr-2">
               {selectedLanguage === 'Fr'
-                ? 'Places deisponibles'
+                ? 'Place disponible'
                 : 'Places Available'}{' '}
               :
             </span>
@@ -105,7 +105,7 @@ function OneOffer({ offer, link }: { offer: IOffer; link: string }) {
             link={link}
           />
         ) : (
-          <div className="bg-quaternary px-10 py-3 lg:w-4/12 flex flex-col items-center justify-center  text-white mt-5">
+          <div className="bg-quaternary px-10 py-3 lg:w-6/12 flex flex-col items-center justify-center  text-white mt-5">
             <p>
               {' '}
               {selectedLanguage === 'Fr'

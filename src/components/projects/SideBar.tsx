@@ -51,12 +51,37 @@ function SideBar({
       searchTerm={searchTerm}
       setIsAnimate={setIsAnimate}
     >
-      <div className="mt-10 flex flex-col lg:space-y-5">
+      <div>
+        <div className="flex flex-wrap  text-xs uppercase mt-10">
+          {categorySelected && <p>{categorySelected}&nbsp;/ &nbsp;</p>}
+          {projectSelectedSuject && (
+            <p>{projectSelectedSuject}&nbsp;/ &nbsp;</p>
+          )}
+          {yearSelected && <p>{yearSelected}</p>}
+        </div>
+        {categorySelected || projectSelectedSuject || yearSelected ? (
+          <button
+            onClick={() => {
+              setCategorySelected(null);
+              setYearSelected(null);
+              setProjectSelectedSubject(null);
+            }}
+            type="button"
+            className=" text-sm "
+          >
+            {selectedLanguage === 'Fr'
+              ? 'Effacer les filtres'
+              : 'Remove filters'}
+          </button>
+        ) : null}
+      </div>
+      <div className="mt-5 flex flex-col lg:space-y-5">
         <OverlayMenu
           nameEn="Categories"
           nameFr="Catégories"
           isOpen={selected}
           setIsOpen={setSelected}
+          height="100px"
         >
           {projectCategories.map((item) => (
             <OverlayMenuButton
@@ -113,6 +138,7 @@ function SideBar({
           nameFr="Années"
           isOpen={selected}
           setIsOpen={setSelected}
+          height="90px"
         >
           {years.map((item) => (
             <OverlayMenuButton
@@ -135,31 +161,6 @@ function SideBar({
             </OverlayMenuButton>
           ))}
         </OverlayMenu>
-
-        <div>
-          <div className="flex flex-wrap  text-xs uppercase mt-10">
-            {categorySelected && <p>{categorySelected}&nbsp;/ &nbsp;</p>}
-            {projectSelectedSuject && (
-              <p>{projectSelectedSuject}&nbsp;/ &nbsp;</p>
-            )}
-            {yearSelected && <p>{yearSelected}</p>}
-          </div>
-          {categorySelected || projectSelectedSuject || yearSelected ? (
-            <button
-              onClick={() => {
-                setCategorySelected(null);
-                setYearSelected(null);
-                setProjectSelectedSubject(null);
-              }}
-              type="button"
-              className="mt-5 text-sm "
-            >
-              {selectedLanguage === 'Fr'
-                ? 'Effacer les filtres'
-                : 'Remove filters'}
-            </button>
-          ) : null}
-        </div>
       </div>
     </SideBarLayout>
   );

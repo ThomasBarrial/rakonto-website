@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
+import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
 import { SanityImage } from '../../../types';
 import FullWidthImage from '../global/images/FullWidthImage';
 import H1 from '../global/text/H1';
@@ -10,6 +13,7 @@ interface Data {
   titleFr: string;
   titleEn: string;
   introImage: SanityImage;
+  introImageEn: SanityImage;
 }
 
 interface IProps {
@@ -18,6 +22,7 @@ interface IProps {
 }
 
 function Header({ dataBanner, dataIntro }: IProps) {
+  const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
     <>
       {' '}
@@ -34,17 +39,19 @@ function Header({ dataBanner, dataIntro }: IProps) {
         bgColor="none"
       />
       <div className="flex flex-col lg:flex-row lg:items-end">
-        <SlideUp duration={1.2}>
-          <H1
-            className="mt-10 lg:w-8/12"
-            contentEn={dataIntro.titleEn}
-            contentFr={dataIntro.titleFr}
-          />
-        </SlideUp>
+        <div className="mt-10 lg:w-8/12">
+          <SlideUp duration={1.2}>
+            <H1 contentEn={dataIntro.titleEn} contentFr={dataIntro.titleFr} />
+          </SlideUp>
+        </div>
         <div className=" mt-5 max-h-36  lg:w-4/12 lg:flex justify-end hidden">
           <SlideUp duration={1.2}>
             <Image
-              src={urlForImage(dataIntro.introImage.asset).url()}
+              src={
+                selectedLanguage === 'Fr'
+                  ? urlForImage(dataIntro.introImage.asset).url()
+                  : urlForImage(dataIntro.introImageEn.asset).url()
+              }
               width={180}
               height={180}
               alt={

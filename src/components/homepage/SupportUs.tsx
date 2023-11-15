@@ -35,7 +35,7 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
       <div
         ref={ref}
         id="supportUs"
-        className="my-10 pb-32 relative  w-[100%] font-josefin flex flex-col"
+        className="my-10 pb-32 relative w-[100%] font-josefin flex flex-col"
       >
         {inView && (
           <SlideUp
@@ -56,7 +56,7 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
           </SlideUp>
         )}
         {inView && (
-          <div className="xl:w-6/12 xl:absolute right-0">
+          <div className="xl:w-6/12 xl:absolute right-0 xl:top-28">
             {data.callToAction.map((item, index) => (
               <SlideUp key={item._key} duration={index * 0.5 + 1}>
                 <motion.div

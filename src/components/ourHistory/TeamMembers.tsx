@@ -18,7 +18,7 @@ function TeamMembers({ team }: IProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   return (
-    <div className="mt-10 lg:mt-52 lg:mx-52 min-h-screen">
+    <div className="mt-10 lg:mt-10 lg:mx-52 min-h-screen">
       <div ref={ref}>
         {inView && (
           <SlideUp duration={1.5}>

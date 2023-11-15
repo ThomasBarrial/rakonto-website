@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useInView } from 'framer-motion';
 import H2 from '@/components/global/text/H2';
 import React, { useRef } from 'react';
+import SectionContainer from '@/components/global/SectionContainer';
 import { IOurHistoryTextSection } from '../../../../types';
 import urlForImage from '../../../../sanity/lib/image';
 
@@ -21,16 +22,16 @@ function Section({ data, class1, class2, class3, imageSize = 300 }: IProps) {
   const ref = useRef(null);
   const inView = useInView(ref, {
     once: true,
-    margin: '-100px 0px -100px 0px',
+    // margin: '-50px 0px -50px 0px',
   });
   return (
-    <div>
-      <div className={`flex flex-col lg:items-center min-h-screen ${class1}`}>
+    <SectionContainer>
+      <div className={`flex flex-col lg:items-center  ${class1}`}>
         <div
           className={`hidden lg:flex flex-row justify-center  items-center ${class2}`}
         >
           {inView && (
-            <SlideUp duration={1.2}>
+            <SlideUp duration={1}>
               <Image
                 src={urlForImage(data.image.asset).url()}
                 alt=""
@@ -42,7 +43,7 @@ function Section({ data, class1, class2, class3, imageSize = 300 }: IProps) {
         </div>
         <div ref={ref} className={` ${class3}`}>
           {inView && (
-            <SlideUp duration={1.5}>
+            <SlideUp duration={1}>
               <H2
                 className="font-bold italic"
                 contentEn={data.titleEn}
@@ -57,7 +58,7 @@ function Section({ data, class1, class2, class3, imageSize = 300 }: IProps) {
           )}
         </div>
       </div>
-    </div>
+    </SectionContainer>
   );
 }
 

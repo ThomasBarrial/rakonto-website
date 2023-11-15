@@ -43,23 +43,20 @@ function FullWidthImage({
   return (
     <div className={`w-full h-80   z-0 relative  overflow-hidden ${className}`}>
       {title && titleEn && (
-        <div
-          className={` ${bgColor === '#dd6d48' && 'bg-quaternary'} ${
-            bgColor === '#febe10' && 'bg-tertiary'
-          } ${bgColor === '#12795F' && 'bg-primary'} 
-            ${bgColor === '#91c98c' && 'bg-secondary'}  ${
-              !bgColor && 'bg-primary'
-            } ${
-              bgColor === 'none' && 'bg-transparent'
-            } bg-opacity-50 h-[100%] w-[100%] relative flex justify-center items-center -translate-y-1/2  top-1/2 z-10`}
-        >
-          <SlideUp duration={1}>
-            <h1
-              className={`font-francoisOne text-center text-[50px] leading-none ${h1ClassName}  text-white md:text-[60px] xl:text-[90px] uppercase ${className}`}
-            >
-              {selectedLanguage === 'Fr' ? title : titleEn}
-            </h1>
-          </SlideUp>
+        <div className="h-[100%] w-[100%] relative flex justify-center items-center -translate-y-1/2  top-1/2 z-10">
+          <div
+            style={{ backgroundColor: `${bgColor || '#13795F'}` }}
+            className="absolute w-[110%] h-[110%] top-0 left-0 opacity-50"
+          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
+            <SlideUp duration={1}>
+              <h1
+                className={`font-francoisOne text-center text-[50px] leading-none ${h1ClassName}  text-white md:text-[60px] xl:text-[90px] uppercase ${className}`}
+              >
+                {selectedLanguage === 'Fr' ? title : titleEn}
+              </h1>
+            </SlideUp>
+          </div>
         </div>
       )}
       {/* MODAL */}

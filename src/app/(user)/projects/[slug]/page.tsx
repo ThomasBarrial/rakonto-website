@@ -58,9 +58,7 @@ async function page({ params: { slug } }: Props) {
       <SectionContainer>
         <FullWidthImage
           bgColor={
-            project.categories
-              ? project.categories[0].projectColor.hex
-              : undefined
+            project.subjects ? project.subjects[0].subjectColor.hex : undefined
           }
           title={project.title}
           titleEn={project.titleEn}

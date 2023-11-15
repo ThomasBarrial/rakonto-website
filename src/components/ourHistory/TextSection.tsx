@@ -19,7 +19,7 @@ function TextSection({ data }: IProps) {
           data={section}
           key={section._key}
           class1={
-            (index === 0 && 'mt-10 lg:mt-32 lg:flex-row  ') ||
+            (index === 0 && 'mt-10 lg:mt-0 lg:flex-row  ') ||
             (index === 1 && 'mr-10 mt-10 lg:mr-52 lg:flex-row-reverse') ||
             (index === 2 &&
               'mr-10 mt-10 lg:mt-12 lg:max-w-[900px] lg:flex-row ')

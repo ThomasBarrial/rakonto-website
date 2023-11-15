@@ -121,8 +121,8 @@ function OffersSection({ offers }: { offers: IOffer[] }) {
               <BasicText
                 contentEn={`${
                   item.PlacesAvailable - item.placesOccupied === 0 ? '' : ''
-                }"Places Available"`}
-                contentFr="Places disponibles"
+                }"Place Available"`}
+                contentFr="Place disponible"
               />
               <BasicText
                 className="ml-2"

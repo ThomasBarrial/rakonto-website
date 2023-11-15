@@ -49,11 +49,6 @@ function SideBarLayout({
         onClick={() => setIsFilterOpen((prev) => !prev)}
         className="flex justify-between items-start text-left mb-5 w-full"
       >
-        <p className="uppercase text-primary">
-          {selectedLanguage === 'Fr'
-            ? 'Filtrer / Rechercher'
-            : 'Filter / Search'}
-        </p>
         <Image
           className={`${
             isFilterOpen ? 'rotate-180' : 'rotate-0'

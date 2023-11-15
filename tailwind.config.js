@@ -18,6 +18,7 @@ module.exports = {
         secondary: '#91C98C',
         tertiary: '#FEBE10',
         quaternary: '#DD6D48',
+        fifth: '#24A3E3',
       },
       maxWidth: {
         content: '1700px',

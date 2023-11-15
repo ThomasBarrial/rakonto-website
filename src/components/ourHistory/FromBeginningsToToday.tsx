@@ -32,7 +32,7 @@ interface IProps {
 
 function FromBeginningsToToday({ data }: IProps) {
   return (
-    <div className="mt-20 flex flex-col items-center lg:mt-52">
+    <div className="mt-20 flex flex-col items-center lg:mt-10">
       <H2
         textColor="text-secondary"
         className="font-bold italic text-center lg:text-left"

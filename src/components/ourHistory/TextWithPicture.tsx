@@ -30,10 +30,10 @@ function TextWithPicture({ data }: IProps) {
   const inView = useInView(ref, { once: true });
 
   return (
-    <div className="mt-10 min-h-screen flex flex-col lg:flex-row justify-center items-center lg:mt-32 lg:mx-32">
-      <div ref={ref} className="lg:w-6/12 flex flex-col lg:items-end">
+    <div className="mt-10 min-h-screen flex flex-col xl:flex-row justify-center items-center lg:mt-0 xl:mx-32">
+      <div ref={ref} className="xl:w-6/12 flex flex-col lg:items-end">
         {inView && (
-          <SlideUp duration={1.5}>
+          <SlideUp duration={1}>
             <Image
               src={urlForImage(data.image.asset).url()}
               height={700}
@@ -44,18 +44,18 @@ function TextWithPicture({ data }: IProps) {
         )}
       </div>
       {inView && (
-        <div className="lg:w-6/12 lg:p-5 lg:ml-10">
-          <SlideUp duration={1.3}>
+        <div className="xl:w-6/12 lg:p-5 lg:ml-10">
+          <SlideUp duration={1}>
             <H2
               className="mt-5 lg:mt-10 font-bold italic"
               contentEn={data.titleEn}
               contentFr={data.titleFr}
             />
           </SlideUp>
-          <SlideUp duration={1.5}>
+          <SlideUp duration={1}>
             <Body blockEn={data.TextEn} blockFr={data.textFr} />
           </SlideUp>
-          <SlideUp duration={2}>
+          <SlideUp duration={1.2}>
             <LinkButton
               className="mt-5 lg:mt-10"
               link={data.callToAction.link}

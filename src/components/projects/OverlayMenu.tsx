@@ -8,9 +8,17 @@ interface IProps {
   children: React.ReactNode;
   nameEn: string;
   nameFr: string;
+  height?: string;
 }
 
-function OverlayMenu({ isOpen, children, nameEn, nameFr, setIsOpen }: IProps) {
+function OverlayMenu({
+  isOpen,
+  children,
+  nameEn,
+  nameFr,
+  setIsOpen,
+  height = '200px',
+}: IProps) {
   const handleClick = () => {
     if (isOpen === nameEn) {
       setIsOpen(null);
@@ -28,7 +36,7 @@ function OverlayMenu({ isOpen, children, nameEn, nameFr, setIsOpen }: IProps) {
       />
       <div
         className={`${
-          isOpen === nameEn && isOpen ? 'h-[200px] mb-6 mt-5 ' : 'h-[0px]'
+          isOpen === nameEn && isOpen ? `h-[${height}] mb-6 mt-5` : 'h-[0px]'
         }  transform duration-500 ease-out  overflow-hidden`}
       >
         {children}
