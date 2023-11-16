@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'off',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -12,13 +13,13 @@ module.exports = {
         francoisOne: ['var(--font-francois_one)'],
       },
       colors: {
-        background: '#FFFFF8',
-        textColor: '#454545',
-        primary: '#13795F',
-        secondary: '#91C98C',
-        tertiary: '#FEBE10',
-        quaternary: '#DD6D48',
-        fifth: '#24A3E3',
+        background: 'var(--color-background)',
+        text: 'var(--color-text)',
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        tertiary: 'var(--color-tertiary)',
+        quaternary: 'var(--color-quaternary)',
+        fifth: 'var(--color-fifth)',
       },
       maxWidth: {
         content: '1700px',

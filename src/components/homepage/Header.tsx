@@ -36,13 +36,13 @@ function Header({ data }: IProps) {
   };
 
   return (
-    <section className=" w-full flex min-h-screen flex-col justify-between items-center  py-20 px-4 lg:px-10">
+    <section className=" w-full flex lg:min-h-screen flex-col justify-between items-center  py-20 px-4 lg:px-10">
       <div ref={ref} className="max-w-content w-full">
         {inView && (
           <div
             className={`${
               selectedLanguage === 'Fr'
-                ? 'text-[55px] md:text-[5rem] leading-none lg:text-[7rem] xl:text-[8rem] mt-5'
+                ? 'text-[55px] md:text-[5rem] leading-none lg:text-[6rem] xl:text-[7rem] mt-5'
                 : 'text-[60px] md:text-[5rem] leading-none lg:text-[7rem] xl:text-[8rem]  mt-10'
             } font-francoisOne  text-primary font-bold`}
           >

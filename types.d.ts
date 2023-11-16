@@ -354,6 +354,8 @@ export interface ITeam extends SanityDocument {
   descriptionFr: string;
   descriptionEn: string;
   profilPicture: SanityImage;
+  pronounsFr?: string;
+  pronounsEn?: string;
 }
 
 export interface IOurHistoryTextSection {

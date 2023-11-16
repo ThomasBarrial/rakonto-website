@@ -90,7 +90,7 @@ function OneOffer({ offer, link }: { offer: IOffer; link: string }) {
             <span className="mr-2">
               {selectedLanguage === 'Fr'
                 ? 'Place disponible'
-                : 'Places Available'}{' '}
+                : 'Place Available'}{' '}
               :
             </span>
             <span>{offer.PlacesAvailable - offer.placesOccupied}</span>

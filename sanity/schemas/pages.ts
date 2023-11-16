@@ -93,6 +93,11 @@ export default defineType({
           title: 'Rakonto Numbers',
           type: 'rakontoNumbers',
         }),
+        defineArrayMember({
+          name: 'legalMention',
+          title: 'Legal Mention',
+          type: 'legalMention',
+        }),
       ],
     }),
   ],

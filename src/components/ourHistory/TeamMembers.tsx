@@ -44,11 +44,29 @@ function TeamMembers({ team }: IProps) {
               />
             </div>
             <div className="flex justify-between mt-2">
-              <H3
-                className="text-primary"
-                contentEn={member.firstName}
-                contentFr={member.firstName}
-              />
+              <div className="flex">
+                <H3
+                  className="text-primary"
+                  contentEn={member.firstName}
+                  contentFr={member.firstName}
+                />
+
+                {member.pronounsEn && (
+                  <BasicText
+                    className="text-primary"
+                    contentEn={member.pronounsEn}
+                    contentFr=""
+                  />
+                )}
+
+                {member.pronounsFr && (
+                  <BasicText
+                    className="text-primary"
+                    contentEn=""
+                    contentFr={member.pronounsFr}
+                  />
+                )}
+              </div>
               <BasicText
                 className="text-primary"
                 contentEn={member.roleEn}

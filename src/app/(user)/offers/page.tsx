@@ -13,12 +13,12 @@ export async function generateMetadata(): Promise<Metadata> {
   // fetch data
   const pages = await clientFetch(getPages);
 
-  const pagecContent = getPageContent(pages, '/articles');
+  const pageContent = getPageContent(pages, '/articles');
 
   return {
-    title: pagecContent.title,
-    description: pagecContent.description,
-    keywords: pagecContent.keywords,
+    title: pageContent.title,
+    description: pageContent.description,
+    keywords: pageContent.keywords,
   };
 }
 

@@ -21,7 +21,7 @@ function Footer({ contactInfos, socialMedia }: IProps) {
           <Image src="/logo/logo.svg" alt="RAKONTO" height={40} width={200} />
           <Link
             className="text-textColor text-center w-52  font-josefin opacity-60 mt-5 lg:mt-2"
-            href="/"
+            href="/legalMention"
           >
             Legal mentions
           </Link>

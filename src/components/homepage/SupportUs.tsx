@@ -29,12 +29,12 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
 
   return (
     <SectionContainer
-      className="h-screen my-32 lg:my-0"
+      id="supportUs"
+      className="my-32 lg:my-0"
       bgImage="/backgroundHome/bgFooter5.png"
     >
       <div
         ref={ref}
-        id="supportUs"
         className="my-10 pb-32 relative w-[100%] font-josefin flex flex-col"
       >
         {inView && (

@@ -43,8 +43,12 @@ import ourMissonAndValue from './schemas/ourHistory/ourMissonAndValue';
 import formStartToToday from './schemas/ourHistory/formStartToToday';
 import rakontoNumbers from './schemas/ourHistory/rakontoNumbers';
 
+// legal Mention
+import legalMention from './schemas/legalMention';
+
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    legalMention,
     rakontoNumbers,
     formStartToToday,
     ourMissonAndValue,

@@ -32,11 +32,11 @@ function OurMissonAndValues({
   const inView = useInView(ref, { once: true });
   return (
     <SectionContainer id="ourvalues" className="py-32">
-      <div className=" flex flex-col lg:flex-row lg:items-center  w-full ">
-        <div
-          ref={ref}
-          className="hidden lg:flex flex-row justify-center w-4/12 items-center "
-        >
+      <div
+        ref={ref}
+        className=" flex flex-col lg:flex-row lg:items-center  w-full "
+      >
+        <div className="hidden lg:flex flex-row justify-center w-4/12 items-center ">
           {inView && (
             <SlideUp duration={1}>
               <Image

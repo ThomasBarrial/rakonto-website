@@ -57,6 +57,16 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'pronounsEn',
+      title: 'pronounsEn',
+      type: 'string',
+    }),
+    defineField({
+      name: 'pronounsFr',
+      title: 'pronounsFr',
+      type: 'string',
+    }),
+    defineField({
       name: 'orderPlacement',
       title: 'Order Placement',
       type: 'number',
