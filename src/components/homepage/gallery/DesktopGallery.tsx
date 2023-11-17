@@ -18,7 +18,7 @@ function DesktopGallery({ gallery, setIsModal, x }: IProps) {
   return (
     <motion.div
       style={{ x }}
-      className="hidden lg:flex lg:w-[120%] bg-red- space-y-2 lg:space-x-2 lg:space-y-0 flex-col lg:flex-row items-center justify-center"
+      className="hidden lg:flex lg:w-[120%]  space-y-2 lg:space-x-2 lg:space-y-0 flex-col lg:flex-row items-center justify-center"
     >
       {gallery.map((item) => (
         <button
