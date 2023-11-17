@@ -42,7 +42,7 @@ function ImagesGallery({ data }: IProps) {
   }, [isModal.image]);
 
   return (
-    <section className="h-screen xl:my-10  overflow-hidden flex lg:flex-col lg:space-y-2 lg:space-x-0 justify-between lg:justify-center items-center">
+    <section className="xl:my-20  overflow-hidden flex lg:flex-col lg:space-y-2 lg:space-x-0 justify-between lg:justify-center items-center">
       {isModal.isOpen && isModal.image && (
         <ModalGallery
           gallery={data.gallery}

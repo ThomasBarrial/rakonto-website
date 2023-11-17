@@ -107,7 +107,7 @@ function Header({ data }: IProps) {
       <Background
         image="/backgroundHome/bgHeader6.webp"
         opacity={1}
-        start={0}
+        start={-20}
         end={1000}
       />
     </section>
