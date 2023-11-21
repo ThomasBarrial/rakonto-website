@@ -18,8 +18,8 @@ function SocialMedia({ socialMedia, isFooter = true }: IProps) {
               isFooter ? item.icon.asset : item.iconWhite.asset
             ).url()}
             alt={item.name}
-            height={30}
-            width={30}
+            height={isFooter ? 30 : 25}
+            width={isFooter ? 30 : 25}
           />
         </a>
       ))}
