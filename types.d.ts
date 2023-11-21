@@ -85,6 +85,7 @@ export interface ISocialMedia extends SanityDocument {
   name: string;
   link: string;
   icon: SanityImage;
+  iconWhite: SanityImage;
 }
 
 export interface IHomePage extends SanityPage {

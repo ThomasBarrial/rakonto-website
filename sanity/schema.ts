@@ -34,6 +34,7 @@ import author from './schemas/author';
 
 // Offers
 import offers from './schemas/ourOffers/offers';
+import noOffers from './schemas/ourOffers/noOffers';
 
 // ourHistory
 import team from './schemas/team';
@@ -80,6 +81,7 @@ const schema: { types: SchemaTypeDefinition[] } = {
     offers,
     ourHistoryHeader,
     ourHistoryTextSection,
+    noOffers,
   ],
 };
 

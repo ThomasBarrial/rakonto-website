@@ -35,7 +35,7 @@ function SupportUs({ data }: { data: IHomeSupportUs }) {
     >
       <div
         ref={ref}
-        className="my-10 pb-32 relative w-[100%] font-josefin flex flex-col"
+        className=" pb-32 relative w-[100%] lg:min-h-[900px] font-josefin  flex flex-col lg:pt-10"
       >
         {inView && (
           <SlideUp

@@ -14,7 +14,9 @@ function BasicText({
 }) {
   const { selectedLanguage } = useSelectedLanguagesFromStore();
   return (
-    <p className={`font-josefin text-[16px]  lg:text-[18px]  ${className}`}>
+    <p
+      className={`font-josefin text-[16px]  lg:text-[18px]  font-light ${className}`}
+    >
       {selectedLanguage === 'Fr' ? contentFr : contentEn}
     </p>
   );

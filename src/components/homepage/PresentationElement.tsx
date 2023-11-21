@@ -28,9 +28,21 @@ interface IProps {
 function PresentationElement({ item, index }: IProps) {
   const { scrollYProgress } = useScroll();
 
-  const y = useParallax(scrollYProgress, -200, 500);
+  const y = useParallax(scrollYProgress, -200, 300);
+  const y2 = useParallax(scrollYProgress, -350, 150);
+  const y3 = useParallax(scrollYProgress, -300, 350);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
+
+  const setMotionYvalue = (idx: number) => {
+    if (idx === 0) {
+      return y;
+    }
+    if (idx === 1) {
+      return y2;
+    }
+    return y3;
+  };
 
   return (
     <div
@@ -52,7 +64,10 @@ function PresentationElement({ item, index }: IProps) {
             <H1
               className={`w-full ${
                 item.color.hex === '#febe10' && 'text-tertiary'
-              } ${item.color.hex === '#dd6d48' && 'text-quaternary'}`}
+              } ${item.color.hex === '#dd6d48' && 'text-quaternary'} ${
+                item.color.hex === '#13795f' && 'text-primary'
+              }`}
+              textColor={`text-[${item.color.hex}]`}
               contentEn={item.nameEn}
               contentFr={item.nameFr}
             />
@@ -64,14 +79,7 @@ function PresentationElement({ item, index }: IProps) {
               contentFr={item.descriptionFr}
             />
           </SlideUp>
-          {/* <Image
-            className="mt-10"
-            src="/BLGreenPatternt.svg"
-            height={50}
-            width={50}
-            priority
-            alt="pattern"
-          /> */}
+
           <div className="mt-10  h-20 w-20 flex flex-col justify-end items-end">
             <div
               className={`${item.color.hex === '#febe10' && 'bg-tertiary'} ${
@@ -93,7 +101,7 @@ function PresentationElement({ item, index }: IProps) {
           <div className="relative min-h-[120%] w-full">
             <motion.div
               key={item._key}
-              style={{ y }}
+              style={{ y: setMotionYvalue(index) }}
               className="relative min-h-[120%] w-full"
             >
               <Image

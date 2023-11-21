@@ -13,19 +13,20 @@ module.exports = {
         francoisOne: ['var(--font-francois_one)'],
       },
       colors: {
-        background: 'var(--color-background)',
-        text: 'var(--color-text)',
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        tertiary: 'var(--color-tertiary)',
-        quaternary: 'var(--color-quaternary)',
-        fifth: 'var(--color-fifth)',
+        background: '#fffff8',
+        text: '#454545',
+        primary: '#13795f',
+        secondary: '#91c98c',
+        tertiary: '#febe10',
+        quaternary: '#dd6d48',
+        fifth: '#24a3e3',
       },
       maxWidth: {
         content: '1700px',
       },
       animation: {
         backgroundOverlay: 'backgroundOpacityAnimation 1s linear',
+        backgroundAnimation: 'backgroundAnimation 1.5s linear',
         fadeIn: 'fadeIn 1s linear',
       },
       keyframes: {
@@ -35,6 +36,14 @@ module.exports = {
           },
           '100%': {
             opacity: '20%',
+          },
+        },
+        backgroundAnimation: {
+          '0%': {
+            opacity: '0%',
+          },
+          '100%': {
+            opacity: '100%',
           },
         },
         fadeIn: {

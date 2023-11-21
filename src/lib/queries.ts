@@ -79,7 +79,7 @@ export const getProjects = groq`
 export const getProjectsYear = groq`
 *[_type == "projectsYear"] {
     ...,
-} `;
+}| order(year desc) `;
 
 export const getProjectsCategories = groq`
 *[_type == "projectsCategories"] {

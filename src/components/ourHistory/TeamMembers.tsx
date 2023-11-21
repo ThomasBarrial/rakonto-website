@@ -61,7 +61,7 @@ function TeamMembers({ team }: IProps) {
 
                 {member.pronounsFr && (
                   <BasicText
-                    className="text-primary ml-2"
+                    className="text-primary -translate-x-1"
                     contentEn=""
                     contentFr={member.pronounsFr}
                   />

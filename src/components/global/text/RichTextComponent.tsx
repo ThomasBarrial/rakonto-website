@@ -51,7 +51,7 @@ const RichTextComponents = {
       </h4>
     ),
     normal: ({ children }: any) => (
-      <p className="whitespace-pre-line my-4 text-[16px]  lg:text-[18px]">
+      <p className="whitespace-pre-line my-4 font-light text-[16px]  lg:text-[18px]">
         {children}
       </p>
     ),
@@ -73,7 +73,7 @@ const RichTextComponents = {
           href={value.href}
           rel={rel}
           target="_blank"
-          className="underline decoration-primary hover:font-bold"
+          className="underline decoration-primary  text-primary"
         >
           {children}
         </Link>

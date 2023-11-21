@@ -98,6 +98,11 @@ export default defineType({
           title: 'Legal Mention',
           type: 'legalMention',
         }),
+        defineArrayMember({
+          name: 'noOffers',
+          title: 'No Offers',
+          type: 'noOffers',
+        }),
       ],
     }),
   ],

@@ -1,19 +1,33 @@
+'use client';
+
 import { useSelectedLanguagesFromStore } from '@/store/selectedLanguages.slice';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function LangButton() {
   const { selectedLanguage, setSelectedLanguage } =
     useSelectedLanguagesFromStore();
+
+  const handleClick = (language: string) => {
+    setSelectedLanguage(language);
+    localStorage.setItem('Lang', language);
+  };
+
+  useEffect(() => {
+    const lang = localStorage.getItem('Lang');
+
+    if (lang) {
+      setSelectedLanguage(lang);
+    } else {
+      localStorage.setItem('Lang', 'En');
+    }
+  });
+
   return (
     <div className="flex  relative">
-      <button
-        onClick={() => setSelectedLanguage('En')}
-        className="mr-2"
-        type="button"
-      >
+      <button onClick={() => handleClick('En')} className="mr-2" type="button">
         EN
       </button>
-      <button onClick={() => setSelectedLanguage('Fr')} type="button">
+      <button onClick={() => handleClick('Fr')} type="button">
         FR
       </button>
       <span

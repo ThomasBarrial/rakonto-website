@@ -23,5 +23,13 @@ export default defineType({
         accept: 'image/svg+xml',
       },
     }),
+    defineField({
+      name: 'iconWhite',
+      title: 'Icon White',
+      type: 'image',
+      options: {
+        accept: 'image/svg+xml',
+      },
+    }),
   ],
 });
