@@ -20,7 +20,7 @@ function NoOffers({ content }: IProps) {
       <div className="relative z-10">
         <Body blockEn={content.TextEn} blockFr={content.textFr} />
       </div>
-      <div className="flex lg:items-end lg:justify-end lg:-translate-y-44">
+      <div className="flex lg:items-end lg:justify-end lg:-translate-y-44 animate-backgroundAnimation">
         <Image
           src={urlForImage(content.image.asset).url()}
           alt=""

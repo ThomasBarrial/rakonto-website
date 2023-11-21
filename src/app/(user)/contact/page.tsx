@@ -33,7 +33,7 @@ async function page() {
           <ContactText contactInfos={contactInfos[0]} />
           <ContactForm />
         </div>
-        <div className="w-7/12 h-[500px] hidden lg:flex relative">
+        <div className="w-7/12 h-[500px] hidden lg:flex relative animate-backgroundAnimation">
           <Image
             src="/HAND-BIRD-FOREST-GREEN.svg"
             alt=""
