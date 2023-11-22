@@ -76,7 +76,7 @@ async function page({ params: { slug } }: Props) {
         <BasicText
           className="mt-10 font-bold"
           contentEn={project.descriptionEN}
-          contentFr={project.title}
+          contentFr={project.descriptionFR}
         />
         <div className="mt-10 flex">
           <div className="w-full lg:w-9/12">
