@@ -64,19 +64,24 @@ const RichTextComponents = {
 
   marks: {
     link: ({ children, value }: any) => {
-      const rel = !value.href.startsWith('/')
-        ? 'noreferrer noopener'
-        : undefined;
+      let rel;
+      if (value.href) {
+        rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined;
+      }
 
       return (
-        <Link
-          href={value.href}
-          rel={rel}
-          target="_blank"
-          className="underline decoration-primary  text-primary"
-        >
-          {children}
-        </Link>
+        <div>
+          {value.href && (
+            <Link
+              href={value.href}
+              rel={rel}
+              target="_blank"
+              className="underline decoration-primary  text-primary"
+            >
+              {children}
+            </Link>
+          )}
+        </div>
       );
     },
   },
