@@ -156,5 +156,3 @@ function OffersSection({ offers }: { offers: IOffer[] }) {
 }
 
 export default OffersSection;
-
-// link={`/offers/${item.slug.current}`}

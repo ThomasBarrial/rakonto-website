@@ -80,7 +80,7 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
 
     const body = {
       query: `
-      mutation ($boardId: Int!, $itemName: String!, $columnValues: JSON!) {
+      mutation ($boardId: ID!, $itemName: String!, $columnValues: JSON!) {
         create_item (
           board_id: $boardId,
           item_name: $itemName,
@@ -107,7 +107,9 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
         .catch(() => {
           setFormStatus('error');
         })
-        .then(() => {
+        .then((res) => {
+          console.log('hello', res);
+          console.log('hello');
           setFormStatus('validate');
         });
     } catch (error) {
@@ -118,6 +120,8 @@ function OffersForm({ mondayBoard }: { mondayBoard: any }) {
       setFormStatus('error');
     }
   };
+
+  console.log(parseInt(mondayBoard.id, 10));
 
   return (
     <div className="w-full">
